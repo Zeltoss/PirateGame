@@ -8,6 +8,8 @@ public class EnemySpawner : MonoBehaviour
 {
     // this script manages the spawning of the enemies
 
+    [SerializeField] private GameObject player;
+
     public GameObject enemyPrefab;
 
     //[SerializeField] private int minEnemySpawns;
@@ -99,6 +101,7 @@ public class EnemySpawner : MonoBehaviour
     {
         GameObject enemyInstance = Instantiate(enemyPrefab, spawnPoint, UnityEngine.Quaternion.identity);
         spawnedEnemies.Add(enemyInstance);
+        enemyInstance.GetComponent<EnemyAI>().player = player;
         spawnCount++;
         firstSpawn = false;
 
