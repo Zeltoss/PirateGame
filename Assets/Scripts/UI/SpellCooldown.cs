@@ -60,7 +60,7 @@ public class SpellCooldown : MonoBehaviour
     public void UseSpell()
     {
         if(isCooldown)
-        {
+        {   
             // Spieler hat waehrend der Verwendung des Skills, den Skill gedrueckt (Sound kann hier platziert werden)
         }
         else
@@ -68,6 +68,7 @@ public class SpellCooldown : MonoBehaviour
             isCooldown = true;
             textCooldown.gameObject.SetActive(true);
             cooldownTimer = cooldownTime;
+            Debug.Log("Spell Used");
         }
     }
 }
