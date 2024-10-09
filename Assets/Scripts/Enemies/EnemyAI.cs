@@ -1,4 +1,5 @@
 using System.Collections;
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -6,23 +7,28 @@ public class EnemyAI : MonoBehaviour
 {
     // this script manages the behavior of the individual enemies
 
-    // walks towards player
-    // if close enough -> punches player, waits for a bit, punches again
+    public enum enemyTypes
+    {
+        melee,
+        shooter
+    }
+    public enemyTypes enemyType;
 
-    // health -> invokes event when it drops below zero; destroys itself
+    [SerializeField] private int health = 20;
+    [SerializeField] private int damage = 5;
+    [SerializeField] private float speed = 3f;
+    private UnityEngine.Vector3 movement;
+
+    private bool isMoving = false;
+    private bool canMove = false;
+    private bool canAttack = true;
 
     public GameObject player;
     private float distance;
 
     private Rigidbody rb;
-
-    [SerializeField] private int damage = 5;
-    [SerializeField] private float speed = 3f;
-    private UnityEngine.Vector3 movement;
-    private bool isMoving = false;
-    private bool canAttack = true;
-
     private NavMeshAgent agent;
+
 
 
     void OnEnable()
@@ -33,8 +39,11 @@ public class EnemyAI : MonoBehaviour
         StartCoroutine(SpawnCooldown());
     }
 
+
     void FixedUpdate()
     {
+        agent.SetDestination(player.transform.position);
+
         distance = UnityEngine.Vector3.Distance(this.transform.position, player.transform.position);
 
         if (distance < 3)
@@ -52,30 +61,52 @@ public class EnemyAI : MonoBehaviour
         }
 
 
-        if (isMoving)
+        if (isMoving && canMove)
         {
             movement = player.transform.position - transform.position;
             movement.Normalize();
             rb.velocity = movement * speed;
         }
-
-
-        agent.SetDestination(player.transform.position);
     }
+
+
+
+    // called by WeaponManager/Player Attack script
+    public void TakeDamage(float damage)
+    {
+        health -= Mathf.RoundToInt(damage);
+        if (health <= 0)
+        {
+            canMove = false;
+            canAttack = false;
+            SkillTreeManager.onKillingEnemy?.Invoke(nameof(enemyType));
+            StartCoroutine(KillAnimation());
+        }
+    }
+
 
 
     private IEnumerator SpawnCooldown()
     {
         yield return new WaitForSeconds(1);
-        //isMoving = true;
-        agent.SetDestination(player.transform.position);
+        canMove = true;
     }
 
+
+    // makes the enemy attack the player and adds a little cooldown before they can attack again
     private IEnumerator AttackingPlayer()
     {
         canAttack = false;
         PlayerHealth.onTakingDamage?.Invoke(damage);
         yield return new WaitForSeconds(1);
         canAttack = true;
+    }
+
+
+    private IEnumerator KillAnimation()
+    {
+        // change color
+        yield return new WaitForSeconds(2);
+        Destroy(this);
     }
 }

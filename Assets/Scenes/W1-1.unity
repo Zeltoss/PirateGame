@@ -10683,6 +10683,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1950989910}
+    - target: {fileID: 1647886179795717881, guid: 23aacbc3ad1744bedab1512f4b6e3f20, type: 3}
+      propertyPath: enemyType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4057677054563995449, guid: 23aacbc3ad1744bedab1512f4b6e3f20, type: 3}
       propertyPath: m_Name
       value: Enemy
