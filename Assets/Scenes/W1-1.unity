@@ -4623,17 +4623,17 @@ MonoBehaviour:
   m_text: 'After defeating an enemy, you earn XP to fill your skill bar. When its
     full, you get a skill point to upgrade your skill tree in the skill book.
 
-    
+
 
     Each
     weapon has 2 Active Skills and 1 Passive Skill. Active Skills are powerful attacks
     with special abilities, while Passive Skills activate automatically, enhancing
     e.g. your Weapon or Bullets.
 
-    
 
-    You can freely reassign skill points
-    and try different builds anytime.'
+
+    You can freely reassign skill points and
+    try different builds anytime.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c15363a321962a64395189dd58642c25, type: 2}
   m_sharedMaterial: {fileID: 1727091484166409672, guid: c15363a321962a64395189dd58642c25, type: 2}
@@ -10431,6 +10431,128 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1850786008}
   m_CullTransparentMesh: 1
+--- !u!1 &1851357100
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1851357101}
+  - component: {fileID: 1851357105}
+  - component: {fileID: 1851357104}
+  - component: {fileID: 1851357102}
+  - component: {fileID: 1851357106}
+  m_Layer: 0
+  m_Name: MeleeWeapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1851357101
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1851357100}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0.3420201, z: 0, w: 0.9396927}
+  m_LocalPosition: {x: 3.5, y: -0, z: -1}
+  m_LocalScale: {x: 0.5, y: 1, z: 0.1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1950989911}
+  m_LocalEulerAnglesHint: {x: 0, y: 40, z: 0}
+--- !u!114 &1851357102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1851357100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adf6bdbc11a8c4ce0952565e6979382e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillOneIndex: 0
+  skillTwoIndex: 0
+  skillThreeIndex: 0
+  enemiesInRange: []
+--- !u!23 &1851357104
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1851357100}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1851357105
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1851357100}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &1851357106
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1851357100}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 12, y: 2, z: 12}
+  m_Center: {x: 0.0000019073486, y: -0.00000005245215, z: 0.000011444092}
 --- !u!1 &1860385678
 GameObject:
   m_ObjectHideFlags: 0
@@ -11369,7 +11491,9 @@ GameObject:
   - component: {fileID: 1950989914}
   - component: {fileID: 1950989913}
   - component: {fileID: 1950989912}
+  - component: {fileID: 1950989921}
   - component: {fileID: 1950989919}
+  - component: {fileID: 1950989920}
   m_Layer: 0
   m_Name: Pirate
   m_TagString: Untagged
@@ -11392,6 +11516,7 @@ Transform:
   m_Children:
   - {fileID: 420787544}
   - {fileID: 1080370140}
+  - {fileID: 1851357101}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 180, z: 0}
 --- !u!114 &1950989912
@@ -11547,6 +11672,32 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 6, y: 0.5, z: 10.000002}
   m_Center: {x: -0.46, y: -3.1832315e-12, z: 0.01}
+--- !u!114 &1950989920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950989910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58e985706a5734aedb22bc32d36e4c8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meleeEnemyXP: 40
+--- !u!114 &1950989921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950989910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa1139c5cc42f46038dae7ef67f46b3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equippedWeapon: 0
 --- !u!1 &1989768115
 GameObject:
   m_ObjectHideFlags: 0
@@ -12575,18 +12726,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1164265431479732141, guid: 23aacbc3ad1744bedab1512f4b6e3f20, type: 3}
-      propertyPath: m_ProbeAnchor
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 1647886179795717881, guid: 23aacbc3ad1744bedab1512f4b6e3f20, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1950989910}
-    - target: {fileID: 1647886179795717881, guid: 23aacbc3ad1744bedab1512f4b6e3f20, type: 3}
-      propertyPath: enemyType
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4057677054563995449, guid: 23aacbc3ad1744bedab1512f4b6e3f20, type: 3}
       propertyPath: m_Name
       value: Enemy

@@ -79,8 +79,8 @@ public class EnemyAI : MonoBehaviour
         {
             canMove = false;
             canAttack = false;
-            SkillTreeManager.onKillingEnemy?.Invoke(nameof(enemyType));
             StartCoroutine(KillAnimation());
+            SkillTreeManager.onKillingEnemy(this.gameObject);
         }
     }
 
@@ -105,8 +105,8 @@ public class EnemyAI : MonoBehaviour
 
     private IEnumerator KillAnimation()
     {
-        // change color
+        //gameObject.GetComponent<Material>().color = Color.white;
         yield return new WaitForSeconds(2);
-        Destroy(this);
+        Destroy(this.gameObject);
     }
 }
