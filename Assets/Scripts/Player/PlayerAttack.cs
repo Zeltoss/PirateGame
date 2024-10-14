@@ -15,17 +15,13 @@ public class PlayerAttack : MonoBehaviour
     }
     public weaponTypes equippedWeapon;
 
+    [SerializeField] private GameObject currentWeapon;
+    // -> maybe list with all weapons and index to know which one is active?
 
     private PlayerControls _playerControls;
     private InputAction basicAttack;
     private InputAction attackOne;
     private InputAction attackTwo;
-
-    public delegate void OnPlayerAttack();
-    public static OnPlayerAttack onPlayerAttack;
-
-    public delegate void OnHittingEnemy(List<GameObject> enemies);
-    public static OnHittingEnemy onHittingEnemy;
 
 
     private bool canAttack = true;
@@ -37,6 +33,7 @@ public class PlayerAttack : MonoBehaviour
     void Awake()
     {
         _playerControls = new PlayerControls();
+        currentWeapon.GetComponent<BoxCollider>().enabled = false;
     }
 
 
@@ -53,9 +50,6 @@ public class PlayerAttack : MonoBehaviour
         attackTwo = _playerControls.Player.SpecialAttackTwo;
         attackTwo.Enable();
         attackTwo.performed += UseAttackTwo;
-
-
-        onHittingEnemy += DealDamage;
     }
 
     private void OnDisable()
@@ -63,8 +57,6 @@ public class PlayerAttack : MonoBehaviour
         basicAttack.Disable();
         attackOne.Disable();
         attackTwo.Disable();
-
-        onHittingEnemy -= DealDamage;
     }
 
 
@@ -75,7 +67,9 @@ public class PlayerAttack : MonoBehaviour
         if (canAttack)
         {
             StartCoroutine(AttackCooldown());
-            onPlayerAttack?.Invoke();
+            //onPlayerAttack?.Invoke(testDamage);
+            currentWeapon.GetComponent<BoxCollider>().enabled = true;
+            currentWeapon.GetComponent<MeleeWeapon>().damage = testDamage;
         }
     }
 
@@ -96,19 +90,10 @@ public class PlayerAttack : MonoBehaviour
     private IEnumerator AttackCooldown()
     {
         canAttack = false;
+        yield return new WaitForSeconds(0.1f);
+        currentWeapon.GetComponent<BoxCollider>().enabled = false;
         yield return new WaitForSeconds(1);
         canAttack = true;
     }
 
-
-    private void DealDamage(List<GameObject> enemies)
-    {
-        foreach (GameObject enemy in enemies)
-        {
-            enemy.GetComponent<EnemyAI>().TakeDamage(testDamage);
-        }
-        // -> causes an error cause the list is modified by the killed enemies
-        // maybe move damage to OnTriggerEnter function of weapon script? 
-        Debug.Log("STRIKE");
-    }
 }

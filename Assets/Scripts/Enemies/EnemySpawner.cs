@@ -23,7 +23,7 @@ public class EnemySpawner : MonoBehaviour
 
     private bool firstSpawn = true;
 
-    private List<GameObject> spawnedEnemies = new List<GameObject>();
+    private List<UnityEngine.Vector3> usedSpawnPoints = new List<UnityEngine.Vector3>();
 
     private int spawnCount;
 
@@ -76,14 +76,15 @@ public class EnemySpawner : MonoBehaviour
         // this prevents the enemies from spawning too close to each other
         if (!firstSpawn)
         {
-            foreach (GameObject enemy in spawnedEnemies)
+            foreach (UnityEngine.Vector3 point in usedSpawnPoints)
             {
-                float distance = UnityEngine.Vector3.Distance(enemy.transform.position, spawnPoint);
+                float distance = UnityEngine.Vector3.Distance(point, spawnPoint);
                 if (distance < 10)
                 {
                     spawnTooClose = true;
                 }
             }
+            // remove from list after certain amount of time?
         }
 
         if (spawnTooClose)
@@ -100,7 +101,7 @@ public class EnemySpawner : MonoBehaviour
     private IEnumerator SpawningCooldown()
     {
         GameObject enemyInstance = Instantiate(enemyPrefab, spawnPoint, UnityEngine.Quaternion.identity);
-        spawnedEnemies.Add(enemyInstance);
+        usedSpawnPoints.Add(enemyInstance.transform.position);
         enemyInstance.GetComponent<EnemyAI>().player = player;
         spawnCount++;
         firstSpawn = false;

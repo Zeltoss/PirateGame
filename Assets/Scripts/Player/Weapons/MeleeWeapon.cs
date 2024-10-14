@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class MeleeWeapon : MonoBehaviour
 {
-    private float baseDamage;
+
+    public float damage;
 
     private float[] skillOne;
     private float[] skillTwo;
@@ -14,57 +15,14 @@ public class MeleeWeapon : MonoBehaviour
     public float skillTwoIndex;
     public float skillThreeIndex;
 
-    public List<GameObject> enemiesInRange = new List<GameObject>();
-
-
-    void OnEnable()
-    {
-        PlayerAttack.onPlayerAttack += SendEnemyList;
-        SkillTreeManager.onKillingEnemy += RemoveKilledEnemy;
-    }
-
-    void OnDisable()
-    {
-        PlayerAttack.onPlayerAttack -= SendEnemyList;
-        SkillTreeManager.onKillingEnemy -= RemoveKilledEnemy;
-    }
 
 
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Enemy")
         {
-            enemiesInRange.Add(other.gameObject);
+            other.GetComponent<EnemyAI>().TakeDamage(damage);
+            Debug.Log("STRIKE");
         }
-    }
-
-
-    void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == "Enemy")
-        {
-            enemiesInRange.Remove(other.gameObject);
-        }
-    }
-
-
-
-    private void SendEnemyList()
-    {
-        if (enemiesInRange.Count != 0)
-        {
-            PlayerAttack.onHittingEnemy?.Invoke(enemiesInRange);
-        }
-        else
-        {
-            Debug.Log("no enemies to hit");
-        }
-    }
-
-
-
-    private void RemoveKilledEnemy(GameObject enemy)
-    {
-        enemiesInRange.Remove(enemy);
     }
 }

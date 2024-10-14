@@ -27,6 +27,8 @@ public class PlayerHealth : MonoBehaviour
         onTakingDamage -= TakeDamage;
     }
 
+    // function with OnTriggerEnter instead?
+
     private void TakeDamage(int damage)
     {
         playerHealth -= damage;
@@ -37,5 +39,4 @@ public class PlayerHealth : MonoBehaviour
             Debug.Log("You're dead :(");
         }
     }
-
 }

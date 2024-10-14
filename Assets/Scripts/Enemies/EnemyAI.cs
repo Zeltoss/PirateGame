@@ -105,6 +105,7 @@ public class EnemyAI : MonoBehaviour
 
     private IEnumerator KillAnimation()
     {
+        Debug.Log("enemy killed");
         //gameObject.GetComponent<Material>().color = Color.white;
         yield return new WaitForSeconds(2);
         Destroy(this.gameObject);
