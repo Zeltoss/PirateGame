@@ -347,7 +347,7 @@ GameObject:
   - component: {fileID: 123798109}
   - component: {fileID: 123798108}
   m_Layer: 0
-  m_Name: MusicManager
+  m_Name: '[MusicManager]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -475,7 +475,7 @@ GameObject:
   - component: {fileID: 139174792}
   - component: {fileID: 139174791}
   m_Layer: 0
-  m_Name: SoundMixerManager
+  m_Name: '[SoundMixerManager]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2332,7 +2332,7 @@ GameObject:
   - component: {fileID: 1184450672}
   - component: {fileID: 1184450671}
   m_Layer: 0
-  m_Name: SoundFXManager
+  m_Name: '[SoundFXManager]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2481,7 +2481,7 @@ GameObject:
   - component: {fileID: 1289609231}
   - component: {fileID: 1289609230}
   m_Layer: 0
-  m_Name: EventSystem
+  m_Name: '[EventSystem]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3840,10 +3840,10 @@ CanvasRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 123798109}
+  - {fileID: 1184450672}
+  - {fileID: 139174792}
+  - {fileID: 1289609232}
   - {fileID: 963194228}
   - {fileID: 1699400172}
-  - {fileID: 1289609232}
   - {fileID: 1429290011}
-  - {fileID: 139174792}
-  - {fileID: 1184450672}
-  - {fileID: 123798109}

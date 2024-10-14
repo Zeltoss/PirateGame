@@ -15,11 +15,14 @@ public class GameManager : MonoBehaviour
 
     private bool isPaused;
 
+    [SerializeField] private AudioClip waveSounds;
+
 
 
     void Awake()
     {
         _playerControls = new PlayerControls();
+        SoundFXManager.instance.PlayLoopingSoundFXClip(waveSounds, transform, 1f);
     }
 
 
