@@ -2,6 +2,7 @@ using System.Collections;
 using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -15,9 +16,12 @@ public class EnemyAI : MonoBehaviour
     public enemyTypes enemyType;
 
     [SerializeField] private int health = 20;
+    private int currentHealth;
     [SerializeField] private int damage = 5;
     [SerializeField] private float speed = 3f;
     private UnityEngine.Vector3 movement;
+
+    private Camera _camera;
 
     private bool isMoving = false;
     private bool canMove = false;
@@ -33,10 +37,14 @@ public class EnemyAI : MonoBehaviour
 
     void OnEnable()
     {
+        _camera = Camera.main;
+
         rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
 
         StartCoroutine(SpawnCooldown());
+
+        currentHealth = health;
     }
 
 
@@ -67,15 +75,18 @@ public class EnemyAI : MonoBehaviour
             movement.Normalize();
             rb.velocity = movement * speed;
         }
+
+        GetComponentInChildren<Canvas>().transform.rotation = new Quaternion(_camera.transform.rotation.x - this.transform.rotation.x, 0, 0, 0);
     }
 
 
 
-    // called by WeaponManager/Player Attack script
+    // called by weapon scripts
     public void TakeDamage(float damage)
     {
-        health -= Mathf.RoundToInt(damage);
-        if (health <= 0)
+        currentHealth -= Mathf.RoundToInt(damage);
+        GetComponentInChildren<Slider>().value = 100 / health * currentHealth;
+        if (currentHealth <= 0)
         {
             canMove = false;
             canAttack = false;
