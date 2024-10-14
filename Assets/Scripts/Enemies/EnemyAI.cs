@@ -46,9 +46,9 @@ public class EnemyAI : MonoBehaviour
 
         distance = UnityEngine.Vector3.Distance(this.transform.position, player.transform.position);
 
-        if (distance < 3)
+        if (distance < 4)
         {
-            if (canAttack)
+            if (canAttack && GetComponentInChildren<EnemyAttack>().inRangeForMelee)
             {
                 StartCoroutine(AttackingPlayer());
             }
