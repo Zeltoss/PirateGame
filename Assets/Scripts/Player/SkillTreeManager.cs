@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,7 +12,8 @@ public class SkillTreeManager : MonoBehaviour
     public delegate void OnKillingEnemy(GameObject enemy);
     public static OnKillingEnemy onKillingEnemy;
 
-    //[SerializeField] private Slider XPbar;
+    [SerializeField] private Slider xpBar;
+    [SerializeField] private GameObject skillpointsDisplay;
 
     private int totalXP;
     private int totalSkillPoints;
@@ -19,7 +21,7 @@ public class SkillTreeManager : MonoBehaviour
     private int currentLevelXP;
     private int currentSkillPoints;
 
-    private int neededLevelXP = 100;
+    [SerializeField] private int neededLevelXP = 100;
 
     [SerializeField] private int meleeEnemyXP;
 
@@ -27,6 +29,9 @@ public class SkillTreeManager : MonoBehaviour
     void OnEnable()
     {
         onKillingEnemy += GainXP;
+
+        xpBar.value = 0;
+        skillpointsDisplay.GetComponent<TextMeshProUGUI>().text = currentSkillPoints.ToString();
     }
 
 
@@ -52,6 +57,9 @@ public class SkillTreeManager : MonoBehaviour
             currentLevelXP -= neededLevelXP;
         }
 
-        //XPbar.value = 1 / neededLevelXP * currentLevelXP;
+        //XPbar.value = 100 / neededLevelXP * currentLevelXP;
+
+        xpBar.value = 100 / neededLevelXP * currentLevelXP;
+        skillpointsDisplay.GetComponent<TextMeshProUGUI>().text = currentSkillPoints.ToString();
     }
 }

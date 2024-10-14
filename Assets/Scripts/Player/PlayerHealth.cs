@@ -11,7 +11,8 @@ public class PlayerHealth : MonoBehaviour
     public static OnTakingDamage onTakingDamage;
 
 
-    private int playerHealth = 100;
+    [SerializeField] private int playerHealth = 100;
+    private int currentHealth;
 
     [SerializeField] private Slider healthBar;
 
@@ -19,6 +20,7 @@ public class PlayerHealth : MonoBehaviour
     void OnEnable()
     {
         onTakingDamage += TakeDamage;
+        currentHealth = playerHealth;
         healthBar.value = playerHealth;
     }
 
@@ -31,10 +33,10 @@ public class PlayerHealth : MonoBehaviour
 
     private void TakeDamage(int damage)
     {
-        playerHealth -= damage;
-        healthBar.value = playerHealth;
+        currentHealth -= damage;
+        healthBar.value = 100 / playerHealth * currentHealth;
 
-        if (playerHealth <= 0)
+        if (currentHealth <= 0)
         {
             Debug.Log("You're dead :(");
         }
