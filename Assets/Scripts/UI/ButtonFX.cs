@@ -3,7 +3,8 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 
-public class ButtonAnimation : MonoBehaviour
+
+public class ButtonFX : MonoBehaviour
 {
     public TMP_FontAsset newFont; // Die neue Schriftart, die bei Pointer Enter verwendet werden soll
     public TMP_FontAsset oldFont; // Die alte Schriftart, die bei Pointer Exit verwendet werden soll
