@@ -9,10 +9,30 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject optionsMenu;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject gameOver;
-    
-    // Update is called once per frame
-    void Update()
+
+    private bool gamePaused;
+
+
+
+    private void OnEnable()
     {
-        
+        GameManager.onPausingGame += TogglePauseScreen;
+        GameManager.onResumingGame += TogglePauseScreen;
     }
+
+
+    private void OnDisable()
+    {
+        GameManager.onPausingGame -= TogglePauseScreen;
+        GameManager.onResumingGame -= TogglePauseScreen;
+    }
+
+
+
+    private void TogglePauseScreen()
+    {
+        gamePaused = !gamePaused;
+        pauseMenu.SetActive(gamePaused);
+    }
+
 }

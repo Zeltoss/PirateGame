@@ -9,9 +9,9 @@ public class GameManager : MonoBehaviour
     private PlayerControls _playerControls;
     private InputAction pauseAction;
 
-    private delegate void OnPausingGame();
-    OnPausingGame onPausingGame;
-    OnPausingGame onResumingGame;
+    public delegate void OnPausingGame();
+    public static OnPausingGame onPausingGame;
+    public static OnPausingGame onResumingGame;
 
     private bool isPaused;
 
