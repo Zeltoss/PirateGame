@@ -14778,6 +14778,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCanMove: 1
+  playerSprite: {fileID: 420787543}
+  currentWeapon: {fileID: 1851357100}
 --- !u!114 &1950989913
 MonoBehaviour:
   m_ObjectHideFlags: 0

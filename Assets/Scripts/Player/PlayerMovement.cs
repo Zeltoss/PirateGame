@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -18,14 +19,19 @@ public class PlayerMovement : MonoBehaviour
     private float maxSpeed = 12f;
     private float acceleration = 12f;
     private float stoppingForce = 18f;
-    private Vector3 movement;
-    private Vector3 lastMovement;
+    private UnityEngine.Vector3 movement;
+    private UnityEngine.Vector3 lastMovement;
     private float movementX;
     private float movementY;
     // private float jumpingForce = 20f;
 
     public bool playerCanMove = true;
     // private bool isGrounded = true;
+
+    private bool facingLeft = true;
+    [SerializeField] private GameObject playerSprite;
+    [SerializeField] private GameObject currentWeapon;
+
 
 
     void Awake()
@@ -57,19 +63,19 @@ public class PlayerMovement : MonoBehaviour
     {
         if (playerCanMove)
         {
-            movementX = moveAction.ReadValue<Vector2>().x;
-            movementY = moveAction.ReadValue<Vector2>().y;
+            movementX = moveAction.ReadValue<UnityEngine.Vector2>().x;
+            movementY = moveAction.ReadValue<UnityEngine.Vector2>().y;
         }
         else
         {
-            movement = Vector3.zero;
+            movement = UnityEngine.Vector3.zero;
         }
     }
 
 
     void FixedUpdate()
     {
-        movement = new Vector3(movementX, 0.0f, movementY);
+        movement = new UnityEngine.Vector3(movementX, 0.0f, movementY);
         movement.Normalize();
 
         if (movement.sqrMagnitude > 0.0f)
@@ -79,6 +85,16 @@ public class PlayerMovement : MonoBehaviour
         else if (movement.sqrMagnitude == 0.0f)
         {
             Decelerate();
+        }
+
+
+        if (movement.x < 0 && !facingLeft)
+        {
+            FlipSprite();
+        }
+        else if (movement.x > 0 && facingLeft)
+        {
+            FlipSprite();
         }
     }
 
@@ -113,8 +129,29 @@ public class PlayerMovement : MonoBehaviour
         if (speed <= 0.0f)
         {
             speed = 0.0f;
-            lastMovement = Vector3.zero;
+            lastMovement = UnityEngine.Vector3.zero;
         }
+    }
+
+
+
+    private void FlipSprite()
+    {
+        UnityEngine.Vector3 currentScale = playerSprite.transform.localScale;
+        currentScale.x *= -1;
+        playerSprite.transform.localScale = currentScale;
+
+        UnityEngine.Vector3 weaponScale = currentWeapon.transform.localScale;
+        weaponScale.x *= -1;
+        currentWeapon.transform.localScale = weaponScale;
+        UnityEngine.Vector3 currentPosition = currentWeapon.transform.localPosition;
+        currentPosition.x *= -1;
+        currentWeapon.transform.localPosition = currentPosition;
+        UnityEngine.Quaternion currentRotation = currentWeapon.transform.localRotation;
+        currentRotation.y *= -1;
+        currentWeapon.transform.localRotation = currentRotation;
+
+        facingLeft = !facingLeft;
     }
 
 
