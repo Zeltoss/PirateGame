@@ -25,6 +25,19 @@ public class SkillTreeManager : MonoBehaviour
 
     [SerializeField] private int meleeEnemyXP;
 
+    // GameObject for currentWeapon, that tells the player when the weapon gets swapped?
+
+    [SerializeField] private GameObject currentWeapon;
+
+    [SerializeField] private GameObject skillPointsOne;
+    [SerializeField] private GameObject skillPointsTwo;
+    [SerializeField] private GameObject skillPointsThree;
+
+    [SerializeField] private Slider[] skillBarSliders;
+
+
+
+
 
     void OnEnable()
     {
@@ -57,9 +70,93 @@ public class SkillTreeManager : MonoBehaviour
             currentLevelXP -= neededLevelXP;
         }
 
-        //XPbar.value = 100 / neededLevelXP * currentLevelXP;
-
         xpBar.value = 100 / neededLevelXP * currentLevelXP;
         skillpointsDisplay.GetComponent<TextMeshProUGUI>().text = currentSkillPoints.ToString();
     }
+
+
+
+    public void AddSkillPoint(int skill)
+    {
+        if (skill == 0 && currentSkillPoints > 0)
+        {
+            currentSkillPoints--;
+            currentWeapon.GetComponent<MeleeWeapon>().skillOneIndex++;
+            skillPointsOne.GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<MeleeWeapon>().skillOneIndex.ToString();
+            skillBarSliders[skill].value = currentWeapon.GetComponent<MeleeWeapon>().skillOneIndex;
+            if (currentWeapon.GetComponent<MeleeWeapon>().skillOneIndex == 0)
+            {
+                currentWeapon.GetComponent<MeleeWeapon>().UnlockSkill(skill);
+            }
+        }
+
+        if (skill == 1 && currentSkillPoints > 0)
+        {
+            currentSkillPoints--;
+            currentWeapon.GetComponent<MeleeWeapon>().skillTwoIndex++;
+            skillPointsTwo.GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<MeleeWeapon>().skillTwoIndex.ToString();
+            skillBarSliders[skill].value = currentWeapon.GetComponent<MeleeWeapon>().skillTwoIndex;
+            if (currentWeapon.GetComponent<MeleeWeapon>().skillTwoIndex == 0)
+            {
+                currentWeapon.GetComponent<MeleeWeapon>().UnlockSkill(skill);
+            }
+        }
+
+        if (skill == 2 && currentSkillPoints > 0)
+        {
+            currentSkillPoints--;
+            currentWeapon.GetComponent<MeleeWeapon>().passiveSkillIndex++;
+            skillPointsThree.GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<MeleeWeapon>().passiveSkillIndex.ToString();
+            skillBarSliders[skill].value = currentWeapon.GetComponent<MeleeWeapon>().passiveSkillIndex;
+            if (currentWeapon.GetComponent<MeleeWeapon>().passiveSkillIndex == 0)
+            {
+                currentWeapon.GetComponent<MeleeWeapon>().UnlockSkill(skill);
+            }
+        }
+
+        skillpointsDisplay.GetComponent<TextMeshProUGUI>().text = currentSkillPoints.ToString();
+    }
+
+
+    public void SubtractSkillPoints(int skill)
+    {
+        if (skill == 0 && currentWeapon.GetComponent<MeleeWeapon>().skillOneIndex > 0)
+        {
+            currentSkillPoints++;
+            currentWeapon.GetComponent<MeleeWeapon>().skillOneIndex--;
+            skillPointsOne.GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<MeleeWeapon>().skillOneIndex.ToString();
+            skillBarSliders[skill].value = currentWeapon.GetComponent<MeleeWeapon>().skillOneIndex;
+            if (currentWeapon.GetComponent<MeleeWeapon>().passiveSkillIndex == 0)
+            {
+                currentWeapon.GetComponent<MeleeWeapon>().UnlockSkill(skill);
+            }
+        }
+
+        if (skill == 1 && currentWeapon.GetComponent<MeleeWeapon>().skillTwoIndex > 0)
+        {
+            currentSkillPoints++;
+            currentWeapon.GetComponent<MeleeWeapon>().skillTwoIndex--;
+            skillPointsTwo.GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<MeleeWeapon>().skillTwoIndex.ToString();
+            skillBarSliders[skill].value = currentWeapon.GetComponent<MeleeWeapon>().skillTwoIndex;
+            if (currentWeapon.GetComponent<MeleeWeapon>().passiveSkillIndex == 0)
+            {
+                currentWeapon.GetComponent<MeleeWeapon>().UnlockSkill(skill);
+            }
+        }
+
+        if (skill == 2 && currentWeapon.GetComponent<MeleeWeapon>().passiveSkillIndex > 0)
+        {
+            currentSkillPoints++;
+            currentWeapon.GetComponent<MeleeWeapon>().passiveSkillIndex--;
+            skillPointsThree.GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<MeleeWeapon>().passiveSkillIndex.ToString();
+            skillBarSliders[skill].value = currentWeapon.GetComponent<MeleeWeapon>().passiveSkillIndex;
+            if (currentWeapon.GetComponent<MeleeWeapon>().passiveSkillIndex == 0)
+            {
+                currentWeapon.GetComponent<MeleeWeapon>().UnlockSkill(skill);
+            }
+        }
+
+        skillpointsDisplay.GetComponent<TextMeshProUGUI>().text = currentSkillPoints.ToString();
+    }
+
 }

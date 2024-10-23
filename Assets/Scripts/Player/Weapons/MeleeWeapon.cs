@@ -6,15 +6,32 @@ public class MeleeWeapon : MonoBehaviour
 {
 
     public float damage;
+    // damage for the different abilities?
 
     private float[] skillOne;
     private float[] skillTwo;
-    private float[] skillThree;
+    private float[] passiveSkill;
 
-    public float skillOneIndex;
-    public float skillTwoIndex;
-    public float skillThreeIndex;
+    public int skillOneIndex;
+    public int skillTwoIndex;
+    public int passiveSkillIndex;
 
+    public bool unlockedSkillOne;
+    public bool unlockedSkillTwo;
+    public bool unlockedPassiveSkill;
+
+    public bool[] unlockedSkills;
+
+    [SerializeField] private GameObject[] skillIcons;
+
+
+    void Start()
+    {
+        foreach (GameObject skill in skillIcons)
+        {
+            skill.SetActive(false);
+        }
+    }
 
 
     void OnTriggerEnter(Collider other)
@@ -24,5 +41,12 @@ public class MeleeWeapon : MonoBehaviour
             other.GetComponent<EnemyAI>().TakeDamage(damage);
             Debug.Log("STRIKE");
         }
+    }
+
+
+    public void UnlockSkill(int index)
+    {
+        unlockedSkills[index] = !unlockedSkills[index];
+        skillIcons[index].SetActive(!skillIcons[index].activeSelf);
     }
 }

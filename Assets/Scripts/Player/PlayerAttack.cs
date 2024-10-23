@@ -52,6 +52,7 @@ public class PlayerAttack : MonoBehaviour
         attackTwo.performed += UseAttackTwo;
     }
 
+
     private void OnDisable()
     {
         basicAttack.Disable();
@@ -67,7 +68,6 @@ public class PlayerAttack : MonoBehaviour
         if (canAttack)
         {
             StartCoroutine(AttackCooldown());
-            //onPlayerAttack?.Invoke(testDamage);
             currentWeapon.GetComponent<BoxCollider>().enabled = true;
             currentWeapon.GetComponent<MeleeWeapon>().damage = testDamage;
         }
@@ -77,14 +77,25 @@ public class PlayerAttack : MonoBehaviour
 
     private void UseAttackOne(InputAction.CallbackContext context)
     {
-        // check if attack is unlocked
+        if (canAttack && currentWeapon.GetComponent<MeleeWeapon>().unlockedSkillOne)
+        {
+            StartCoroutine(AttackCooldown());
+            currentWeapon.GetComponent<BoxCollider>().enabled = true;
+            // get damage
+        }
     }
 
 
     private void UseAttackTwo(InputAction.CallbackContext context)
     {
-        // check if attack is unlocked
+        if (canAttack && currentWeapon.GetComponent<MeleeWeapon>().unlockedSkillTwo)
+        {
+            StartCoroutine(AttackCooldown());
+            currentWeapon.GetComponent<BoxCollider>().enabled = true;
+            // get damage
+        }
     }
+
 
 
     private IEnumerator AttackCooldown()
