@@ -3491,7 +3491,6 @@ MonoBehaviour:
   unlockedSkillOne: 0
   unlockedSkillTwo: 0
   unlockedPassiveSkill: 0
-  unlockedSkills: 
 --- !u!23 &320583154
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4796,7 +4795,7 @@ GameObject:
   - component: {fileID: 493173943}
   - component: {fileID: 493173942}
   m_Layer: 5
-  m_Name: Skill2_WhirlingBlade
+  m_Name: Skill2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5382,7 +5381,7 @@ GameObject:
   - component: {fileID: 607526097}
   - component: {fileID: 607526096}
   m_Layer: 5
-  m_Name: Skill1_BloodyStrike
+  m_Name: Skill1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10506,7 +10505,7 @@ GameObject:
   - component: {fileID: 1132692453}
   - component: {fileID: 1132692452}
   m_Layer: 5
-  m_Name: Skill3_ Precision
+  m_Name: Skill3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17430,7 +17429,6 @@ MonoBehaviour:
   unlockedSkillOne: 0
   unlockedSkillTwo: 0
   unlockedPassiveSkill: 0
-  unlockedSkills: 
 --- !u!23 &1851357104
 MeshRenderer:
   m_ObjectHideFlags: 0
