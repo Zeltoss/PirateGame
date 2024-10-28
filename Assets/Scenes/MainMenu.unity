@@ -1114,6 +1114,22 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1429290013}
+          m_TargetAssemblyTypeName: ButtonSounds, Assembly-CSharp
+          m_MethodName: OnClick
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &301936300
 GameObject:
   m_ObjectHideFlags: 0
@@ -2553,6 +2569,22 @@ MonoBehaviour:
         - m_Target: {fileID: 1429290013}
           m_TargetAssemblyTypeName: ButtonSounds, Assembly-CSharp
           m_MethodName: OnPointerEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1429290013}
+          m_TargetAssemblyTypeName: ButtonSounds, Assembly-CSharp
+          m_MethodName: OnClick
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -4025,8 +4057,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverSounds:
-  - {fileID: 8300000, guid: 1694ee75c4efad24fab965eed9c0fbfc, type: 3}
-  - {fileID: 8300000, guid: ee2dda06eec601b4fabd53e357bbcd04, type: 3}
+  - {fileID: 8300000, guid: 1ac888c31ab249a4a9d953770f5ee90c, type: 3}
+  ClickSounds:
+  - {fileID: 8300000, guid: 184b4464a2420754b8e47b39f93abbfb, type: 3}
 --- !u!1 &1460967963
 GameObject:
   m_ObjectHideFlags: 0
