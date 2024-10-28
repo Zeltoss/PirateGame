@@ -46,27 +46,27 @@ public class GameManager : MonoBehaviour
         if (!isPaused)
         {
             PauseGame();
+            onPausingGame?.Invoke();
         }
         else
         {
             ResumeGame();
+            onResumingGame?.Invoke();
         }
     }
 
 
 
-    private void PauseGame()
+    public void PauseGame()
     {
         isPaused = true;
-        onPausingGame?.Invoke();
         Time.timeScale = 0;
     }
 
 
-    private void ResumeGame()
+    public void ResumeGame()
     {
         isPaused = false;
-        onResumingGame?.Invoke();
         Time.timeScale = 1;
     }
 }
