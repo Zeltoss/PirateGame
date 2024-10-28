@@ -13,7 +13,8 @@ public class SkillTreeManager : MonoBehaviour
     public static OnKillingEnemy onKillingEnemy;
 
     [SerializeField] private Slider xpBar;
-    [SerializeField] private GameObject skillpointsDisplay;
+    [SerializeField] private GameObject skillpointsMainDisplay;
+    [SerializeField] private GameObject skillpointsSkillMenu;
 
     private int totalXP;
     private int totalSkillPoints;
@@ -44,7 +45,8 @@ public class SkillTreeManager : MonoBehaviour
         onKillingEnemy += GainXP;
 
         xpBar.value = 0;
-        skillpointsDisplay.GetComponent<TextMeshProUGUI>().text = currentSkillPoints.ToString();
+        skillpointsMainDisplay.GetComponent<TextMeshProUGUI>().text = currentSkillPoints.ToString();
+        skillpointsSkillMenu.GetComponent<TextMeshProUGUI>().text = currentSkillPoints.ToString();
     }
 
 
@@ -71,7 +73,8 @@ public class SkillTreeManager : MonoBehaviour
         }
 
         xpBar.value = 100 / neededLevelXP * currentLevelXP;
-        skillpointsDisplay.GetComponent<TextMeshProUGUI>().text = currentSkillPoints.ToString();
+        skillpointsMainDisplay.GetComponent<TextMeshProUGUI>().text = currentSkillPoints.ToString();
+        skillpointsSkillMenu.GetComponent<TextMeshProUGUI>().text = currentSkillPoints.ToString();
     }
 
 
@@ -114,7 +117,8 @@ public class SkillTreeManager : MonoBehaviour
             }
         }
 
-        skillpointsDisplay.GetComponent<TextMeshProUGUI>().text = currentSkillPoints.ToString();
+        skillpointsMainDisplay.GetComponent<TextMeshProUGUI>().text = currentSkillPoints.ToString();
+        skillpointsSkillMenu.GetComponent<TextMeshProUGUI>().text = currentSkillPoints.ToString();
     }
 
 
@@ -156,7 +160,8 @@ public class SkillTreeManager : MonoBehaviour
             }
         }
 
-        skillpointsDisplay.GetComponent<TextMeshProUGUI>().text = currentSkillPoints.ToString();
+        skillpointsMainDisplay.GetComponent<TextMeshProUGUI>().text = currentSkillPoints.ToString();
+        skillpointsSkillMenu.GetComponent<TextMeshProUGUI>().text = currentSkillPoints.ToString();
     }
 
 }

@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     {
         _playerControls = new PlayerControls();
         SoundFXManager.instance.PlayLoopingSoundFXClip(waveSounds, transform, 1f);
+        ResumeGame();
     }
 
 
