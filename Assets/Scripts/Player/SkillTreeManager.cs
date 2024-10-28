@@ -8,6 +8,7 @@ public class SkillTreeManager : MonoBehaviour
 {
     // this script manages everything related to the skill tree and experience points 
 
+    // TODO check if weapon is melee or ranged before accessing the script when using skill points
 
     public delegate void OnKillingEnemy(GameObject enemy);
     public static OnKillingEnemy onKillingEnemy;
@@ -26,7 +27,6 @@ public class SkillTreeManager : MonoBehaviour
 
     [SerializeField] private int meleeEnemyXP;
 
-    // GameObject for currentWeapon, that tells the player when the weapon gets swapped?
 
     [SerializeField] private GameObject currentWeapon;
 
@@ -35,14 +35,16 @@ public class SkillTreeManager : MonoBehaviour
     [SerializeField] private GameObject skillPointsThree;
 
     [SerializeField] private Slider[] skillBarSliders;
-
-
+    [SerializeField] private GameObject[] skillNameObjects;
+    [SerializeField] private GameObject[] skillStatsBasic;
+    //[SerializeField] private GameObject[] skillDescriptions;
 
 
 
     void OnEnable()
     {
         onKillingEnemy += GainXP;
+        PlayerAttack.onChangingWeapon += DisplayCorrectWeaponStats;
 
         xpBar.value = 0;
         skillpointsMainDisplay.GetComponent<TextMeshProUGUI>().text = currentSkillPoints.ToString();
@@ -53,6 +55,7 @@ public class SkillTreeManager : MonoBehaviour
     void OnDisable()
     {
         onKillingEnemy -= GainXP;
+        PlayerAttack.onChangingWeapon -= DisplayCorrectWeaponStats;
     }
 
 
@@ -130,7 +133,7 @@ public class SkillTreeManager : MonoBehaviour
             currentWeapon.GetComponent<MeleeWeapon>().skillOneIndex--;
             skillPointsOne.GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<MeleeWeapon>().skillOneIndex.ToString();
             skillBarSliders[skill].value = currentWeapon.GetComponent<MeleeWeapon>().skillOneIndex;
-            if (currentWeapon.GetComponent<MeleeWeapon>().passiveSkillIndex == 0)
+            if (currentWeapon.GetComponent<MeleeWeapon>().skillOneIndex == 0)
             {
                 currentWeapon.GetComponent<MeleeWeapon>().UnlockSkill(skill);
             }
@@ -142,7 +145,7 @@ public class SkillTreeManager : MonoBehaviour
             currentWeapon.GetComponent<MeleeWeapon>().skillTwoIndex--;
             skillPointsTwo.GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<MeleeWeapon>().skillTwoIndex.ToString();
             skillBarSliders[skill].value = currentWeapon.GetComponent<MeleeWeapon>().skillTwoIndex;
-            if (currentWeapon.GetComponent<MeleeWeapon>().passiveSkillIndex == 0)
+            if (currentWeapon.GetComponent<MeleeWeapon>().skillTwoIndex == 0)
             {
                 currentWeapon.GetComponent<MeleeWeapon>().UnlockSkill(skill);
             }
@@ -162,6 +165,46 @@ public class SkillTreeManager : MonoBehaviour
 
         skillpointsMainDisplay.GetComponent<TextMeshProUGUI>().text = currentSkillPoints.ToString();
         skillpointsSkillMenu.GetComponent<TextMeshProUGUI>().text = currentSkillPoints.ToString();
+    }
+
+
+
+    private void DisplayCorrectWeaponStats(GameObject weapon)
+    {
+        currentWeapon = weapon;
+        skillPointsOne.GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<MeleeWeapon>().skillOneIndex.ToString();
+        skillPointsTwo.GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<MeleeWeapon>().skillTwoIndex.ToString();
+        skillPointsThree.GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<MeleeWeapon>().passiveSkillIndex.ToString();
+
+        skillBarSliders[0].value = currentWeapon.GetComponent<MeleeWeapon>().skillOneIndex;
+        skillBarSliders[1].value = currentWeapon.GetComponent<MeleeWeapon>().skillTwoIndex;
+        skillBarSliders[2].value = currentWeapon.GetComponent<MeleeWeapon>().passiveSkillIndex;
+
+        for (int i = 0; i < skillNameObjects.Length; i++)
+        {
+            skillNameObjects[i].GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<MeleeWeapon>().skillNames[i];
+        }
+
+        skillStatsBasic[0].GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<MeleeWeapon>().baseDamage.ToString() + " +";
+        skillStatsBasic[1].GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<MeleeWeapon>().critDamage.ToString() + " +";
+
+        CountRemainingPoints();
+        skillpointsMainDisplay.GetComponent<TextMeshProUGUI>().text = currentSkillPoints.ToString();
+        skillpointsSkillMenu.GetComponent<TextMeshProUGUI>().text = currentSkillPoints.ToString();
+
+        // change descriptions
+        // change add-on things on the bars
+    }
+
+
+    private void CountRemainingPoints()
+    {
+        int usedSkillPoints = 0;
+        foreach (Slider bar in skillBarSliders)
+        {
+            usedSkillPoints += (int)bar.value;
+        }
+        currentSkillPoints = totalSkillPoints - usedSkillPoints;
     }
 
 }

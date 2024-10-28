@@ -8,15 +8,13 @@ public class PlayerAttack : MonoBehaviour
 {
     // this script checks for attacks from the player
 
-    public enum weaponTypes
-    {
-        melee,
-        ranged
-    }
-    public weaponTypes equippedWeapon;
+    public delegate void OnChangingWeapon(GameObject weapon);
+    public static OnChangingWeapon onChangingWeapon;
 
     [SerializeField] private GameObject currentWeapon;
-    // -> maybe list with all weapons and index to know which one is active?
+
+    public List<GameObject> allWeapons;
+    //private int weaponIndex;
 
     private PlayerControls _playerControls;
     private InputAction basicAttack;
@@ -34,6 +32,7 @@ public class PlayerAttack : MonoBehaviour
     {
         _playerControls = new PlayerControls();
         currentWeapon.GetComponent<BoxCollider>().enabled = false;
+        allWeapons = new List<GameObject>(GameObject.FindGameObjectsWithTag("Weapon"));
     }
 
 
@@ -69,7 +68,7 @@ public class PlayerAttack : MonoBehaviour
         {
             StartCoroutine(AttackCooldown());
             currentWeapon.GetComponent<BoxCollider>().enabled = true;
-            currentWeapon.GetComponent<MeleeWeapon>().damage = testDamage;
+            currentWeapon.GetComponent<MeleeWeapon>().currentDamage = testDamage;
         }
     }
 
@@ -105,6 +104,25 @@ public class PlayerAttack : MonoBehaviour
         currentWeapon.GetComponent<BoxCollider>().enabled = false;
         yield return new WaitForSeconds(1);
         canAttack = true;
+    }
+
+
+
+    public void SwitchWeapon(string weaponName)
+    {
+        foreach (GameObject weapon in allWeapons)
+        {
+            if (weapon.name == weaponName)
+            {
+                weapon.SetActive(true);
+                currentWeapon = weapon;
+            }
+            else
+            {
+                weapon.SetActive(false);
+            }
+        }
+        onChangingWeapon?.Invoke(currentWeapon);
     }
 
 }
