@@ -39,6 +39,7 @@ public class PlayerHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             Debug.Log("You're dead :(");
+            GameManager.onGameOver?.Invoke();
         }
     }
 }

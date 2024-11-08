@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public delegate void OnPausingGame();
     public static OnPausingGame onPausingGame;
     public static OnPausingGame onResumingGame;
+    public static OnPausingGame onGameOver;
 
     private bool isPaused;
 
@@ -28,11 +29,15 @@ public class GameManager : MonoBehaviour
         pauseAction = _playerControls.UI.Pause;
         pauseAction.Enable();
         pauseAction.performed += PressedPause;
+
+        onGameOver += GameOver;
     }
 
     private void OnDisable()
     {
         pauseAction.Disable();
+
+        onGameOver -= GameOver;
     }
 
 
@@ -64,5 +69,17 @@ public class GameManager : MonoBehaviour
     {
         isPaused = false;
         Time.timeScale = 1;
+    }
+
+
+    private void GameOver()
+    {
+        StartCoroutine(WaitForGameOver());
+    }
+
+    private IEnumerator WaitForGameOver()
+    {
+        yield return new WaitForSeconds(1);
+        PauseGame();
     }
 }

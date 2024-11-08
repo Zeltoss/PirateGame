@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
     {
         GameManager.onPausingGame += TogglePauseScreen;
         GameManager.onResumingGame += TogglePauseScreen;
+        GameManager.onGameOver += ShowGameOverScreen;
     }
 
 
@@ -33,6 +34,13 @@ public class UIManager : MonoBehaviour
     {
         gamePaused = !gamePaused;
         pauseMenu.SetActive(gamePaused);
+    }
+
+
+
+    private void ShowGameOverScreen()
+    {
+        gameOver.SetActive(true);
     }
 
 }
