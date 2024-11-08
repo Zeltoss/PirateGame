@@ -8,6 +8,9 @@ public class MeleeWeapon : MonoBehaviour
     public float baseDamage;
     public float critDamage;
 
+    private float baseDamageAdded;
+    private float critDamageAdded;
+
 
     public string[] skillNames;
     public string[] skillDescriptions;
@@ -19,8 +22,11 @@ public class MeleeWeapon : MonoBehaviour
 
     public float currentDamage;
 
+    // bleeding
     private float[] skillOne;
+    // whirling
     private float[] skillTwo;
+    // precision (raise crit chance)
     private float[] passiveSkill;
 
     public int skillOneIndex;

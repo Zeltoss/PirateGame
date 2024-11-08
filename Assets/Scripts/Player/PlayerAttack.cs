@@ -33,6 +33,8 @@ public class PlayerAttack : MonoBehaviour
         _playerControls = new PlayerControls();
         currentWeapon.GetComponent<BoxCollider>().enabled = false;
         allWeapons = new List<GameObject>(GameObject.FindGameObjectsWithTag("Weapon"));
+        currentWeapon = allWeapons[0];
+        allWeapons[1].SetActive(false);
     }
 
 
