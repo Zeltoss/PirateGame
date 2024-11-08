@@ -3558,7 +3558,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &320583151
 Transform:
   m_ObjectHideFlags: 0
@@ -7792,7 +7792,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -17600,13 +17600,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1851357100}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.3420201, z: 0, w: 0.9396927}
-  m_LocalPosition: {x: 3.5, y: -0, z: -1}
-  m_LocalScale: {x: 0.5, y: 1, z: 0.1}
-  m_ConstrainProportionsScale: 0
+  m_LocalRotation: {x: 0, y: -0.4588821, z: 0, w: 0.8884972}
+  m_LocalPosition: {x: 3.5, y: -0.04, z: -0.13}
+  m_LocalScale: {x: 0.14, y: 1.4, z: 0.7}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1950989911}
-  m_LocalEulerAnglesHint: {x: 0, y: 40, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -54.63, z: 0}
 --- !u!114 &1851357102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17655,7 +17655,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: cf17b7d42e40a8e448aa8d42b7a178c3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -17704,7 +17704,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 12, y: 2, z: 12}
+  m_Size: {x: 12, y: 2, z: 11.1}
   m_Center: {x: 0.0000019073486, y: -0.00000005245215, z: 0.000011444092}
 --- !u!1 &1856120791
 GameObject:
@@ -21059,7 +21059,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
