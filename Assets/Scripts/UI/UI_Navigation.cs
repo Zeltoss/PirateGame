@@ -13,8 +13,14 @@ public class UI_Navigation : MonoBehaviour
     // Play Button
     public void PlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        StartCoroutine(DelayedPlay());
+    }
+
+    private IEnumerator DelayedPlay()
+    {
         Debug.Log("Pressed Play Button");
+        yield return new WaitForSeconds(2f); // Warte 2 Sekunden
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
 
