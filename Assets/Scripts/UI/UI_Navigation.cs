@@ -43,7 +43,8 @@ public class UI_Navigation : MonoBehaviour
     // Back to Menu Button
     public void BackToMenu()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        SceneManager.LoadScene("MainMenu");
         Debug.Log("Switched back to Main Menu");
     }
 }

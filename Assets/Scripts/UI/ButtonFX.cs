@@ -6,8 +6,8 @@ using TMPro;
 
 public class ButtonFX : MonoBehaviour
 {
-    public TMP_FontAsset newFont; // Die neue Schriftart, die bei Pointer Enter verwendet werden soll
-    public TMP_FontAsset oldFont; // Die alte Schriftart, die bei Pointer Exit verwendet werden soll
+    //public TMP_FontAsset newFont; // Die neue Schriftart, die bei Pointer Enter verwendet werden soll
+    //public TMP_FontAsset oldFont; // Die alte Schriftart, die bei Pointer Exit verwendet werden soll
     public Sprite newSprite; // Das neue Hintergrund-Sprite, das bei Pointer Enter verwendet werden soll
     public Sprite oldSprite; // Das alte Hintergrund-Sprite, das bei Pointer Exit verwendet werden soll
     private TMP_Text buttonText;
@@ -16,11 +16,11 @@ public class ButtonFX : MonoBehaviour
     void Start()
     {
         // Holt sich die TMP_Text-Komponente des Buttons
-        buttonText = GetComponentInChildren<TMP_Text>();
-        if (buttonText == null)
-        {
-            Debug.LogError("TMP_Text component not found. Make sure the script is attached to a GameObject with a TMP_Text child.");
-        }
+        //buttonText = GetComponentInChildren<TMP_Text>();
+        //if (buttonText == null)
+        //{
+        //    Debug.LogError("TMP_Text component not found. Make sure the script is attached to a GameObject with a TMP_Text child.");
+        //}
 
         // Holt sich die Image-Komponente fuer das Hintergrund-Sprite
         backgroundImage = GetComponent<Image>();
@@ -39,30 +39,44 @@ public class ButtonFX : MonoBehaviour
     public void OnPointerEnter()
     {
         // Wechseln zur neuen Schriftart
-        if (buttonText != null && newFont != null)
-        {
-            buttonText.font = newFont;
-        }
+        //if (buttonText != null && newFont != null)
+        //{
+        //    buttonText.font = newFont;
+        //}
 
         // Setzen des neuen Hintergrund-Sprites
         if (backgroundImage != null && newSprite != null)
         {
             backgroundImage.sprite = newSprite;
-        }
+            
+            RectTransform rectTransform = backgroundImage.GetComponent<RectTransform>();
+    
+            if (rectTransform != null)
+            {
+                rectTransform.sizeDelta = new Vector2(230, 130);
+            }
+      }
     }
 
     public void OnPointerExit()
     {
         // Wechseln zur alten Schriftart
-        if (buttonText != null && oldFont != null)
-        {
-            buttonText.font = oldFont;
-        }
+        //if (buttonText != null && oldFont != null)
+        //{
+        //    buttonText.font = oldFont;
+        //}
 
         // Setzen des alten Hintergrund-Sprites
         if (backgroundImage != null && oldSprite != null)
         {
             backgroundImage.sprite = oldSprite;
+
+            RectTransform rectTransform = backgroundImage.GetComponent<RectTransform>();
+    
+            if (rectTransform != null)
+            {
+                rectTransform.sizeDelta = new Vector2(130, 130);
+            }
         }
     }
 }
