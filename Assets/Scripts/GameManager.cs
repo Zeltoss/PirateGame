@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public static OnPausingGame onPausingGame;
     public static OnPausingGame onResumingGame;
     public static OnPausingGame onGameOver;
+    public AudioClip closeBookSound;
 
     private bool isPaused;
 
@@ -29,7 +30,7 @@ public class GameManager : MonoBehaviour
         pauseAction = _playerControls.UI.Pause;
         pauseAction.Enable();
         pauseAction.performed += PressedPause;
-
+    
         onGameOver += GameOver;
     }
 
@@ -53,6 +54,7 @@ public class GameManager : MonoBehaviour
         {
             ResumeGame();
             onResumingGame?.Invoke();
+            SoundFXManager.instance.PlaySoundFXClip(closeBookSound, transform, 1f);
         }
     }
 
