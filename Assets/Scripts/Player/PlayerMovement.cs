@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool facingLeft = true;
     [SerializeField] private GameObject playerSprite;
-    [SerializeField] private GameObject currentWeapon;
+    private GameObject currentWeapon;
 
 
 
@@ -50,12 +50,16 @@ public class PlayerMovement : MonoBehaviour
         jumpAction.Enable();
         jumpAction.performed += Jump;
         */
+
+        PlayerAttack.onChangingWeapon += GetNewWeapon;
     }
 
     private void OnDisable()
     {
         moveAction.Disable();
         // jumpAction.Disable();
+
+        PlayerAttack.onChangingWeapon -= GetNewWeapon;
     }
 
 
@@ -165,4 +169,23 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     */
+
+
+
+    private void GetNewWeapon(GameObject weapon)
+    {
+        currentWeapon = weapon;
+        if (!facingLeft)
+        {
+            UnityEngine.Vector3 weaponScale = currentWeapon.transform.localScale;
+            weaponScale.x *= -1;
+            currentWeapon.transform.localScale = weaponScale;
+            UnityEngine.Vector3 currentPosition = currentWeapon.transform.localPosition;
+            currentPosition.x *= -1;
+            currentWeapon.transform.localPosition = currentPosition;
+            UnityEngine.Quaternion currentRotation = currentWeapon.transform.localRotation;
+            currentRotation.y *= -1;
+            currentWeapon.transform.localRotation = currentRotation;
+        }
+    }
 }
