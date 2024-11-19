@@ -40,7 +40,7 @@ public class EnemyAI : MonoBehaviour
         _camera = Camera.main;
 
         rb = GetComponent<Rigidbody>();
-        agent = GetComponent<NavMeshAgent>();
+        agent = GetComponentInChildren<NavMeshAgent>();
 
         StartCoroutine(SpawnCooldown());
 
