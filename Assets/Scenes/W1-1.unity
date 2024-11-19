@@ -24031,6 +24031,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   closeBookSound: {fileID: 8300000, guid: 935c4686505002b498c8f27e38600b1d, type: 3}
+  skillBook: {fileID: 1860385678}
 --- !u!4 &1734980754
 Transform:
   m_ObjectHideFlags: 0

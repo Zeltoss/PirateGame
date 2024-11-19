@@ -16,24 +16,29 @@ public class UIManager : MonoBehaviour
 
     private void OnEnable()
     {
-        GameManager.onPausingGame += TogglePauseScreen;
-        GameManager.onResumingGame += TogglePauseScreen;
+        GameManager.onPausingGame += ActivatePauseScreen;
+        GameManager.onResumingGame += DeactivatePauseScreen;
         GameManager.onGameOver += ShowGameOverScreen;
     }
 
 
     private void OnDisable()
     {
-        GameManager.onPausingGame -= TogglePauseScreen;
-        GameManager.onResumingGame -= TogglePauseScreen;
+        GameManager.onPausingGame -= ActivatePauseScreen;
+        GameManager.onResumingGame -= DeactivatePauseScreen;
     }
 
 
 
-    private void TogglePauseScreen()
+    private void ActivatePauseScreen()
     {
-        gamePaused = !gamePaused;
-        pauseMenu.SetActive(gamePaused);
+        pauseMenu.SetActive(true);
+    }
+
+
+    private void DeactivatePauseScreen()
+    {
+        pauseMenu.SetActive(false);
     }
 
 

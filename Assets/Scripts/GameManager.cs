@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
 
     private bool isPaused;
 
+    [SerializeField] private GameObject skillBook;
+
 
     void Awake()
     {
@@ -30,7 +32,7 @@ public class GameManager : MonoBehaviour
         pauseAction = _playerControls.UI.Pause;
         pauseAction.Enable();
         pauseAction.performed += PressedPause;
-    
+
         onGameOver += GameOver;
     }
 
@@ -45,6 +47,10 @@ public class GameManager : MonoBehaviour
 
     private void PressedPause(InputAction.CallbackContext callbackContext)
     {
+        if (skillBook.activeSelf)
+        {
+            skillBook.SetActive(false);
+        }
         if (!isPaused)
         {
             PauseGame();
