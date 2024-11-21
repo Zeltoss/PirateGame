@@ -28289,7 +28289,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCanMove: 1
   playerSprite: {fileID: 420787543}
-  currentWeapon: {fileID: 1851357100}
 --- !u!114 &1950989913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31637,22 +31636,6 @@ PrefabInstance:
       value: 1.88
       objectReference: {fileID: 0}
     - target: {fileID: 1159728430880825528, guid: 9d11b4ee593de3c429e9b7833cddefb1, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1159728430880825528, guid: 9d11b4ee593de3c429e9b7833cddefb1, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1159728430880825528, guid: 9d11b4ee593de3c429e9b7833cddefb1, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 1159728430880825528, guid: 9d11b4ee593de3c429e9b7833cddefb1, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 1159728430880825528, guid: 9d11b4ee593de3c429e9b7833cddefb1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 90
       objectReference: {fileID: 0}
@@ -31671,6 +31654,10 @@ PrefabInstance:
     - target: {fileID: 1938804132240928807, guid: 9d11b4ee593de3c429e9b7833cddefb1, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2548744694047757507, guid: 9d11b4ee593de3c429e9b7833cddefb1, type: 3}
+      propertyPath: m_Constraints
+      value: 116
       objectReference: {fileID: 0}
     - target: {fileID: 7946212547462599265, guid: 9d11b4ee593de3c429e9b7833cddefb1, type: 3}
       propertyPath: m_Name

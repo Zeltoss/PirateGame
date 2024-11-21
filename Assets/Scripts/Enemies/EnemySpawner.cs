@@ -71,7 +71,7 @@ public class EnemySpawner : MonoBehaviour
         }
 
         UnityEngine.Vector2 spawnPointX = Random.insideUnitCircle * 40;
-        spawnPoint = new UnityEngine.Vector3(spawnPointX.x, 2.4f, spawnPointZ);
+        spawnPoint = new UnityEngine.Vector3(spawnPointX.x, 4f, spawnPointZ);
 
         // this prevents the enemies from spawning too close to each other
         if (!firstSpawn)
@@ -100,7 +100,7 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator SpawningCooldown()
     {
-        GameObject enemyInstance = Instantiate(enemyPrefab, spawnPoint, UnityEngine.Quaternion.identity);
+        GameObject enemyInstance = Instantiate(enemyPrefab, spawnPoint, UnityEngine.Quaternion.Euler(new UnityEngine.Vector3(90, 180, 0)));
         usedSpawnPoints.Add(enemyInstance.transform.position);
         enemyInstance.GetComponent<EnemyAI>().player = player;
         spawnCount++;
