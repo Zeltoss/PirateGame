@@ -24,6 +24,7 @@ public class EnemyAI : MonoBehaviour
     private Camera _camera;
 
     private bool isMoving = false;
+    private bool facingLeft = true;
     private bool canMove = false;
     private bool canAttack = true;
 
@@ -32,6 +33,8 @@ public class EnemyAI : MonoBehaviour
 
     private Rigidbody rb;
     private NavMeshAgent agent;
+
+    [SerializeField] private GameObject enemySprite;
 
 
 
@@ -76,7 +79,27 @@ public class EnemyAI : MonoBehaviour
             rb.velocity = movement * speed;
         }
 
+        if (movement.x < 0 && !facingLeft)
+        {
+            FlipSprite();
+        }
+        else if (movement.x > 0 && facingLeft)
+        {
+            FlipSprite();
+        }
+
         GetComponentInChildren<Canvas>().transform.rotation = new Quaternion(_camera.transform.rotation.x - this.transform.rotation.x, 0, 0, 0);
+    }
+
+
+
+    private void FlipSprite()
+    {
+        UnityEngine.Vector3 currentScale = enemySprite.transform.localScale;
+        currentScale.x *= -1;
+        enemySprite.transform.localScale = currentScale;
+
+        facingLeft = !facingLeft;
     }
 
 

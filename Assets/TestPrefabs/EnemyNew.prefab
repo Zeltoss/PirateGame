@@ -865,6 +865,7 @@ MonoBehaviour:
   damage: 5
   speed: 3
   player: {fileID: 0}
+  enemySprite: {fileID: 3675557917381886168}
 --- !u!54 &2548744694047757507
 Rigidbody:
   m_ObjectHideFlags: 0
