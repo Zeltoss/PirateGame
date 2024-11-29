@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 
 public class SpellCooldown : MonoBehaviour
-{   
+{
     [SerializeField]
     private Image imageCooldown;
     [SerializeField]
@@ -19,11 +19,22 @@ public class SpellCooldown : MonoBehaviour
     private float cooldownTime = 1.0f;
     private float cooldownTimer = 0.0f;
 
+    [SerializeField] private bool isPassiveSkill;
+
     void Start()
     {
         textCooldown.gameObject.SetActive(false);
         imageCooldown.fillAmount = 0.0f;
+
+        PlayerAttack.onPlayerAttack += PlayerUsedSkill;
     }
+
+
+    void OnDisable()
+    {
+        PlayerAttack.onPlayerAttack -= PlayerUsedSkill;
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -32,11 +43,23 @@ public class SpellCooldown : MonoBehaviour
         {
             UseSpell();
         }
-        if(isCooldown)
+        if (isCooldown)
         {
             ApplyCooldown();
         }
     }
+
+
+
+    private void PlayerUsedSkill(int index)
+    {
+        Debug.Log("skill has been used");
+        if (isPassiveSkill && index == 2)
+        {
+            UseSpell();
+        }
+    }
+
 
 
     void ApplyCooldown()
@@ -44,7 +67,7 @@ public class SpellCooldown : MonoBehaviour
         // Zeit seit dem letzten Aufruf
         cooldownTimer -= Time.deltaTime;
 
-        if(cooldownTimer < 0.0f)
+        if (cooldownTimer < 0.0f)
         {
             isCooldown = false;
             textCooldown.gameObject.SetActive(false);
@@ -59,8 +82,8 @@ public class SpellCooldown : MonoBehaviour
 
     public void UseSpell()
     {
-        if(isCooldown)
-        {   
+        if (isCooldown)
+        {
             // Spieler hat waehrend der Verwendung des Skills, den Skill gedrueckt (Sound kann hier platziert werden)
         }
         else
@@ -68,7 +91,7 @@ public class SpellCooldown : MonoBehaviour
             isCooldown = true;
             textCooldown.gameObject.SetActive(true);
             cooldownTimer = cooldownTime;
-            Debug.Log("Spell Used");
+            //Debug.Log("Spell Used");
         }
     }
 }

@@ -861,7 +861,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: 0
-  health: 20
+  health: 80
   damage: 5
   speed: 3
   player: {fileID: 0}
@@ -912,7 +912,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.63, y: 0.65, z: 7.55}
+  m_Size: {x: 5, y: 2, z: 7.55}
   m_Center: {x: 0, y: 0, z: 1.08}
 --- !u!95 &8392759737910588323
 Animator:

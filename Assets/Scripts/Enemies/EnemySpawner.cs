@@ -106,7 +106,7 @@ public class EnemySpawner : MonoBehaviour
         spawnCount++;
         firstSpawn = false;
 
-        float pause = Random.Range(2f, 5f);
+        float pause = Random.Range(12f, 16f);
         yield return new WaitForSeconds(pause);
 
         if (spawnCount < maxEnemySpawns)

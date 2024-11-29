@@ -15,7 +15,7 @@ public class EnemyAI : MonoBehaviour
     }
     public enemyTypes enemyType;
 
-    [SerializeField] private int health = 20;
+    [SerializeField] private int health = 100;
     private int currentHealth;
     [SerializeField] private int damage = 5;
     [SerializeField] private float speed = 3f;
@@ -27,6 +27,7 @@ public class EnemyAI : MonoBehaviour
     private bool facingLeft = true;
     private bool canMove = false;
     private bool canAttack = true;
+    private bool inAttackDistance = false;
 
     public GameObject player;
     private float distance;
@@ -62,12 +63,14 @@ public class EnemyAI : MonoBehaviour
             if (canAttack && GetComponentInChildren<EnemyAttack>().inRangeForMelee)
             {
                 StartCoroutine(AttackingPlayer());
+                inAttackDistance = true;
             }
             isMoving = false;
             movement = UnityEngine.Vector3.zero;
         }
         else
         {
+            inAttackDistance = false;
             isMoving = true;
         }
 
@@ -119,6 +122,31 @@ public class EnemyAI : MonoBehaviour
     }
 
 
+    public void TakeBleedingDamage(float damage)
+    {
+        StartCoroutine(Bleeding(damage));
+    }
+
+
+    private IEnumerator Bleeding(float damage)
+    {
+        TakeDamage(damage);
+        Debug.Log("bleeding damage");
+        yield return new WaitForSeconds(1);
+        TakeDamage(damage);
+        Debug.Log("bleeding damage");
+        yield return new WaitForSeconds(1);
+        TakeDamage(damage);
+        Debug.Log("bleeding damage");
+        yield return new WaitForSeconds(1);
+        TakeDamage(damage);
+        Debug.Log("bleeding damage");
+        yield return new WaitForSeconds(1);
+        TakeDamage(damage);
+        Debug.Log("bleeding damage");
+    }
+
+
 
     private IEnumerator SpawnCooldown()
     {
@@ -131,9 +159,17 @@ public class EnemyAI : MonoBehaviour
     private IEnumerator AttackingPlayer()
     {
         canAttack = false;
-        PlayerHealth.onTakingDamage?.Invoke(damage);
-        yield return new WaitForSeconds(1);
-        canAttack = true;
+        yield return new WaitForSeconds(0.5f);
+        if (inAttackDistance)
+        {
+            PlayerHealth.onTakingDamage?.Invoke(damage);
+            yield return new WaitForSeconds(2);
+            canAttack = true;
+        }
+        else
+        {
+            canAttack = true;
+        }
     }
 
 
@@ -141,7 +177,7 @@ public class EnemyAI : MonoBehaviour
     {
         Debug.Log("enemy killed");
         //gameObject.GetComponent<Material>().color = Color.white;
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         Destroy(this.gameObject);
     }
 }

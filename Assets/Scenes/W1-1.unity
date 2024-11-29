@@ -4804,19 +4804,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseDamage: 0
   critDamage: 0
+  currentCritChance: 0
   skillNames:
   - Feu Feu
   - Can Be Deadly
   - Sharp Tip
   skillDescriptions: []
   skillIcons: []
-  currentDamage: 0
+  skillOne: []
+  skillTwo: []
+  passiveSkill: []
   skillOneIndex: 0
   skillTwoIndex: 0
   passiveSkillIndex: 0
   unlockedSkillOne: 0
   unlockedSkillTwo: 0
   unlockedPassiveSkill: 0
+  attackIndex: 0
 --- !u!23 &320583154
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6106,6 +6110,7 @@ MonoBehaviour:
   textCooldown: {fileID: 1358613840}
   activationKey: 0
   cooldownTime: 5
+  isPassiveSkill: 1
 --- !u!114 &479787221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12451,6 +12456,7 @@ MonoBehaviour:
   textCooldown: {fileID: 1075678619}
   activationKey: 101
   cooldownTime: 5
+  isPassiveSkill: 0
 --- !u!114 &978748363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21389,6 +21395,7 @@ MonoBehaviour:
   textCooldown: {fileID: 699105881}
   activationKey: 113
   cooldownTime: 10
+  isPassiveSkill: 0
 --- !u!1 &1554950584
 GameObject:
   m_ObjectHideFlags: 0
@@ -23590,7 +23597,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1686569441
 RectTransform:
   m_ObjectHideFlags: 0
@@ -24550,6 +24557,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1734980753}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ResumeGame
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -26369,6 +26388,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseDamage: 0
   critDamage: 0
+  currentCritChance: 0
   skillNames:
   - Bloody Strike
   - Whirling Blade
@@ -26376,13 +26396,31 @@ MonoBehaviour:
   skillDescriptions:
   - Activates the Bleeding Condition and deals damage over time
   skillIcons: []
-  currentDamage: 0
+  skillOne:
+  - 2
+  - 3
+  - 4
+  - 6
+  - 7
+  - 8
+  - 10
+  skillTwo: []
+  passiveSkill:
+  - 1.2
+  - 1.4
+  - 1.6
+  - 2
+  - 2.2
+  - 2.4
+  - 2.6
+  - 3
   skillOneIndex: 0
   skillTwoIndex: 0
   passiveSkillIndex: 0
   unlockedSkillOne: 0
   unlockedSkillTwo: 0
   unlockedPassiveSkill: 0
+  attackIndex: 0
 --- !u!23 &1851357104
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -26452,8 +26490,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 12, y: 2, z: 11.1}
-  m_Center: {x: 0.0000019073486, y: -0.00000005245215, z: 0.000011444092}
+  m_Size: {x: 13, y: 2, z: 12}
+  m_Center: {x: 0, y: -0.00000005245215, z: 0.000011444092}
 --- !u!1 &1856120791
 GameObject:
   m_ObjectHideFlags: 0
@@ -31619,6 +31657,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 723756182344703606, guid: 9d11b4ee593de3c429e9b7833cddefb1, type: 3}
+      propertyPath: damage
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 723756182344703606, guid: 9d11b4ee593de3c429e9b7833cddefb1, type: 3}
       propertyPath: player
       value: 

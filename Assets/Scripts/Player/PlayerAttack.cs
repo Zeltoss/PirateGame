@@ -8,6 +8,10 @@ public class PlayerAttack : MonoBehaviour
 {
     // this script checks for attacks from the player
 
+    // invoked when the player hits an enemy to trigger the visual cooldown
+    public delegate void OnPlayerAttack(int index);
+    public static OnPlayerAttack onPlayerAttack;
+
     public delegate void OnChangingWeapon(GameObject weapon);
     public static OnChangingWeapon onChangingWeapon;
 
@@ -24,8 +28,6 @@ public class PlayerAttack : MonoBehaviour
 
     private bool canAttack = true;
 
-    private float testDamage = 10f;
-
 
 
     void Awake()
@@ -34,26 +36,43 @@ public class PlayerAttack : MonoBehaviour
         currentWeapon.GetComponent<BoxCollider>().enabled = false;
         allWeapons = new List<GameObject>(GameObject.FindGameObjectsWithTag("Weapon"));
         SwitchWeapon("Rapier");
+
+        GameManager.onPausingGame += DisableAttacks;
+        GameManager.onResumingGame += EnableAttacks;
     }
 
 
     private void OnEnable()
     {
         basicAttack = _playerControls.Player.BasicAttack;
-        basicAttack.Enable();
         basicAttack.performed += AttackEnemy;
 
         attackOne = _playerControls.Player.SpecialAttackOne;
-        attackOne.Enable();
         attackOne.performed += UseAttackOne;
 
         attackTwo = _playerControls.Player.SpecialAttackTwo;
-        attackTwo.Enable();
         attackTwo.performed += UseAttackTwo;
+        EnableAttacks();
     }
 
 
     private void OnDisable()
+    {
+        GameManager.onPausingGame -= DisableAttacks;
+        GameManager.onResumingGame -= EnableAttacks;
+        DisableAttacks();
+    }
+
+
+
+    private void EnableAttacks()
+    {
+        basicAttack.Enable();
+        attackOne.Enable();
+        attackTwo.Enable();
+    }
+
+    private void DisableAttacks()
     {
         basicAttack.Disable();
         attackOne.Disable();
@@ -64,12 +83,12 @@ public class PlayerAttack : MonoBehaviour
 
     private void AttackEnemy(InputAction.CallbackContext context)
     {
-        Debug.Log("trying to hit");
+        //Debug.Log("trying to hit");
         if (canAttack)
         {
             StartCoroutine(AttackCooldown());
             currentWeapon.GetComponent<BoxCollider>().enabled = true;
-            currentWeapon.GetComponent<MeleeWeapon>().currentDamage = testDamage;
+            currentWeapon.GetComponent<WeaponBase>().attackIndex = 0;
         }
     }
 
@@ -77,22 +96,24 @@ public class PlayerAttack : MonoBehaviour
 
     private void UseAttackOne(InputAction.CallbackContext context)
     {
-        if (canAttack && currentWeapon.GetComponent<MeleeWeapon>().unlockedSkillOne)
+        if (canAttack && currentWeapon.GetComponent<WeaponBase>().unlockedSkillOne)
         {
+            Debug.Log("using attack one");
             StartCoroutine(AttackCooldown());
             currentWeapon.GetComponent<BoxCollider>().enabled = true;
-            // get damage
+            currentWeapon.GetComponent<WeaponBase>().attackIndex = 1;
         }
     }
 
 
     private void UseAttackTwo(InputAction.CallbackContext context)
     {
-        if (canAttack && currentWeapon.GetComponent<MeleeWeapon>().unlockedSkillTwo)
+        if (canAttack && currentWeapon.GetComponent<WeaponBase>().unlockedSkillTwo)
         {
+            Debug.Log("using attack two");
             StartCoroutine(AttackCooldown());
             currentWeapon.GetComponent<BoxCollider>().enabled = true;
-            // get damage
+            currentWeapon.GetComponent<WeaponBase>().attackIndex = 2;
         }
     }
 

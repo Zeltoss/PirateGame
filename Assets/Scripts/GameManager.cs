@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         _playerControls = new PlayerControls();
-        ResumeGame();
+        PauseGame();
     }
 
 
@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
         else
         {
             ResumeGame();
-            onResumingGame?.Invoke();
+            //onResumingGame?.Invoke();
             SoundFXManager.instance.PlaySoundFXClip(closeBookSound, transform, 1f);
         }
     }
@@ -77,6 +77,7 @@ public class GameManager : MonoBehaviour
     {
         isPaused = false;
         Time.timeScale = 1;
+        onResumingGame?.Invoke();
     }
 
 
