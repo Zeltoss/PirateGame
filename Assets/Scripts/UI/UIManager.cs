@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject optionsMenu;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject gameOver;
+    [SerializeField] private GameObject winScreen;
 
     private bool gamePaused;
 
@@ -19,6 +20,7 @@ public class UIManager : MonoBehaviour
         GameManager.onPausingGame += ActivatePauseScreen;
         GameManager.onResumingGame += DeactivatePauseScreen;
         GameManager.onGameOver += ShowGameOverScreen;
+        GameManager.onWinningGame += ShowWinScreen;
     }
 
 
@@ -26,6 +28,8 @@ public class UIManager : MonoBehaviour
     {
         GameManager.onPausingGame -= ActivatePauseScreen;
         GameManager.onResumingGame -= DeactivatePauseScreen;
+        GameManager.onGameOver -= ShowGameOverScreen;
+        GameManager.onWinningGame -= ShowWinScreen;
     }
 
 
@@ -46,6 +50,13 @@ public class UIManager : MonoBehaviour
     private void ShowGameOverScreen()
     {
         gameOver.SetActive(true);
+    }
+
+
+
+    private void ShowWinScreen()
+    {
+        winScreen.SetActive(true);
     }
 
 }

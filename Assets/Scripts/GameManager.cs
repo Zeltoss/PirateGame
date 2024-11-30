@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     public static OnPausingGame onPausingGame;
     public static OnPausingGame onResumingGame;
     public static OnPausingGame onGameOver;
+    public static OnPausingGame onWinningGame;
+
     public AudioClip closeBookSound;
 
     private bool isPaused;
@@ -34,6 +36,7 @@ public class GameManager : MonoBehaviour
         pauseAction.performed += PressedPause;
 
         onGameOver += GameOver;
+        onWinningGame += WonGame;
     }
 
     private void OnDisable()
@@ -41,6 +44,7 @@ public class GameManager : MonoBehaviour
         pauseAction.Disable();
 
         onGameOver -= GameOver;
+        onWinningGame -= WonGame;
     }
 
 
@@ -81,14 +85,22 @@ public class GameManager : MonoBehaviour
     }
 
 
+
     private void GameOver()
     {
-        StartCoroutine(WaitForGameOver());
+        StartCoroutine(WaitForEndOfGame());
     }
 
-    private IEnumerator WaitForGameOver()
+    private void WonGame()
+    {
+        StartCoroutine(WaitForEndOfGame());
+    }
+
+
+    private IEnumerator WaitForEndOfGame()
     {
         yield return new WaitForSeconds(1);
         PauseGame();
     }
+
 }

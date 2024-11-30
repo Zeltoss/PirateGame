@@ -26,21 +26,26 @@ public class EnemySpawner : MonoBehaviour
     private List<UnityEngine.Vector3> usedSpawnPoints = new List<UnityEngine.Vector3>();
 
     private int spawnCount;
+    private int killCount;
 
 
     public delegate void OnLeavingSafeZone();
     public static OnLeavingSafeZone onLeavingSafeZone;
+
+    [SerializeField] private GameObject droppedCrossbow;
 
 
 
     void OnEnable()
     {
         onLeavingSafeZone += SpawnEnemies;
+        SkillTreeManager.onKillingEnemy += CountDefeatedEnemies;
     }
 
     void OnDisable()
     {
         onLeavingSafeZone -= SpawnEnemies;
+        SkillTreeManager.onKillingEnemy -= CountDefeatedEnemies;
     }
 
 
@@ -48,6 +53,8 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         spawnAreas = new List<GameObject>(GameObject.FindGameObjectsWithTag("Spawn Area"));
+
+        droppedCrossbow.SetActive(false);
     }
 
 
@@ -113,5 +120,25 @@ public class EnemySpawner : MonoBehaviour
         {
             SpawnEnemies();
         }
+    }
+
+
+    private void CountDefeatedEnemies(GameObject lastEnemy)
+    {
+        killCount++;
+        if ((killCount - 1) == maxEnemySpawns)
+        {
+            droppedCrossbow.transform.position = new UnityEngine.Vector3(lastEnemy.transform.position.x, droppedCrossbow.transform.position.y, lastEnemy.transform.position.z);
+            StartCoroutine(DropCrossbow());
+        }
+    }
+
+
+    private IEnumerator DropCrossbow()
+    {
+        droppedCrossbow.SetActive(true);
+        droppedCrossbow.GetComponent<BoxCollider>().enabled = false;
+        yield return new WaitForSeconds(2);
+        droppedCrossbow.GetComponent<BoxCollider>().enabled = true;
     }
 }
