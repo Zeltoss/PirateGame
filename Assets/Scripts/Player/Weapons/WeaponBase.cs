@@ -8,7 +8,7 @@ public class WeaponBase : MonoBehaviour
 
     public float baseDamage;
     public float critDamage = 10;
-    private float baseCritChance = 0.1f;
+    public float baseCritChance = 0.1f;
     public float currentCritChance;
     private bool canCrit = true;
 
@@ -21,14 +21,14 @@ public class WeaponBase : MonoBehaviour
 
     [Header("Values for scripts (just ignore)")]
 
-    private float currentDamage = 10;
+    public float currentDamage = 10;
 
     // bleeding
-    [SerializeField] private float[] skillOne;
+    public float[] skillOne;
     // whirling
-    [SerializeField] private float[] skillTwo;
+    public float[] skillTwo;
     // precision (raise crit chance)
-    [SerializeField] private float[] passiveSkill;
+    public float[] passiveSkill;
 
     public int skillOneIndex;
     public int skillTwoIndex;
@@ -40,6 +40,8 @@ public class WeaponBase : MonoBehaviour
 
     public int attackIndex;
 
+    [SerializeField] private GameObject whirlingHitbox;
+
 
 
     void Start()
@@ -48,6 +50,8 @@ public class WeaponBase : MonoBehaviour
         {
             skill.SetActive(false);
         }
+
+        whirlingHitbox.SetActive(false);
     }
 
 
@@ -83,6 +87,7 @@ public class WeaponBase : MonoBehaviour
             if (attackIndex == 2)
             {
                 PlayerAttack.onPlayerAttack?.Invoke(1);
+                StartCoroutine(WhirlingCooldown());
                 // change position of collider/activate additional box collider
             }
             // maybe call another event that the weapon specific script reacts to? (once the crossbow gets activated)
@@ -116,6 +121,16 @@ public class WeaponBase : MonoBehaviour
         canCrit = false;
         yield return new WaitForSeconds(5);
         canCrit = true;
+    }
+
+
+
+    private IEnumerator WhirlingCooldown()
+    {
+        whirlingHitbox.SetActive(true);
+        whirlingHitbox.GetComponent<WhirlingAttack>().whirlingDamage = skillTwo[skillTwoIndex];
+        yield return new WaitForSeconds(0.2f);
+        whirlingHitbox.SetActive(false);
     }
 
 }

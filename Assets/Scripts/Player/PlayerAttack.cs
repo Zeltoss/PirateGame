@@ -86,7 +86,7 @@ public class PlayerAttack : MonoBehaviour
         //Debug.Log("trying to hit");
         if (canAttack)
         {
-            StartCoroutine(AttackCooldown());
+            StartCoroutine(AttackCooldown(0.5f));
             currentWeapon.GetComponent<BoxCollider>().enabled = true;
             currentWeapon.GetComponent<WeaponBase>().attackIndex = 0;
         }
@@ -99,7 +99,7 @@ public class PlayerAttack : MonoBehaviour
         if (canAttack && currentWeapon.GetComponent<WeaponBase>().unlockedSkillOne)
         {
             Debug.Log("using attack one");
-            StartCoroutine(AttackCooldown());
+            StartCoroutine(AttackCooldown(5));
             currentWeapon.GetComponent<BoxCollider>().enabled = true;
             currentWeapon.GetComponent<WeaponBase>().attackIndex = 1;
         }
@@ -111,7 +111,7 @@ public class PlayerAttack : MonoBehaviour
         if (canAttack && currentWeapon.GetComponent<WeaponBase>().unlockedSkillTwo)
         {
             Debug.Log("using attack two");
-            StartCoroutine(AttackCooldown());
+            StartCoroutine(AttackCooldown(5));
             currentWeapon.GetComponent<BoxCollider>().enabled = true;
             currentWeapon.GetComponent<WeaponBase>().attackIndex = 2;
         }
@@ -119,12 +119,12 @@ public class PlayerAttack : MonoBehaviour
 
 
 
-    private IEnumerator AttackCooldown()
+    private IEnumerator AttackCooldown(float time)
     {
         canAttack = false;
         yield return new WaitForSeconds(0.1f);
         currentWeapon.GetComponent<BoxCollider>().enabled = false;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(time);
         canAttack = true;
     }
 

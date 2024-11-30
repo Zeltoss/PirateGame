@@ -51,7 +51,7 @@ public class SkillTreeManager : MonoBehaviour
     void OnEnable()
     {
         onKillingEnemy += GainXP;
-        PlayerAttack.onChangingWeapon += DisplayCorrectWeaponStats;
+        PlayerAttack.onChangingWeapon += DisplayCorrectWeapon;
 
         xpBar.value = 0;
         skillpointsMainDisplay.GetComponent<TextMeshProUGUI>().text = currentSkillPoints.ToString();
@@ -62,7 +62,7 @@ public class SkillTreeManager : MonoBehaviour
     void OnDisable()
     {
         onKillingEnemy -= GainXP;
-        PlayerAttack.onChangingWeapon -= DisplayCorrectWeaponStats;
+        PlayerAttack.onChangingWeapon -= DisplayCorrectWeapon;
     }
 
 
@@ -167,6 +167,8 @@ public class SkillTreeManager : MonoBehaviour
 
         skillpointsMainDisplay.GetComponent<TextMeshProUGUI>().text = currentSkillPoints.ToString();
         skillpointsSkillMenu.GetComponent<TextMeshProUGUI>().text = currentSkillPoints.ToString();
+
+        DisplayCorrectWeaponStats();
     }
 
 
@@ -240,14 +242,17 @@ public class SkillTreeManager : MonoBehaviour
 
         skillpointsMainDisplay.GetComponent<TextMeshProUGUI>().text = currentSkillPoints.ToString();
         skillpointsSkillMenu.GetComponent<TextMeshProUGUI>().text = currentSkillPoints.ToString();
+
+        DisplayCorrectWeaponStats();
     }
 
 
 
-    private void DisplayCorrectWeaponStats(GameObject weapon)
+    private void DisplayCorrectWeapon(GameObject weapon)
     {
         currentWeapon = weapon;
-        Debug.Log(currentWeapon);
+
+        // skill bars 
         skillPointsOne.GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<WeaponBase>().skillOneIndex.ToString();
         skillPointsTwo.GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<WeaponBase>().skillTwoIndex.ToString();
         skillPointsThree.GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<WeaponBase>().passiveSkillIndex.ToString();
@@ -255,18 +260,6 @@ public class SkillTreeManager : MonoBehaviour
         skillBarSliders[0].value = currentWeapon.GetComponent<WeaponBase>().skillOneIndex;
         skillBarSliders[1].value = currentWeapon.GetComponent<WeaponBase>().skillTwoIndex;
         skillBarSliders[2].value = currentWeapon.GetComponent<WeaponBase>().passiveSkillIndex;
-
-        for (int i = 0; i < skillNameObjects.Length; i++)
-        {
-            skillNameObjects[i].GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<WeaponBase>().skillNames[i];
-        }
-
-        skillStatsBasic[0].GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<WeaponBase>().baseDamage.ToString();
-        skillStatsBasic[1].GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<WeaponBase>().critDamage.ToString();
-
-        CountRemainingPoints();
-        skillpointsMainDisplay.GetComponent<TextMeshProUGUI>().text = currentSkillPoints.ToString();
-        skillpointsSkillMenu.GetComponent<TextMeshProUGUI>().text = currentSkillPoints.ToString();
 
         for (int i = 0; i < skillBarSliders.Length; i++)
         {
@@ -297,7 +290,34 @@ public class SkillTreeManager : MonoBehaviour
                 milestoneThree[i].SetActive(false);
             }
         }
+
+        // weapon stats
+        DisplayCorrectWeaponStats();
+
+        // skill points
+        CountRemainingPoints();
+        skillpointsMainDisplay.GetComponent<TextMeshProUGUI>().text = currentSkillPoints.ToString();
+        skillpointsSkillMenu.GetComponent<TextMeshProUGUI>().text = currentSkillPoints.ToString();
+
+        // skill names
+        for (int i = 0; i < skillNameObjects.Length; i++)
+        {
+            skillNameObjects[i].GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<WeaponBase>().skillNames[i];
+        }
         // change descriptions
+    }
+
+
+    private void DisplayCorrectWeaponStats()
+    {
+        skillStatsBasic[0].GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<WeaponBase>().baseDamage.ToString();
+        float crits = currentWeapon.GetComponent<WeaponBase>().baseCritChance;
+        skillStatsBasic[1].GetComponent<TextMeshProUGUI>().text = (crits * 100).ToString() + "%";
+
+        skillStatsAdded[0].GetComponent<TextMeshProUGUI>().text = "+ 0";
+        float additionalCrit = currentWeapon.GetComponent<WeaponBase>().passiveSkill[currentWeapon.GetComponent<WeaponBase>().passiveSkillIndex];
+        skillStatsAdded[1].GetComponent<TextMeshProUGUI>().text = "+ " + (additionalCrit * 100).ToString() + "%";
+        skillStatsAdded[1].GetComponent<TextMeshProUGUI>().text = "+ " + (((crits * additionalCrit) - crits) * 100).ToString() + "%";
     }
 
 
