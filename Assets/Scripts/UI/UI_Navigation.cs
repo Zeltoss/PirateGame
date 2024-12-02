@@ -20,7 +20,8 @@ public class UI_Navigation : MonoBehaviour
     {
         Debug.Log("Pressed Play Button");
         yield return new WaitForSeconds(2f); // Warte 2 Sekunden
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("W1-1");
     }
 
 

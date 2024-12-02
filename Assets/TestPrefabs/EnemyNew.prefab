@@ -862,7 +862,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: 0
   health: 80
-  damage: 5
+  damage: 10
   speed: 3
   player: {fileID: 0}
   enemySprite: {fileID: 3675557917381886168}
