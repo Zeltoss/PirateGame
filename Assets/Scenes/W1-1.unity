@@ -5305,7 +5305,13 @@ MonoBehaviour:
   - Feu Feu
   - Can Be Deadly
   - Sharp Tip
-  skillDescriptions: []
+  skillDescriptions:
+  - '- Active - Feu Feu: You set your next 4 arrows on fire, causing damage over
+    time.'
+  - "- Active - You hit your opponent in the head, with a 40% chance to instantly
+    kill them. If this doesn\u2019t happen, you still deal double damage."
+  - '- Passive- Your arrows have a chance to pierce enemies and hit the one behind
+    them as well.'
   skillIcons: []
   currentDamage: 10
   skillOne: []
@@ -30256,7 +30262,10 @@ MonoBehaviour:
   - Whirling Blade
   - Precision
   skillDescriptions:
-  - Activates the Bleeding Condition and deals damage over time
+  - '- Active -  Activates the Bleeding Condition and deals damage over time.'
+  - '- Active -  You wildly whirl your rapier around, dealing damage to multiple
+    enemies at once.'
+  - '- Passiv -  Increases the chance of critical hits.'
   skillIcons: []
   currentDamage: 10
   skillOne:
