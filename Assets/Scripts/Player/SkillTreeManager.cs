@@ -42,7 +42,7 @@ public class SkillTreeManager : MonoBehaviour
     [SerializeField] private GameObject[] skillNameObjects;
     [SerializeField] private GameObject[] skillStatsBasic;
     [SerializeField] private GameObject[] skillStatsAdded;
-    //[SerializeField] private GameObject[] skillDescriptions;
+    [SerializeField] private GameObject[] skillDescriptions;
 
     [SerializeField] private GameObject[] skillsUIButtons;
 
@@ -304,7 +304,11 @@ public class SkillTreeManager : MonoBehaviour
         {
             skillNameObjects[i].GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<WeaponBase>().skillNames[i];
         }
-        // change descriptions
+        // skill descriptions
+        for (int i = 0; i < skillDescriptions.Length; i++)
+        {
+            skillDescriptions[i].GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<WeaponBase>().skillDescriptions[i];
+        }
     }
 
 

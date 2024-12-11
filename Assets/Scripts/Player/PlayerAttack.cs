@@ -12,6 +12,11 @@ public class PlayerAttack : MonoBehaviour
     public delegate void OnPlayerAttack(int index);
     public static OnPlayerAttack onPlayerAttack;
 
+    public delegate void OnUsingSpecialAttacks(GameObject enemy);
+    public static OnUsingSpecialAttacks onUsingAttackOne;
+    public static OnUsingSpecialAttacks onUsingAttackTwo;
+
+
     public delegate void OnChangingWeapon(GameObject weapon);
     public static OnChangingWeapon onChangingWeapon;
 
@@ -111,9 +116,17 @@ public class PlayerAttack : MonoBehaviour
         if (canAttack && currentWeapon.GetComponent<WeaponBase>().unlockedSkillTwo)
         {
             Debug.Log("using attack two");
-            StartCoroutine(AttackCooldown(5));
             currentWeapon.GetComponent<BoxCollider>().enabled = true;
             currentWeapon.GetComponent<WeaponBase>().attackIndex = 2;
+            if (currentWeapon.name == "Rapier")
+            {
+                RapierScript.onUsingWhirlwind?.Invoke();
+                StartCoroutine(WhirlingAttackCooldown());
+            }
+            else
+            {
+                StartCoroutine(AttackCooldown(5));
+            }
         }
     }
 
@@ -125,6 +138,16 @@ public class PlayerAttack : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         currentWeapon.GetComponent<BoxCollider>().enabled = false;
         yield return new WaitForSeconds(time);
+        canAttack = true;
+    }
+
+
+    private IEnumerator WhirlingAttackCooldown()
+    {
+        canAttack = false;
+        yield return new WaitForSeconds(1f);
+        currentWeapon.GetComponent<BoxCollider>().enabled = false;
+        yield return new WaitForSeconds(5);
         canAttack = true;
     }
 

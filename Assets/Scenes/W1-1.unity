@@ -5382,6 +5382,7 @@ MonoBehaviour:
   critDamage: 0
   baseCritChance: 0.1
   currentCritChance: 0
+  canCrit: 1
   skillNames:
   - Feu Feu
   - Can Be Deadly
@@ -5405,7 +5406,6 @@ MonoBehaviour:
   unlockedSkillTwo: 0
   unlockedPassiveSkill: 0
   attackIndex: 0
-  whirlingHitbox: {fileID: 0}
 --- !u!23 &320583154
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -14699,73 +14699,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 951113013}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &953281489
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 953281490}
-  - component: {fileID: 953281491}
-  - component: {fileID: 953281492}
-  m_Layer: 0
-  m_Name: WhirlingHitbox
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &953281490
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 953281489}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.45888218, z: 0, w: 0.8884972}
-  m_LocalPosition: {x: -14.2, y: 0, z: 3.87}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1851357101}
-  m_LocalEulerAnglesHint: {x: 0, y: 54.63, z: 0}
---- !u!65 &953281491
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 953281489}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 25, y: 8, z: 2}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &953281492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 953281489}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f9344d661f1c4f41977b2f322127511, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  whirlingDamage: 0
 --- !u!1 &954256332
 GameObject:
   m_ObjectHideFlags: 0
@@ -32347,6 +32280,7 @@ GameObject:
   - component: {fileID: 1851357104}
   - component: {fileID: 1851357102}
   - component: {fileID: 1851357106}
+  - component: {fileID: 1851357107}
   m_Layer: 0
   m_Name: Rapier
   m_TagString: Weapon
@@ -32366,8 +32300,7 @@ Transform:
   m_LocalPosition: {x: 3.5, y: -0.04, z: -0.13}
   m_LocalScale: {x: 0.14, y: 1.4, z: 0.7}
   m_ConstrainProportionsScale: 1
-  m_Children:
-  - {fileID: 953281490}
+  m_Children: []
   m_Father: {fileID: 1950989911}
   m_LocalEulerAnglesHint: {x: 0, y: -54.63, z: 0}
 --- !u!114 &1851357102
@@ -32386,6 +32319,7 @@ MonoBehaviour:
   critDamage: 0
   baseCritChance: 0.1
   currentCritChance: 0
+  canCrit: 1
   skillNames:
   - Bloody Strike
   - Whirling Blade
@@ -32428,7 +32362,6 @@ MonoBehaviour:
   unlockedSkillTwo: 0
   unlockedPassiveSkill: 0
   attackIndex: 0
-  whirlingHitbox: {fileID: 953281489}
 --- !u!23 &1851357104
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -32500,6 +32433,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 13, y: 2, z: 12}
   m_Center: {x: 0, y: -0.00000005245215, z: 0.000011444092}
+--- !u!114 &1851357107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1851357100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5cb7a1d7125345399911ae6744faa49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1856120791
 GameObject:
   m_ObjectHideFlags: 0
@@ -35265,6 +35210,7 @@ MonoBehaviour:
   skillStatsAdded:
   - {fileID: 1884522492}
   - {fileID: 987195614}
+  skillDescriptions: []
   skillsUIButtons:
   - {fileID: 1549665878}
   - {fileID: 978748360}

@@ -10,7 +10,7 @@ public class WeaponBase : MonoBehaviour
     public float critDamage = 10;
     public float baseCritChance = 0.1f;
     public float currentCritChance;
-    private bool canCrit = true;
+    public bool canCrit = true;
 
 
     public string[] skillNames;
@@ -23,11 +23,8 @@ public class WeaponBase : MonoBehaviour
 
     public float currentDamage = 10;
 
-    // bleeding
     public float[] skillOne;
-    // whirling
     public float[] skillTwo;
-    // precision (raise crit chance)
     public float[] passiveSkill;
 
     public int skillOneIndex;
@@ -40,7 +37,8 @@ public class WeaponBase : MonoBehaviour
 
     public int attackIndex;
 
-    [SerializeField] private GameObject whirlingHitbox;
+    private delegate void UsingAttackOne(GameObject enemy);
+    private static UsingAttackOne usingAttackOne;
 
 
 
@@ -50,8 +48,6 @@ public class WeaponBase : MonoBehaviour
         {
             skill.SetActive(false);
         }
-
-        whirlingHitbox.SetActive(false);
     }
 
 
@@ -79,19 +75,12 @@ public class WeaponBase : MonoBehaviour
             }
             if (attackIndex == 1)
             {
-                Debug.Log("used attack two");
-                other.GetComponent<EnemyAI>().TakeDamage(currentDamage);
-                other.GetComponent<EnemyAI>().TakeBleedingDamage(skillOne[skillOneIndex]);
-                PlayerAttack.onPlayerAttack?.Invoke(0);
+                PlayerAttack.onUsingAttackOne?.Invoke(other.gameObject);
             }
             if (attackIndex == 2)
             {
-                PlayerAttack.onPlayerAttack?.Invoke(1);
-                StartCoroutine(WhirlingCooldown());
-                // change position of collider/activate additional box collider
+                PlayerAttack.onUsingAttackTwo?.Invoke(other.gameObject);
             }
-            // maybe call another event that the weapon specific script reacts to? (once the crossbow gets activated)
-            // maybe one for each attack?
         }
     }
 
@@ -116,21 +105,11 @@ public class WeaponBase : MonoBehaviour
 
 
 
-    private IEnumerator CritCooldown()
+    public IEnumerator CritCooldown()
     {
         canCrit = false;
         yield return new WaitForSeconds(5);
         canCrit = true;
-    }
-
-
-
-    private IEnumerator WhirlingCooldown()
-    {
-        whirlingHitbox.SetActive(true);
-        whirlingHitbox.GetComponent<WhirlingAttack>().whirlingDamage = skillTwo[skillTwoIndex];
-        yield return new WaitForSeconds(0.2f);
-        whirlingHitbox.SetActive(false);
     }
 
 }

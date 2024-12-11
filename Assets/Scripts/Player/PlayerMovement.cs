@@ -19,6 +19,10 @@ public class PlayerMovement : MonoBehaviour
     private float maxSpeed = 12f;
     private float acceleration = 12f;
     private float stoppingForce = 18f;
+
+    private float dashAcceleration = 40f;
+    private bool isDashing;
+
     private UnityEngine.Vector3 movement;
     private UnityEngine.Vector3 lastMovement;
     private float movementX;
@@ -52,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
         */
 
         PlayerAttack.onChangingWeapon += GetNewWeapon;
+        RapierScript.onUsingWhirlwind += DashForward;
     }
 
     private void OnDisable()
@@ -60,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
         // jumpAction.Disable();
 
         PlayerAttack.onChangingWeapon -= GetNewWeapon;
+        RapierScript.onUsingWhirlwind -= DashForward;
     }
 
 
@@ -82,15 +88,26 @@ public class PlayerMovement : MonoBehaviour
         movement = new UnityEngine.Vector3(movementX, 0.0f, movementY);
         movement.Normalize();
 
-        if (movement.sqrMagnitude > 0.0f)
+        if (movement.sqrMagnitude > 0.0f && !isDashing)
         {
             Accelerate();
         }
-        else if (movement.sqrMagnitude == 0.0f)
+        else if (movement.sqrMagnitude == 0.0f && !isDashing)
         {
             Decelerate();
         }
 
+        if (isDashing)
+        {
+            if (facingLeft)
+            {
+                rb.AddForce(new UnityEngine.Vector3(-1f, 0, 0) * dashAcceleration);
+            }
+            else
+            {
+                rb.AddForce(new UnityEngine.Vector3(1f, 0, 0) * dashAcceleration);
+            }
+        }
 
         if (movement.x < 0 && !facingLeft)
         {
@@ -135,6 +152,22 @@ public class PlayerMovement : MonoBehaviour
             speed = 0.0f;
             lastMovement = UnityEngine.Vector3.zero;
         }
+    }
+
+
+
+    public void DashForward()
+    {
+        Debug.Log("dashing");
+
+        StartCoroutine(Dashing());
+    }
+
+    private IEnumerator Dashing()
+    {
+        isDashing = true;
+        yield return new WaitForSeconds(1f);
+        isDashing = false;
     }
 
 
