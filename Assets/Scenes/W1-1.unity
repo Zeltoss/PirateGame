@@ -5470,11 +5470,29 @@ MonoBehaviour:
     kill them. If this doesn\u2019t happen, you still deal double damage."
   - '- Passive- Your arrows have a chance to pierce enemies and hit the one behind
     them as well.'
-  skillIcons: []
   currentDamage: 10
   skillOne: []
   skillTwo: []
-  passiveSkill: []
+  passiveSkill:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  icons_milestoneOne:
+  - {fileID: 21300000, guid: e3be96a3b314af34a82cca25870f4fa4, type: 3}
+  - {fileID: 21300000, guid: 4f66026db4d8c7d42956c0c96b3c72bf, type: 3}
+  - {fileID: 21300000, guid: 52782c8abef941246af8f36016183289, type: 3}
+  icons_milestoneTwo:
+  - {fileID: 21300000, guid: 484a699bfbcf4f94b93793686328ef84, type: 3}
+  - {fileID: 21300000, guid: f8c8f4ab6d107fd48ba560d034625de2, type: 3}
+  - {fileID: 21300000, guid: 925716ed538b11046b4187b8010ce4fd, type: 3}
+  icons_milestoneThree:
+  - {fileID: 21300000, guid: 821abaabfb7f36049a6409b8a79fa6a7, type: 3}
+  - {fileID: 21300000, guid: 65c23ee55863fa54187e08e9336f2904, type: 3}
+  - {fileID: 21300000, guid: ff8b103044c0c6a45ac966bfd9ab18bf, type: 3}
   skillOneIndex: 0
   skillTwoIndex: 0
   passiveSkillIndex: 0
@@ -33118,7 +33136,6 @@ MonoBehaviour:
   - '- Active -  You wildly whirl your rapier around, dealing damage to multiple
     enemies at once.'
   - '- Passiv -  Increases the chance of critical hits.'
-  skillIcons: []
   currentDamage: 10
   skillOne:
   - 2
@@ -33144,6 +33161,18 @@ MonoBehaviour:
   - 2.2
   - 2.4
   - 3
+  icons_milestoneOne:
+  - {fileID: 21300000, guid: 381ccb51ffa8db34990b2f1bd63f6d1b, type: 3}
+  - {fileID: 21300000, guid: 3656bfe1d9cf9964baef1b03297994ae, type: 3}
+  - {fileID: 21300000, guid: 21a9353d4b39eb64a8a57547a26a61f1, type: 3}
+  icons_milestoneTwo:
+  - {fileID: 21300000, guid: 692269b063e8afe4181545963e8f6b37, type: 3}
+  - {fileID: 21300000, guid: f6c201c60631d1e498c5565ffa3eb4c6, type: 3}
+  - {fileID: 21300000, guid: cdac1dc08538bcd44840813ff4134bb8, type: 3}
+  icons_milestoneThree:
+  - {fileID: 21300000, guid: 8006b6f2999661c478e83fca04bac7ce, type: 3}
+  - {fileID: 21300000, guid: 71770ad25f279f94288182799ed635b4, type: 3}
+  - {fileID: 21300000, guid: 713395e035cc144479b94d69556ec487, type: 3}
   skillOneIndex: 0
   skillTwoIndex: 0
   passiveSkillIndex: 0
@@ -35978,18 +36007,30 @@ MonoBehaviour:
   - {fileID: 1822937761}
   - {fileID: 262805229}
   - {fileID: 536307451}
-  milestoneOne:
+  milestoneOne_inactive:
   - {fileID: 1136420360}
   - {fileID: 504981528}
   - {fileID: 1878338228}
-  milestoneTwo:
+  milestoneTwo_inactive:
   - {fileID: 916501974}
   - {fileID: 353111222}
   - {fileID: 1696448631}
-  milestoneThree:
+  milestoneThree_inactive:
   - {fileID: 1493123557}
   - {fileID: 1489428194}
   - {fileID: 1945619986}
+  milestoneOne:
+  - {fileID: 1431411326}
+  - {fileID: 600673989}
+  - {fileID: 1763196480}
+  milestoneTwo:
+  - {fileID: 569323250}
+  - {fileID: 28633916}
+  - {fileID: 1339281805}
+  milestoneThree:
+  - {fileID: 486540784}
+  - {fileID: 1825467464}
+  - {fileID: 1356876789}
   skillNameObjects:
   - {fileID: 301830407}
   - {fileID: 1417499645}
@@ -36000,7 +36041,30 @@ MonoBehaviour:
   skillStatsAdded:
   - {fileID: 1884522492}
   - {fileID: 987195614}
-  skillDescriptions: []
+  skillDescriptionTitles1:
+  - {fileID: 1381704172}
+  - {fileID: 472716673}
+  - {fileID: 1269734984}
+  skillDescriptionTitles2:
+  - {fileID: 1448397904}
+  - {fileID: 1540735280}
+  - {fileID: 1123959980}
+  skillDescriptionTitles3:
+  - {fileID: 161752598}
+  - {fileID: 1644891717}
+  - {fileID: 1026726114}
+  skillDescriptions1:
+  - {fileID: 70676446}
+  - {fileID: 1987393909}
+  - {fileID: 2039016693}
+  skillDescriptions2:
+  - {fileID: 1959838776}
+  - {fileID: 250025376}
+  - {fileID: 550401967}
+  skillDescriptions3:
+  - {fileID: 1178569309}
+  - {fileID: 1640388653}
+  - {fileID: 1559433089}
   skillsUIButtons:
   - {fileID: 1549665878}
   - {fileID: 978748360}

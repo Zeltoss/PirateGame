@@ -208,7 +208,7 @@ public class PlayerMovement : MonoBehaviour
     private void GetNewWeapon(GameObject weapon)
     {
         currentWeapon = weapon;
-        if (!facingLeft)
+        if (!facingLeft && currentWeapon.transform.localScale.x > 0)
         {
             UnityEngine.Vector3 weaponScale = currentWeapon.transform.localScale;
             weaponScale.x *= -1;

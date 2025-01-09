@@ -16,8 +16,6 @@ public class WeaponBase : MonoBehaviour
     public string[] skillNames;
     public string[] skillDescriptions;
 
-    [SerializeField] private GameObject[] skillIcons;
-
 
     [Header("Values for scripts (just ignore)")]
 
@@ -26,6 +24,10 @@ public class WeaponBase : MonoBehaviour
     public float[] skillOne;
     public float[] skillTwo;
     public float[] passiveSkill;
+
+    public Sprite[] icons_milestoneOne;
+    public Sprite[] icons_milestoneTwo;
+    public Sprite[] icons_milestoneThree;
 
     public int skillOneIndex;
     public int skillTwoIndex;
@@ -39,16 +41,6 @@ public class WeaponBase : MonoBehaviour
 
     private delegate void UsingAttackOne(GameObject enemy);
     private static UsingAttackOne usingAttackOne;
-
-
-
-    void Start()
-    {
-        foreach (GameObject skill in skillIcons)
-        {
-            skill.SetActive(false);
-        }
-    }
 
 
 
