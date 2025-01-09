@@ -4048,7 +4048,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -40}
+  m_AnchoredPosition: {x: 0, y: -25}
   m_SizeDelta: {x: 150, y: 106}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &250025378
@@ -5801,12 +5801,10 @@ MonoBehaviour:
   - Can Be Deadly
   - Sharp Tip
   skillDescriptions:
-  - '- Active - Feu Feu: You set your next 4 arrows on fire, causing damage over
-    time.'
-  - "- Active - You hit your opponent in the head, with a 40% chance to instantly
-    kill them. If this doesn\u2019t happen, you still deal double damage."
-  - '- Passive- Your arrows have a chance to pierce enemies and hit the one behind
-    them as well.'
+  - You set your next 4 arrows on fire, causing damage over time.
+  - You attempt a headshot with a 40% chance to kill your enemy instantly. Otherwise,
+    it deals double damage.
+  - Your arrows have a chance to pierce enemies and hit the one behind them as well.
   currentDamage: 10
   skillOne: []
   skillTwo: []
@@ -9527,7 +9525,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -40}
+  m_AnchoredPosition: {x: 0, y: -25}
   m_SizeDelta: {x: 150, y: 106}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &550401969
@@ -10679,7 +10677,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 30}
+  m_AnchoredPosition: {x: 0, y: 42}
   m_SizeDelta: {x: 150, y: 106}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &616343272
@@ -14430,7 +14428,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 30}
+  m_AnchoredPosition: {x: 0, y: 42}
   m_SizeDelta: {x: 150, y: 106}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &875370134
@@ -22527,7 +22525,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 30}
+  m_AnchoredPosition: {x: 0, y: 42}
   m_SizeDelta: {x: 150, y: 106}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1249434602
@@ -34342,10 +34340,9 @@ MonoBehaviour:
   - Whirling Blade
   - Precision
   skillDescriptions:
-  - '- Active -  Activates the Bleeding Condition and deals damage over time.'
-  - '- Active -  You wildly whirl your rapier around, dealing damage to multiple
-    enemies at once.'
-  - '- Passiv -  Increases the chance of critical hits.'
+  - Activates the Bleeding Condition and deals damage over time.
+  - You wildly whirl your rapier around, dealing damage to multiple enemies at once.
+  - Increases the chance of critical hits.
   currentDamage: 10
   skillOne:
   - 2
@@ -37404,7 +37401,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -40}
+  m_AnchoredPosition: {x: 0, y: -25}
   m_SizeDelta: {x: 150, y: 106}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1959838778
