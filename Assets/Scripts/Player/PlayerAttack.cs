@@ -23,7 +23,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private GameObject currentWeapon;
 
     public List<GameObject> allWeapons;
-    //private int weaponIndex;
+    private bool meleeWeapon;
 
     private PlayerControls _playerControls;
     private InputAction basicAttack;
@@ -32,6 +32,7 @@ public class PlayerAttack : MonoBehaviour
 
 
     private bool canAttack = true;
+    private bool canUseSkillOne = true;
 
 
 
@@ -88,12 +89,19 @@ public class PlayerAttack : MonoBehaviour
 
     private void AttackEnemy(InputAction.CallbackContext context)
     {
-        //Debug.Log("trying to hit");
         if (canAttack)
         {
-            StartCoroutine(AttackCooldown(0.5f));
-            currentWeapon.GetComponent<BoxCollider>().enabled = true;
-            currentWeapon.GetComponent<WeaponBase>().attackIndex = 0;
+            if (meleeWeapon)
+            {
+                StartCoroutine(AttackCooldown(0.5f));
+                currentWeapon.GetComponent<BoxCollider>().enabled = true;
+                currentWeapon.GetComponent<WeaponBase>().attackIndex = 0;
+            }
+            else
+            {
+                StartCoroutine(AttackCooldown(2f));
+                CrossbowScript.shootingArrow?.Invoke(false);
+            }
         }
     }
 
@@ -104,9 +112,17 @@ public class PlayerAttack : MonoBehaviour
         if (canAttack && currentWeapon.GetComponent<WeaponBase>().unlockedSkillOne)
         {
             Debug.Log("using attack one");
-            StartCoroutine(AttackCooldown(5));
-            currentWeapon.GetComponent<BoxCollider>().enabled = true;
-            currentWeapon.GetComponent<WeaponBase>().attackIndex = 1;
+            if (meleeWeapon)
+            {
+                StartCoroutine(AttackCooldown(5));
+                currentWeapon.GetComponent<BoxCollider>().enabled = true;
+                currentWeapon.GetComponent<WeaponBase>().attackIndex = 1;
+            }
+            if (!meleeWeapon && canUseSkillOne)
+            {
+                StartCoroutine(FireArrowsCooldown());
+                currentWeapon.GetComponent<CrossbowScript>().isFireArrow = true;
+            }
         }
     }
 
@@ -118,13 +134,14 @@ public class PlayerAttack : MonoBehaviour
             Debug.Log("using attack two");
             currentWeapon.GetComponent<BoxCollider>().enabled = true;
             currentWeapon.GetComponent<WeaponBase>().attackIndex = 2;
-            if (currentWeapon.name == "Rapier")
+            if (meleeWeapon)
             {
                 RapierScript.onUsingWhirlwind?.Invoke();
                 StartCoroutine(WhirlingAttackCooldown());
             }
             else
             {
+                CrossbowScript.shootingArrow?.Invoke(true);
                 StartCoroutine(AttackCooldown(5));
             }
         }
@@ -152,6 +169,14 @@ public class PlayerAttack : MonoBehaviour
     }
 
 
+    private IEnumerator FireArrowsCooldown()
+    {
+        canUseSkillOne = false;
+        yield return new WaitForSeconds(10);
+        canUseSkillOne = true;
+    }
+
+
 
     public void SwitchWeapon(string weaponName)
     {
@@ -167,6 +192,7 @@ public class PlayerAttack : MonoBehaviour
                 weapon.SetActive(false);
             }
         }
+        meleeWeapon = currentWeapon.GetComponent<WeaponBase>().isMeleeWeapon;
         onChangingWeapon?.Invoke(currentWeapon);
     }
 

@@ -220,5 +220,17 @@ public class PlayerMovement : MonoBehaviour
             currentRotation.y *= -1;
             currentWeapon.transform.localRotation = currentRotation;
         }
+        if (facingLeft && currentWeapon.transform.localScale.x < 0)
+        {
+            UnityEngine.Vector3 weaponScale = currentWeapon.transform.localScale;
+            weaponScale.x *= -1;
+            currentWeapon.transform.localScale = weaponScale;
+            UnityEngine.Vector3 currentPosition = currentWeapon.transform.localPosition;
+            currentPosition.x *= -1;
+            currentWeapon.transform.localPosition = currentPosition;
+            UnityEngine.Quaternion currentRotation = currentWeapon.transform.localRotation;
+            currentRotation.y *= -1;
+            currentWeapon.transform.localRotation = currentRotation;
+        }
     }
 }

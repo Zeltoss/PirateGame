@@ -5843,6 +5843,7 @@ GameObject:
   - component: {fileID: 320583154}
   - component: {fileID: 320583153}
   - component: {fileID: 320583152}
+  - component: {fileID: 320583156}
   m_Layer: 0
   m_Name: Crossbow
   m_TagString: Weapon
@@ -5862,7 +5863,8 @@ Transform:
   m_LocalPosition: {x: 3.11, y: -0.02, z: 0.1}
   m_LocalScale: {x: 0.6, y: 1, z: 0.2}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1204261930}
   m_Father: {fileID: 1950989911}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &320583152
@@ -5898,6 +5900,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adf6bdbc11a8c4ce0952565e6979382e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isMeleeWeapon: 0
   baseDamage: 0
   critDamage: 0
   baseCritChance: 0.1
@@ -5913,16 +5916,30 @@ MonoBehaviour:
     it deals double damage.
   - Your arrows have a chance to pierce enemies and hit the one behind them as well.
   currentDamage: 10
-  skillOne: []
-  skillTwo: []
+  skillOne:
+  - 2
+  - 3
+  - 4
+  - 6
+  - 7
+  - 8
+  - 10
+  skillTwo:
+  - 0.2
+  - 0.22
+  - 0.24
+  - 0.3
+  - 0.32
+  - 0.34
+  - 0.4
   passiveSkill:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
+  - 1.2
+  - 1.4
+  - 1.6
+  - 2
+  - 2.2
+  - 2.4
+  - 3
   icons_milestoneOne:
   - {fileID: 21300000, guid: e3be96a3b314af34a82cca25870f4fa4, type: 3}
   - {fileID: 21300000, guid: 4f66026db4d8c7d42956c0c96b3c72bf, type: 3}
@@ -5992,6 +6009,21 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 320583150}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &320583156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320583150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02810992321394f06aaeea825a986a88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrowSpawnPoint: {fileID: 1204261929}
+  arrowPrefab: {fileID: 4617331445972401258, guid: 934cd948fa2654a7a87df04f7ae13d4e, type: 3}
+  isFireArrow: 0
 --- !u!1 &321782444
 GameObject:
   m_ObjectHideFlags: 0
@@ -7519,6 +7551,111 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 422351956}
   m_CullTransparentMesh: 1
+--- !u!1001 &425513105
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2415255447233331029, guid: 934cd948fa2654a7a87df04f7ae13d4e, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415255447233331029, guid: 934cd948fa2654a7a87df04f7ae13d4e, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415255447233331029, guid: 934cd948fa2654a7a87df04f7ae13d4e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415255447233331029, guid: 934cd948fa2654a7a87df04f7ae13d4e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415255447233331029, guid: 934cd948fa2654a7a87df04f7ae13d4e, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415255447233331029, guid: 934cd948fa2654a7a87df04f7ae13d4e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415255447233331029, guid: 934cd948fa2654a7a87df04f7ae13d4e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415255447233331029, guid: 934cd948fa2654a7a87df04f7ae13d4e, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415255447233331029, guid: 934cd948fa2654a7a87df04f7ae13d4e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415255447233331029, guid: 934cd948fa2654a7a87df04f7ae13d4e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415255447233331029, guid: 934cd948fa2654a7a87df04f7ae13d4e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415255447233331029, guid: 934cd948fa2654a7a87df04f7ae13d4e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415255447233331029, guid: 934cd948fa2654a7a87df04f7ae13d4e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415255447233331029, guid: 934cd948fa2654a7a87df04f7ae13d4e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415255447233331029, guid: 934cd948fa2654a7a87df04f7ae13d4e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415255447233331029, guid: 934cd948fa2654a7a87df04f7ae13d4e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 11.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415255447233331029, guid: 934cd948fa2654a7a87df04f7ae13d4e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415255447233331029, guid: 934cd948fa2654a7a87df04f7ae13d4e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415255447233331029, guid: 934cd948fa2654a7a87df04f7ae13d4e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415255447233331029, guid: 934cd948fa2654a7a87df04f7ae13d4e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2415255447233331029, guid: 934cd948fa2654a7a87df04f7ae13d4e, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4617331445972401258, guid: 934cd948fa2654a7a87df04f7ae13d4e, type: 3}
+      propertyPath: m_Name
+      value: Arrow
+      objectReference: {fileID: 0}
+    - target: {fileID: 4617331445972401258, guid: 934cd948fa2654a7a87df04f7ae13d4e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 934cd948fa2654a7a87df04f7ae13d4e, type: 3}
 --- !u!1 &446411619
 GameObject:
   m_ObjectHideFlags: 0
@@ -21333,6 +21470,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1198921159}
   m_CullTransparentMesh: 1
+--- !u!1 &1204261929
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1204261930}
+  m_Layer: 0
+  m_Name: ArrowSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1204261930
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1204261929}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.5, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 320583151}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1205459050
 GameObject:
   m_ObjectHideFlags: 0
@@ -34437,7 +34605,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adf6bdbc11a8c4ce0952565e6979382e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseDamage: 0
+  isMeleeWeapon: 1
+  baseDamage: 10
   critDamage: 0
   baseCritChance: 0.1
   currentCritChance: 0
@@ -41148,3 +41317,4 @@ SceneRoots:
   - {fileID: 1738451803}
   - {fileID: 4085942345757602022}
   - {fileID: 531989433}
+  - {fileID: 425513105}

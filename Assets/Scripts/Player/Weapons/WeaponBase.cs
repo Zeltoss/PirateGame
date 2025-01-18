@@ -6,6 +6,8 @@ using UnityEngine;
 public class WeaponBase : MonoBehaviour
 {
 
+    public bool isMeleeWeapon;
+
     public float baseDamage;
     public float critDamage = 10;
     public float baseCritChance = 0.1f;
@@ -46,12 +48,19 @@ public class WeaponBase : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "Enemy" && isMeleeWeapon)
         {
             Debug.Log("STRIKE");
             if (attackIndex == 0)
             {
-                currentCritChance = baseCritChance * passiveSkill[passiveSkillIndex];
+                if (unlockedPassiveSkill)
+                {
+                    currentCritChance = baseCritChance * passiveSkill[passiveSkillIndex];
+                }
+                else
+                {
+                    currentCritChance = baseCritChance;
+                }
                 if (Random.value < currentCritChance && canCrit)
                 {
                     Debug.Log("critical attack");
@@ -80,7 +89,6 @@ public class WeaponBase : MonoBehaviour
 
     public void UnlockSkill(int index)
     {
-        //skillIcons[index].SetActive(!skillIcons[index].activeSelf);
         if (index == 0)
         {
             unlockedSkillOne = !unlockedSkillOne;

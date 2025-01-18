@@ -146,6 +146,12 @@ public class EnemyAI : MonoBehaviour
     }
 
 
+    public void OneHitKill()
+    {
+        TakeDamage(currentHealth);
+    }
+
+
 
     private IEnumerator SpawnCooldown()
     {
