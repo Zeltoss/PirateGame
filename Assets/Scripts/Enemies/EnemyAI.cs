@@ -36,6 +36,17 @@ public class EnemyAI : MonoBehaviour
 
     [SerializeField] private GameObject enemySprite;
 
+    
+    //Sound Effects
+    [SerializeField] private AudioClip idleSoundClip;
+    [SerializeField] private AudioClip damageSoundClip;
+
+
+    //Condition Icons
+    [SerializeField] private GameObject bleeding;
+    [SerializeField] private GameObject fire;
+
+
 
 
     void OnEnable()
@@ -48,6 +59,8 @@ public class EnemyAI : MonoBehaviour
         StartCoroutine(SpawnCooldown());
 
         currentHealth = health;
+
+        //SoundFXManager.instance.PlayLoopingSoundFXClip(idleSoundClip, transform, 0.5f);
     }
 
 
@@ -111,6 +124,10 @@ public class EnemyAI : MonoBehaviour
     {
         currentHealth -= Mathf.RoundToInt(damage);
         GetComponentInChildren<Slider>().value = 100 / health * currentHealth;
+
+        //play damage sound
+        SoundFXManager.instance.PlaySoundFXClip(damageSoundClip, transform, 0.3f);
+
         if (currentHealth <= 0)
         {
             canMove = false;
@@ -128,7 +145,8 @@ public class EnemyAI : MonoBehaviour
 
 
     private IEnumerator Bleeding(float damage)
-    {
+    {   
+        bleeding.SetActive(true);
         TakeDamage(damage);
         Debug.Log("bleeding damage");
         yield return new WaitForSeconds(1);
@@ -143,6 +161,8 @@ public class EnemyAI : MonoBehaviour
         yield return new WaitForSeconds(1);
         TakeDamage(damage);
         Debug.Log("bleeding damage");
+        yield return new WaitForSeconds(1);
+        bleeding.SetActive(false);
     }
 
 
