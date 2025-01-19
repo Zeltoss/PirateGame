@@ -36,15 +36,15 @@ public class EnemyAI : MonoBehaviour
 
     [SerializeField] private GameObject enemySprite;
 
-    
+
     //Sound Effects
     [SerializeField] private AudioClip idleSoundClip;
     [SerializeField] private AudioClip damageSoundClip;
 
 
     //Condition Icons
-    [SerializeField] private GameObject bleeding;
-    [SerializeField] private GameObject fire;
+    [SerializeField] private GameObject bleedingIcon;
+    [SerializeField] private GameObject fireIcon;
 
 
 
@@ -138,31 +138,34 @@ public class EnemyAI : MonoBehaviour
     }
 
 
-    public void TakeBleedingDamage(float damage)
+    public void TakeBleedingDamage(float damage, bool isBleeding)
     {
-        StartCoroutine(Bleeding(damage));
+        StartCoroutine(Bleeding(damage, isBleeding));
     }
 
 
-    private IEnumerator Bleeding(float damage)
-    {   
-        bleeding.SetActive(true);
+    private IEnumerator Bleeding(float damage, bool isBleeding)
+    {
+        if (isBleeding)
+        {
+            bleedingIcon.SetActive(true);
+        }
+        else
+        {
+            fireIcon.SetActive(true);
+        }
         TakeDamage(damage);
-        Debug.Log("bleeding damage");
         yield return new WaitForSeconds(1);
         TakeDamage(damage);
-        Debug.Log("bleeding damage");
         yield return new WaitForSeconds(1);
         TakeDamage(damage);
-        Debug.Log("bleeding damage");
         yield return new WaitForSeconds(1);
         TakeDamage(damage);
-        Debug.Log("bleeding damage");
         yield return new WaitForSeconds(1);
         TakeDamage(damage);
-        Debug.Log("bleeding damage");
         yield return new WaitForSeconds(1);
-        bleeding.SetActive(false);
+        bleedingIcon.SetActive(false);
+        fireIcon.SetActive(false);
     }
 
 

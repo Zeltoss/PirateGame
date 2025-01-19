@@ -1397,8 +1397,8 @@ MonoBehaviour:
   enemySprite: {fileID: 3675557917381886168}
   idleSoundClip: {fileID: 8300000, guid: 9f48906ccb940d047913818929044ab8, type: 3}
   damageSoundClip: {fileID: 8300000, guid: 2364d9d9fea0ad94baec58292c719c3f, type: 3}
-  bleeding: {fileID: 1064049130960802419}
-  fire: {fileID: 5576003001660634578}
+  bleedingIcon: {fileID: 1064049130960802419}
+  fireIcon: {fileID: 5576003001660634578}
 --- !u!54 &2548744694047757507
 Rigidbody:
   m_ObjectHideFlags: 0

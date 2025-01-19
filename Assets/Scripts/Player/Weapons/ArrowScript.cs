@@ -48,7 +48,7 @@ public class ArrowScript : MonoBehaviour
         {
             if (shootingFireArrow && !shootingHeadshot)
             {
-                other.GetComponent<EnemyAI>().TakeBleedingDamage(damage);
+                other.GetComponent<EnemyAI>().TakeBleedingDamage(damage, false);
             }
             if (shootingHeadshot && !shootingFireArrow)
             {

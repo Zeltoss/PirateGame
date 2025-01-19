@@ -41,9 +41,6 @@ public class WeaponBase : MonoBehaviour
 
     public int attackIndex;
 
-    private delegate void UsingAttackOne(GameObject enemy);
-    private static UsingAttackOne usingAttackOne;
-
 
 
     void OnTriggerEnter(Collider other)

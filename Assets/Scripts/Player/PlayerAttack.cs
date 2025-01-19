@@ -31,8 +31,9 @@ public class PlayerAttack : MonoBehaviour
     private InputAction attackTwo;
 
 
-    private bool canAttack = true;
+    private bool canAttackNormally = true;
     private bool canUseSkillOne = true;
+    private bool canUseSkillTwo = true;
 
 
 
@@ -89,17 +90,17 @@ public class PlayerAttack : MonoBehaviour
 
     private void AttackEnemy(InputAction.CallbackContext context)
     {
-        if (canAttack)
+        if (canAttackNormally)
         {
             if (meleeWeapon)
             {
-                StartCoroutine(AttackCooldown(0.5f));
+                StartCoroutine(AttackCooldown(0.5f, 0));
                 currentWeapon.GetComponent<BoxCollider>().enabled = true;
                 currentWeapon.GetComponent<WeaponBase>().attackIndex = 0;
             }
             else
             {
-                StartCoroutine(AttackCooldown(2f));
+                StartCoroutine(AttackCooldown(2f, 0));
                 CrossbowScript.shootingArrow?.Invoke(false);
             }
         }
@@ -109,18 +110,18 @@ public class PlayerAttack : MonoBehaviour
 
     private void UseAttackOne(InputAction.CallbackContext context)
     {
-        if (canAttack && currentWeapon.GetComponent<WeaponBase>().unlockedSkillOne)
+        if (canUseSkillOne && currentWeapon.GetComponent<WeaponBase>().unlockedSkillOne)
         {
             Debug.Log("using attack one");
             if (meleeWeapon)
             {
-                StartCoroutine(AttackCooldown(5));
+                StartCoroutine(AttackCooldown(5, 1));
                 currentWeapon.GetComponent<BoxCollider>().enabled = true;
                 currentWeapon.GetComponent<WeaponBase>().attackIndex = 1;
             }
-            if (!meleeWeapon && canUseSkillOne)
+            else
             {
-                StartCoroutine(FireArrowsCooldown());
+                StartCoroutine(AttackCooldown(10, 1));
                 currentWeapon.GetComponent<CrossbowScript>().isFireArrow = true;
             }
         }
@@ -129,7 +130,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void UseAttackTwo(InputAction.CallbackContext context)
     {
-        if (canAttack && currentWeapon.GetComponent<WeaponBase>().unlockedSkillTwo)
+        if (canUseSkillTwo && currentWeapon.GetComponent<WeaponBase>().unlockedSkillTwo)
         {
             Debug.Log("using attack two");
             currentWeapon.GetComponent<BoxCollider>().enabled = true;
@@ -142,38 +143,57 @@ public class PlayerAttack : MonoBehaviour
             else
             {
                 CrossbowScript.shootingArrow?.Invoke(true);
-                StartCoroutine(AttackCooldown(5));
+                StartCoroutine(AttackCooldown(5, 2));
             }
         }
     }
 
 
 
-    private IEnumerator AttackCooldown(float time)
+    private IEnumerator AttackCooldown(float time, int index)
     {
-        canAttack = false;
-        yield return new WaitForSeconds(0.1f);
-        currentWeapon.GetComponent<BoxCollider>().enabled = false;
+        if (index == 0)
+        {
+            canAttackNormally = false;
+        }
+        else if (index == 1)
+        {
+            canUseSkillOne = false;
+        }
+        else if (index == 2)
+        {
+            canUseSkillTwo = false;
+        }
+
+        if (meleeWeapon)
+        {
+            yield return new WaitForSeconds(0.1f);
+            currentWeapon.GetComponent<BoxCollider>().enabled = false;
+        }
+
         yield return new WaitForSeconds(time);
-        canAttack = true;
+        if (index == 0)
+        {
+            canAttackNormally = true;
+        }
+        else if (index == 1)
+        {
+            canUseSkillOne = true;
+        }
+        else if (index == 2)
+        {
+            canUseSkillTwo = true;
+        }
     }
 
 
     private IEnumerator WhirlingAttackCooldown()
     {
-        canAttack = false;
+        canUseSkillTwo = false;
         yield return new WaitForSeconds(1f);
         currentWeapon.GetComponent<BoxCollider>().enabled = false;
         yield return new WaitForSeconds(5);
-        canAttack = true;
-    }
-
-
-    private IEnumerator FireArrowsCooldown()
-    {
-        canUseSkillOne = false;
-        yield return new WaitForSeconds(10);
-        canUseSkillOne = true;
+        canUseSkillTwo = true;
     }
 
 

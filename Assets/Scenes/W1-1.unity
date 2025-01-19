@@ -9385,7 +9385,7 @@ GameObject:
   - component: {fileID: 531989429}
   - component: {fileID: 531989428}
   m_Layer: 0
-  m_Name: DroppedCrossbow
+  m_Name: DroppedWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41353,10 +41353,6 @@ PrefabInstance:
     - target: {fileID: 7946212547462599265, guid: 9d11b4ee593de3c429e9b7833cddefb1, type: 3}
       propertyPath: m_Name
       value: EnemyNew
-      objectReference: {fileID: 0}
-    - target: {fileID: 7946212547462599265, guid: 9d11b4ee593de3c429e9b7833cddefb1, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

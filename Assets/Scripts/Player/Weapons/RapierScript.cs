@@ -41,7 +41,7 @@ public class RapierScript : MonoBehaviour
     private void UseAttackOne(GameObject enemy)
     {
         enemy.GetComponent<EnemyAI>().TakeDamage(_weaponBase.currentDamage);
-        enemy.GetComponent<EnemyAI>().TakeBleedingDamage(_weaponBase.skillOne[_weaponBase.skillOneIndex]);
+        enemy.GetComponent<EnemyAI>().TakeBleedingDamage(_weaponBase.skillOne[_weaponBase.skillOneIndex], true);
         PlayerAttack.onPlayerAttack?.Invoke(0);
     }
 
