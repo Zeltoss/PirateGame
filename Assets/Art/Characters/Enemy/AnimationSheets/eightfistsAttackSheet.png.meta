@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 83cd22c92e3ddb341bb57a2cfbe9b146
+guid: fe70a5e1b0dd00d41a6027971570aea5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,148 +97,106 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: eightfistsSheet_0
+      name: eightfistsAttackSheet_0
       rect:
         serializedVersion: 2
-        x: 22
+        x: 168
         y: 9
         width: 86
         height: 155
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1bcf5d08a77397e48af54d391b6894e9
-      internalID: 294860006
+      spriteID: f1e62da02babfbb48849641a63e888e6
+      internalID: -2016749481
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: eightfistsSheet_1
+      name: eightfistsAttackSheet_4
       rect:
         serializedVersion: 2
-        x: 123
+        x: 46
         y: 9
         width: 86
         height: 155
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c4e2a8f248750fd41a9dc854d6eaf321
-      internalID: -1911343128
+      spriteID: 8140fe1b8286d3041a169d086cd2e251
+      internalID: 596098811
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: eightfistsSheet_2
+      name: eightfistsAttackSheet_5
       rect:
         serializedVersion: 2
-        x: 233
+        x: 285
         y: 9
         width: 86
         height: 155
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5aad980b99fb31b4fa8b2ca95c7a3add
-      internalID: -1581153266
+      spriteID: e7615fa5a577bf7449307d055b6707f0
+      internalID: -2058554099
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: eightfistsSheet_3
+      name: eightfistsAttackSheet_7
       rect:
         serializedVersion: 2
-        x: 348
+        x: 430
         y: 9
         width: 86
         height: 155
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 32e62bbe209715e4dad83a23b961e3be
-      internalID: 169406759
+      spriteID: d4785f823ef7fef4fb0dc348887ab5ac
+      internalID: -2088792175
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: eightfistsSheet_4
+      name: eightfistsAttackSheet_8
       rect:
         serializedVersion: 2
-        x: 455
+        x: 574
         y: 9
         width: 86
         height: 155
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 017bfaf82f50b17498d37f012870ce52
-      internalID: 659039637
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: eightfistsSheet_5
-      rect:
-        serializedVersion: 2
-        x: 557
-        y: 9
-        width: 86
-        height: 155
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f3eb52a560c6027488566c2958878433
-      internalID: -2069550368
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: eightfistsSheet_6
-      rect:
-        serializedVersion: 2
-        x: 659
-        y: 9
-        width: 86
-        height: 155
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c3b9d1aaa8778504ca87588ef42bbcd5
-      internalID: -667551819
+      spriteID: f146d5e83999ec3429923aafe040bb06
+      internalID: 12352996
       vertices: []
       indices: 
       edges: []
@@ -246,7 +204,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: ff4eabe3adadb544da6602adb8232e2e
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -254,13 +212,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      eightfistsSheet_0: 294860006
-      eightfistsSheet_1: -1911343128
-      eightfistsSheet_2: -1581153266
-      eightfistsSheet_3: 169406759
-      eightfistsSheet_4: 659039637
-      eightfistsSheet_5: -2069550368
-      eightfistsSheet_6: -667551819
+      eightfistsAttackSheet_0: -2016749481
+      eightfistsAttackSheet_1: -1335220434
+      eightfistsAttackSheet_2: -2064879048
+      eightfistsAttackSheet_3: -1690727597
+      eightfistsAttackSheet_4: 596098811
+      eightfistsAttackSheet_5: -2058554099
+      eightfistsAttackSheet_6: -1955492864
+      eightfistsAttackSheet_7: -2088792175
+      eightfistsAttackSheet_8: 12352996
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

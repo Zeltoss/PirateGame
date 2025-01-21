@@ -5912,8 +5912,8 @@ MonoBehaviour:
   - Sharp Tip
   skillDescriptions:
   - You set your next 4 arrows on fire, causing damage over time.
-  - You attempt a headshot with a 40% chance to kill your enemy instantly. Otherwise,
-    it deals double damage.
+  - Attempt a headshot with a chance to kill instantly (increasing with skill points).
+    Otherwise, it deals double damage.
   - Your arrows have a chance to pierce enemies and hit the one behind them as well.
   currentDamage: 10
   skillOne:
@@ -41353,6 +41353,10 @@ PrefabInstance:
     - target: {fileID: 7946212547462599265, guid: 9d11b4ee593de3c429e9b7833cddefb1, type: 3}
       propertyPath: m_Name
       value: EnemyNew
+      objectReference: {fileID: 0}
+    - target: {fileID: 7946212547462599265, guid: 9d11b4ee593de3c429e9b7833cddefb1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
