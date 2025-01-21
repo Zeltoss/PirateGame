@@ -10,7 +10,7 @@ public class EnemyAI : MonoBehaviour
     public enum enemyTypes
     {
         melee,
-        shooter
+        rapier
     }
     public enemyTypes enemyType;
 

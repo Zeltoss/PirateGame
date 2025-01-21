@@ -7204,6 +7204,7 @@ MonoBehaviour:
   skillpointsSkillMenu: {fileID: 0}
   neededLevelXP: 100
   meleeEnemyXP: 0
+  rapierEnemyXP: 0
   currentWeapon: {fileID: 0}
   skillPointsOne: {fileID: 0}
   skillPointsTwo: {fileID: 0}
@@ -27479,8 +27480,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1950989910}
   enemyPrefab: {fileID: 7946212547462599265, guid: 9d11b4ee593de3c429e9b7833cddefb1, type: 3}
-  maxEnemySpawns: 9
-  droppedCrossbow: {fileID: 531989427}
+  rapierEnemyPrefab: {fileID: 1461377526954694826, guid: adc5c77a5f5c84a52a3b9e9c9d1af0df, type: 3}
+  meleeEnemySpawns: 5
+  rapierEnemySpawns: 3
+  droppedWeapon: {fileID: 531989427}
 --- !u!4 &1498296085
 Transform:
   m_ObjectHideFlags: 0
@@ -37546,7 +37549,8 @@ MonoBehaviour:
   skillpointsMainDisplay: {fileID: 1577100421}
   skillpointsSkillMenu: {fileID: 2073751149}
   neededLevelXP: 100
-  meleeEnemyXP: 70
+  meleeEnemyXP: 60
+  rapierEnemyXP: 80
   currentWeapon: {fileID: 1851357100}
   skillPointsOne: {fileID: 811599083}
   skillPointsTwo: {fileID: 1774395341}

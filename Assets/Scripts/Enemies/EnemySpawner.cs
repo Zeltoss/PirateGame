@@ -11,9 +11,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject player;
 
     public GameObject enemyPrefab;
-
-    //[SerializeField] private int minEnemySpawns;
-    [SerializeField] private int maxEnemySpawns;
+    public GameObject rapierEnemyPrefab;
+    private GameObject[] enemyTypes = new GameObject[2];
 
     private List<GameObject> spawnAreas;
 
@@ -25,14 +24,18 @@ public class EnemySpawner : MonoBehaviour
 
     private List<UnityEngine.Vector3> usedSpawnPoints = new List<UnityEngine.Vector3>();
 
-    private int spawnCount;
+    public int meleeEnemySpawns;
+    public int rapierEnemySpawns;
+    private int[] maxEnemySpawns = new int[2];
+    private int[] enemySpawns = new int[2];
+    private int totalSpawnCount;
     private int killCount;
 
 
     public delegate void OnLeavingSafeZone();
     public static OnLeavingSafeZone onLeavingSafeZone;
 
-    [SerializeField] private GameObject droppedCrossbow;
+    [SerializeField] private GameObject droppedWeapon;
 
 
 
@@ -41,6 +44,7 @@ public class EnemySpawner : MonoBehaviour
         onLeavingSafeZone += SpawnEnemies;
         SkillTreeManager.onKillingEnemy += CountDefeatedEnemies;
     }
+
 
     void OnDisable()
     {
@@ -53,8 +57,12 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         spawnAreas = new List<GameObject>(GameObject.FindGameObjectsWithTag("Spawn Area"));
+        enemyTypes[0] = enemyPrefab;
+        enemyTypes[1] = rapierEnemyPrefab;
+        maxEnemySpawns[0] = meleeEnemySpawns;
+        maxEnemySpawns[1] = rapierEnemySpawns;
 
-        droppedCrossbow.SetActive(false);
+        droppedWeapon.SetActive(false);
     }
 
 
@@ -91,7 +99,6 @@ public class EnemySpawner : MonoBehaviour
                     spawnTooClose = true;
                 }
             }
-            // remove from list after certain amount of time?
         }
 
         if (spawnTooClose)
@@ -107,16 +114,22 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator SpawningCooldown()
     {
-        GameObject enemyInstance = Instantiate(enemyPrefab, spawnPoint, UnityEngine.Quaternion.Euler(new UnityEngine.Vector3(90, 180, 0)));
+        int type = Random.Range(0, enemyTypes.Length);
+        if (enemySpawns[type] >= maxEnemySpawns[type])
+        {
+            type = (type == 0) ? 1 : 0;
+        }
+        GameObject enemyInstance = Instantiate(enemyTypes[type], spawnPoint, UnityEngine.Quaternion.Euler(new UnityEngine.Vector3(90, 180, 0)));
         usedSpawnPoints.Add(enemyInstance.transform.position);
         enemyInstance.GetComponent<EnemyAI>().player = player;
-        spawnCount++;
+        enemySpawns[type]++;
+        totalSpawnCount++;
         firstSpawn = false;
 
         float pause = Random.Range(12f, 16f);
         yield return new WaitForSeconds(pause);
 
-        if (spawnCount < maxEnemySpawns)
+        if (totalSpawnCount < (maxEnemySpawns[0] + maxEnemySpawns[1]))
         {
             SpawnEnemies();
         }
@@ -126,9 +139,9 @@ public class EnemySpawner : MonoBehaviour
     private void CountDefeatedEnemies(GameObject lastEnemy)
     {
         killCount++;
-        if ((killCount - 1) == maxEnemySpawns)
+        if ((killCount - 1) == (maxEnemySpawns[0] + maxEnemySpawns[1]))
         {
-            droppedCrossbow.transform.position = new UnityEngine.Vector3(lastEnemy.transform.position.x, droppedCrossbow.transform.position.y, lastEnemy.transform.position.z);
+            droppedWeapon.transform.position = new UnityEngine.Vector3(lastEnemy.transform.position.x, droppedWeapon.transform.position.y, lastEnemy.transform.position.z);
             StartCoroutine(DropCrossbow());
         }
     }
@@ -136,9 +149,9 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator DropCrossbow()
     {
-        droppedCrossbow.SetActive(true);
-        droppedCrossbow.GetComponent<BoxCollider>().enabled = false;
+        droppedWeapon.SetActive(true);
+        droppedWeapon.GetComponent<BoxCollider>().enabled = false;
         yield return new WaitForSeconds(2);
-        droppedCrossbow.GetComponent<BoxCollider>().enabled = true;
+        droppedWeapon.GetComponent<BoxCollider>().enabled = true;
     }
 }

@@ -24,7 +24,7 @@ public class SkillTreeManager : MonoBehaviour
     [SerializeField] private int neededLevelXP = 100;
 
     [SerializeField] private int meleeEnemyXP;
-
+    [SerializeField] private int rapierEnemyXP;
 
     [SerializeField] private GameObject currentWeapon;
 
@@ -87,6 +87,11 @@ public class SkillTreeManager : MonoBehaviour
         {
             totalXP += meleeEnemyXP;
             currentLevelXP += meleeEnemyXP;
+        }
+        if (enemy.GetComponent<EnemyAI>().enemyType.ToString() == "rapier")
+        {
+            totalXP += rapierEnemyXP;
+            currentLevelXP += rapierEnemyXP;
         }
 
         while (currentLevelXP >= neededLevelXP)
