@@ -22,6 +22,9 @@ public class PlayerAttack : MonoBehaviour
 
     [SerializeField] private GameObject currentWeapon;
 
+    [SerializeField] private AudioClip[] swingSoundClips;
+    [SerializeField] private AudioClip crossbowSoundClip;
+
     public List<GameObject> allWeapons;
     private bool meleeWeapon;
 
@@ -97,11 +100,13 @@ public class PlayerAttack : MonoBehaviour
                 StartCoroutine(AttackCooldown(0.5f, 0));
                 currentWeapon.GetComponent<BoxCollider>().enabled = true;
                 currentWeapon.GetComponent<WeaponBase>().attackIndex = 0;
+                SoundFXManager.instance.PlayRandomSoundFXClip(swingSoundClips, transform, 1.3f);
             }
             else
             {
                 StartCoroutine(AttackCooldown(2f, 0));
                 CrossbowScript.shootingArrow?.Invoke(false);
+                SoundFXManager.instance.PlaySoundFXClip(crossbowSoundClip, transform, 0.3f);
             }
         }
     }

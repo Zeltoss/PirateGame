@@ -10,6 +10,8 @@ public class PlayerHealth : MonoBehaviour
     public delegate void OnTakingDamage(int damage);
     public static OnTakingDamage onTakingDamage;
 
+    [SerializeField] private AudioClip damageSoundClip;
+
 
     [SerializeField] private int playerHealth = 100;
     private int currentHealth;
@@ -35,6 +37,7 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth -= damage;
         healthBar.value = 100 / playerHealth * currentHealth;
+        SoundFXManager.instance.PlaySoundFXClip(damageSoundClip, transform, 0.3f);
 
         if (currentHealth <= 0)
         {

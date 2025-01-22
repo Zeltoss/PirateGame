@@ -26647,10 +26647,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_Rapier
       objectReference: {fileID: 0}
-    - target: {fileID: 1461377526954694826, guid: adc5c77a5f5c84a52a3b9e9c9d1af0df, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2245037771439083095, guid: adc5c77a5f5c84a52a3b9e9c9d1af0df, type: 3}
       propertyPath: m_LocalPosition.x
       value: 22.39
@@ -26689,14 +26685,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2245037771439083095, guid: adc5c77a5f5c84a52a3b9e9c9d1af0df, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4826199171787561947, guid: adc5c77a5f5c84a52a3b9e9c9d1af0df, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4826199171787561947, guid: adc5c77a5f5c84a52a3b9e9c9d1af0df, type: 3}
-      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8341705944440077638, guid: adc5c77a5f5c84a52a3b9e9c9d1af0df, type: 3}
@@ -37495,6 +37483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb5f9edc57f1b45b59ec001543c83b35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageSoundClip: {fileID: 8300000, guid: 1d1068b4c854b8b4f95647155b6fd942, type: 3}
   playerHealth: 100
   healthBar: {fileID: 487181801}
 --- !u!114 &1950989914
@@ -37727,6 +37716,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentWeapon: {fileID: 1851357100}
+  swingSoundClips:
+  - {fileID: 8300000, guid: 815fdf6be34604b4bbdf8d7860ab9949, type: 3}
+  - {fileID: 8300000, guid: 4037523cddd002648b05b9fda21d9faf, type: 3}
+  crossbowSoundClip: {fileID: 8300000, guid: 5d1ac7a25fe01fd4e8b7df1c301919f0, type: 3}
   allWeapons: []
 --- !u!1 &1958658422
 GameObject:
@@ -41439,21 +41432,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1938804132240928807, guid: 9d11b4ee593de3c429e9b7833cddefb1, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1938804132240928807, guid: 9d11b4ee593de3c429e9b7833cddefb1, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7946212547462599265, guid: 9d11b4ee593de3c429e9b7833cddefb1, type: 3}
       propertyPath: m_Name
       value: EnemyNew
-      objectReference: {fileID: 0}
-    - target: {fileID: 7946212547462599265, guid: 9d11b4ee593de3c429e9b7833cddefb1, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

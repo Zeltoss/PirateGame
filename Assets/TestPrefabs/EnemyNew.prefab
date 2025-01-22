@@ -1356,7 +1356,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1159728430880825528
 Transform:
   m_ObjectHideFlags: 0
@@ -1395,8 +1395,9 @@ MonoBehaviour:
   speed: 3
   player: {fileID: 0}
   enemySprite: {fileID: 3675557917381886168}
-  idleSoundClip: {fileID: 8300000, guid: 9f48906ccb940d047913818929044ab8, type: 3}
   damageSoundClip: {fileID: 8300000, guid: 2364d9d9fea0ad94baec58292c719c3f, type: 3}
+  normalHitSoundClip: {fileID: 8300000, guid: cbaea1a8b815b9940b838a6ac471b101, type: 3}
+  rapierHitSoundClip: {fileID: 8300000, guid: 815fdf6be34604b4bbdf8d7860ab9949, type: 3}
   bleedingIcon: {fileID: 1064049130960802419}
   fireIcon: {fileID: 5576003001660634578}
 --- !u!54 &2548744694047757507
@@ -1459,7 +1460,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 7223905899786868393, guid: aab77af189c90734fb54f36af6c2a3a0, type: 2}
   m_audioClip: {fileID: 8300000, guid: 9f48906ccb940d047913818929044ab8, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 1
   Mute: 0

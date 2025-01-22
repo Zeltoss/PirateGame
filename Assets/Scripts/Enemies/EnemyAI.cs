@@ -38,8 +38,9 @@ public class EnemyAI : MonoBehaviour
 
 
     //Sound Effects
-    [SerializeField] private AudioClip idleSoundClip;
     [SerializeField] private AudioClip damageSoundClip;
+    //[SerializeField] private AudioClip normalHitSoundClip;
+    //[SerializeField] private AudioClip rapierHitSoundClip;
 
 
     //Condition Icons
@@ -59,8 +60,6 @@ public class EnemyAI : MonoBehaviour
         StartCoroutine(SpawnCooldown());
 
         currentHealth = health;
-
-        //SoundFXManager.instance.PlayLoopingSoundFXClip(idleSoundClip, transform, 0.5f);
     }
 
 
@@ -126,7 +125,7 @@ public class EnemyAI : MonoBehaviour
         GetComponentInChildren<Slider>().value = 100 / health * currentHealth;
 
         //play damage sound
-        SoundFXManager.instance.PlaySoundFXClip(damageSoundClip, transform, 0.3f);
+        SoundFXManager.instance.PlaySoundFXClip(damageSoundClip, transform, 0.2f);
 
         if (currentHealth <= 0)
         {
@@ -199,7 +198,6 @@ public class EnemyAI : MonoBehaviour
             canAttack = true;
         }
     }
-
 
     private IEnumerator KillAnimation()
     {
