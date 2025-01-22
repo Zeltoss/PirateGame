@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject skillBook;
 
+    private List<GameObject> currentEnemies;
+
 
     void Awake()
     {
@@ -63,7 +65,6 @@ public class GameManager : MonoBehaviour
         else
         {
             ResumeGame();
-            //onResumingGame?.Invoke();
             SoundFXManager.instance.PlaySoundFXClip(closeBookSound, transform, 1f);
         }
     }
@@ -72,6 +73,12 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame()
     {
+        currentEnemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy"));
+        foreach (GameObject enemy in currentEnemies)
+        {
+            enemy.GetComponent<AudioSource>().enabled = false;
+        }
+
         isPaused = true;
         Time.timeScale = 0;
     }
@@ -79,6 +86,11 @@ public class GameManager : MonoBehaviour
 
     public void ResumeGame()
     {
+        foreach (GameObject enemy in currentEnemies)
+        {
+            enemy.GetComponent<AudioSource>().enabled = true;
+        }
+        currentEnemies.Clear();
         isPaused = false;
         Time.timeScale = 1;
         onResumingGame?.Invoke();

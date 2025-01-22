@@ -62,7 +62,6 @@ public class PlayerAttack : MonoBehaviour
 
         attackTwo = _playerControls.Player.SpecialAttackTwo;
         attackTwo.performed += UseAttackTwo;
-        EnableAttacks();
     }
 
 
