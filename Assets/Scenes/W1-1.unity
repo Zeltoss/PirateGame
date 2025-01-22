@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5784494
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5762,8 +5762,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4280887593
-  m_fontColor: {r: 0.16078432, g: 0.16078432, b: 0.16078432, a: 1}
+    rgba: 4286044492
+  m_fontColor: {r: 0.29803923, g: 0.8509804, b: 0.46666667, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -5901,7 +5901,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMeleeWeapon: 0
-  baseDamage: 0
+  baseDamage: 10
   critDamage: 0
   baseCritChance: 0.1
   currentCritChance: 0
@@ -7219,6 +7219,7 @@ MonoBehaviour:
   skillNameObjects: []
   skillStatsBasic: []
   skillStatsAdded: []
+  thirdStat: {fileID: 0}
   skillDescriptionTitles1: []
   skillDescriptionTitles2: []
   skillDescriptionTitles3: []
@@ -20682,12 +20683,12 @@ GameObject:
   - component: {fileID: 1165547329}
   - component: {fileID: 1165547328}
   m_Layer: 5
-  m_Name: Stat3_Speed
+  m_Name: Stat3_Headshots
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1165547327
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20729,7 +20730,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Speed
+  m_text: Headshots
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 613f2392d667a404a9dc156c6dcc8f55, type: 2}
   m_sharedMaterial: {fileID: -8762733212211156633, guid: 613f2392d667a404a9dc156c6dcc8f55, type: 2}
@@ -37683,6 +37684,8 @@ MonoBehaviour:
   skillStatsAdded:
   - {fileID: 1884522492}
   - {fileID: 987195614}
+  - {fileID: 320019252}
+  thirdStat: {fileID: 1165547326}
   skillDescriptionTitles1:
   - {fileID: 1381704172}
   - {fileID: 472716673}
