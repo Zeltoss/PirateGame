@@ -100,12 +100,12 @@ TextureImporter:
       name: anchorpointSheet_0
       rect:
         serializedVersion: 2
-        x: 79
+        x: 86
         y: 9
-        width: 160
+        width: 225
         height: 170
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -121,12 +121,12 @@ TextureImporter:
       name: anchorpointSheet_1
       rect:
         serializedVersion: 2
-        x: 306
+        x: 313
         y: 9
-        width: 160
+        width: 225
         height: 170
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -142,12 +142,12 @@ TextureImporter:
       name: anchorpointSheet_2
       rect:
         serializedVersion: 2
-        x: 540
+        x: 533
         y: 9
-        width: 160
+        width: 225
         height: 170
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -163,12 +163,12 @@ TextureImporter:
       name: anchorpointSheet_3
       rect:
         serializedVersion: 2
-        x: 777
+        x: 775
         y: 9
-        width: 160
+        width: 225
         height: 170
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -184,12 +184,12 @@ TextureImporter:
       name: anchorpointSheet_4
       rect:
         serializedVersion: 2
-        x: 1009
+        x: 1005
         y: 9
-        width: 160
+        width: 225
         height: 170
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -205,12 +205,12 @@ TextureImporter:
       name: anchorpointSheet_5
       rect:
         serializedVersion: 2
-        x: 1230
+        x: 1222
         y: 9
-        width: 160
+        width: 225
         height: 170
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -226,12 +226,12 @@ TextureImporter:
       name: anchorpointSheet_6
       rect:
         serializedVersion: 2
-        x: 1450
+        x: 1449
         y: 9
-        width: 160
+        width: 225
         height: 170
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

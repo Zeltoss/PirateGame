@@ -100,12 +100,12 @@ TextureImporter:
       name: anchorpointAttackSheet_0
       rect:
         serializedVersion: 2
-        x: 1150
+        x: 1157
         y: 9
-        width: 160
+        width: 225
         height: 170
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -121,12 +121,12 @@ TextureImporter:
       name: anchorpointAttackSheet_1
       rect:
         serializedVersion: 2
-        x: 842
+        x: 849
         y: 9
-        width: 160
+        width: 225
         height: 170
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -142,12 +142,12 @@ TextureImporter:
       name: anchorpointAttackSheet_2
       rect:
         serializedVersion: 2
-        x: 540
+        x: 547
         y: 9
-        width: 160
+        width: 225
         height: 170
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -163,12 +163,12 @@ TextureImporter:
       name: anchorpointAttackSheet_3
       rect:
         serializedVersion: 2
-        x: 313
+        x: 320
         y: 9
-        width: 160
+        width: 225
         height: 170
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -184,12 +184,12 @@ TextureImporter:
       name: anchorpointAttackSheet_4
       rect:
         serializedVersion: 2
-        x: 79
+        x: 86
         y: 9
-        width: 160
+        width: 225
         height: 170
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

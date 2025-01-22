@@ -135,8 +135,6 @@ MonoBehaviour:
   player: {fileID: 0}
   enemySprite: {fileID: 3554740225931958341}
   damageSoundClip: {fileID: 8300000, guid: 2364d9d9fea0ad94baec58292c719c3f, type: 3}
-  normalHitSoundClip: {fileID: 8300000, guid: cbaea1a8b815b9940b838a6ac471b101, type: 3}
-  rapierHitSoundClip: {fileID: 8300000, guid: 815fdf6be34604b4bbdf8d7860ab9949, type: 3}
   bleedingIcon: {fileID: 8000230732267725782}
   fireIcon: {fileID: 6747409846800809037}
 --- !u!54 &1717492146736001562
@@ -360,8 +358,8 @@ Transform:
   m_GameObject: {fileID: 1936778162749672856}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: 4, y: -0, z: -0.5}
-  m_LocalScale: {x: 10, y: 3, z: 1}
+  m_LocalPosition: {x: 0, y: -0, z: -0.5}
+  m_LocalScale: {x: 13, y: 11, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2245037771439083095}
@@ -629,7 +627,7 @@ Transform:
   m_GameObject: {fileID: 3554740225931958341}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: 4.5, y: -0, z: -2.12}
+  m_LocalPosition: {x: 0, y: -0, z: -2.12}
   m_LocalScale: {x: 14.770001, y: 8.566604, z: 4.283302}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -821,7 +819,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -1.45, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920, y: 1500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &6595756906046780802
