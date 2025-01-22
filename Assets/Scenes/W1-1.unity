@@ -26795,6 +26795,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_Rapier
       objectReference: {fileID: 0}
+    - target: {fileID: 1461377526954694826, guid: adc5c77a5f5c84a52a3b9e9c9d1af0df, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2245037771439083095, guid: adc5c77a5f5c84a52a3b9e9c9d1af0df, type: 3}
       propertyPath: m_LocalPosition.x
       value: 22.39
