@@ -20,6 +20,8 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private float speed = 3f;
     private UnityEngine.Vector3 movement;
 
+    private float attackTime;
+
     private Camera _camera;
 
     private bool isMoving = false;
@@ -47,6 +49,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private GameObject bleedingIcon;
     [SerializeField] private GameObject fireIcon;
 
+    [SerializeField] private Animator animator;
 
 
 
@@ -60,6 +63,20 @@ public class EnemyAI : MonoBehaviour
         StartCoroutine(SpawnCooldown());
 
         currentHealth = health;
+
+        if (animator == null)
+        {
+            animator = GetComponent<Animator>();
+        }
+
+        if (enemyType.ToString() == "melee")
+        {
+            attackTime = 0.5f;
+        }
+        else
+        {
+            attackTime = 0.75f;
+        }
     }
 
 
@@ -185,12 +202,13 @@ public class EnemyAI : MonoBehaviour
     // makes the enemy attack the player and adds a little cooldown before they can attack again
     private IEnumerator AttackingPlayer()
     {
+        animator.SetTrigger("AttackTrigger");
         canAttack = false;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(attackTime);
         if (inAttackDistance)
         {
             PlayerHealth.onTakingDamage?.Invoke(damage);
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(1f);
             canAttack = true;
         }
         else

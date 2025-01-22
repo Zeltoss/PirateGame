@@ -1349,7 +1349,6 @@ GameObject:
   - component: {fileID: 2548744694047757507}
   - component: {fileID: 5717508098708822369}
   - component: {fileID: 4231728491236927396}
-  - component: {fileID: 9163990637791313044}
   m_Layer: 0
   m_Name: EnemyNew
   m_TagString: Enemy
@@ -1398,6 +1397,7 @@ MonoBehaviour:
   damageSoundClip: {fileID: 8300000, guid: 2364d9d9fea0ad94baec58292c719c3f, type: 3}
   bleedingIcon: {fileID: 1064049130960802419}
   fireIcon: {fileID: 5576003001660634578}
+  animator: {fileID: 3548067967396708722}
 --- !u!54 &2548744694047757507
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1542,20 +1542,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &9163990637791313044
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7946212547462599265}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03a6fdbfd056aa043a310689cca6de4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 3548067967396708722}
-  attackCooldown: 2.5
 --- !u!1 &8169460407063484991
 GameObject:
   m_ObjectHideFlags: 0

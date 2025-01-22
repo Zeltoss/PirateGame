@@ -87,7 +87,6 @@ GameObject:
   - component: {fileID: 8341705944440077638}
   - component: {fileID: 1717492146736001562}
   - component: {fileID: 1161917437293383112}
-  - component: {fileID: 4909425336364201840}
   - component: {fileID: 2524006640960885007}
   m_Layer: 0
   m_Name: Enemy_Rapier
@@ -95,7 +94,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2245037771439083095
 Transform:
   m_ObjectHideFlags: 0
@@ -137,6 +136,7 @@ MonoBehaviour:
   damageSoundClip: {fileID: 8300000, guid: 2364d9d9fea0ad94baec58292c719c3f, type: 3}
   bleedingIcon: {fileID: 8000230732267725782}
   fireIcon: {fileID: 6747409846800809037}
+  animator: {fileID: 2871660322229319010}
 --- !u!54 &1717492146736001562
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -185,20 +185,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5, y: 2, z: 7.55}
   m_Center: {x: 0, y: 0, z: 1.08}
---- !u!114 &4909425336364201840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1461377526954694826}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03a6fdbfd056aa043a310689cca6de4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 2871660322229319010}
-  attackCooldown: 2.2
 --- !u!82 &2524006640960885007
 AudioSource:
   m_ObjectHideFlags: 0
