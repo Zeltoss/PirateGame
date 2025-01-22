@@ -52,6 +52,7 @@ public class SkillTreeManager : MonoBehaviour
     [SerializeField] private GameObject[] skillDescriptions3;
 
     [SerializeField] private GameObject[] skillsUIButtons;
+    [SerializeField] private GameObject[] UIButtons_icons;
 
 
 
@@ -190,6 +191,7 @@ public class SkillTreeManager : MonoBehaviour
         skillpointsSkillMenu.GetComponent<TextMeshProUGUI>().text = currentSkillPoints.ToString();
 
         DisplayCorrectWeaponStats();
+        ChangeIconsInMainUI();
     }
 
 
@@ -278,6 +280,7 @@ public class SkillTreeManager : MonoBehaviour
         skillpointsMainDisplay.GetComponent<TextMeshProUGUI>().text = currentSkillPoints.ToString();
         skillpointsSkillMenu.GetComponent<TextMeshProUGUI>().text = currentSkillPoints.ToString();
         DisplayCorrectWeaponStats();
+        ChangeIconsInMainUI();
     }
 
 
@@ -366,6 +369,41 @@ public class SkillTreeManager : MonoBehaviour
             milestoneOne[i].GetComponent<Image>().sprite = currentWeapon.GetComponent<WeaponBase>().icons_milestoneOne[i];
             milestoneTwo[i].GetComponent<Image>().sprite = currentWeapon.GetComponent<WeaponBase>().icons_milestoneTwo[i];
             milestoneThree[i].GetComponent<Image>().sprite = currentWeapon.GetComponent<WeaponBase>().icons_milestoneThree[i];
+        }
+
+        ChangeIconsInMainUI();
+    }
+
+
+    private void ChangeIconsInMainUI()
+    {
+        // skill icons in the main UI
+        UIButtons_icons[0].GetComponent<Image>().sprite = currentWeapon.GetComponent<WeaponBase>().icons_milestoneOne[0];
+        if (currentWeapon.GetComponent<WeaponBase>().skillOneIndex >= 4)
+        {
+            UIButtons_icons[0].GetComponent<Image>().sprite = currentWeapon.GetComponent<WeaponBase>().icons_milestoneTwo[0];
+        }
+        if (currentWeapon.GetComponent<WeaponBase>().skillOneIndex == 7)
+        {
+            UIButtons_icons[0].GetComponent<Image>().sprite = currentWeapon.GetComponent<WeaponBase>().icons_milestoneThree[0];
+        }
+        UIButtons_icons[1].GetComponent<Image>().sprite = currentWeapon.GetComponent<WeaponBase>().icons_milestoneOne[1];
+        if (currentWeapon.GetComponent<WeaponBase>().skillTwoIndex >= 4)
+        {
+            UIButtons_icons[1].GetComponent<Image>().sprite = currentWeapon.GetComponent<WeaponBase>().icons_milestoneTwo[1];
+        }
+        if (currentWeapon.GetComponent<WeaponBase>().skillTwoIndex == 7)
+        {
+            UIButtons_icons[1].GetComponent<Image>().sprite = currentWeapon.GetComponent<WeaponBase>().icons_milestoneThree[1];
+        }
+        UIButtons_icons[2].GetComponent<Image>().sprite = currentWeapon.GetComponent<WeaponBase>().icons_milestoneOne[2];
+        if (currentWeapon.GetComponent<WeaponBase>().passiveSkillIndex >= 4)
+        {
+            UIButtons_icons[2].GetComponent<Image>().sprite = currentWeapon.GetComponent<WeaponBase>().icons_milestoneTwo[2];
+        }
+        if (currentWeapon.GetComponent<WeaponBase>().passiveSkillIndex == 7)
+        {
+            UIButtons_icons[2].GetComponent<Image>().sprite = currentWeapon.GetComponent<WeaponBase>().icons_milestoneThree[2];
         }
     }
 
