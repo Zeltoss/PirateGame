@@ -130,7 +130,7 @@ MonoBehaviour:
   enemyType: 1
   health: 80
   damage: 15
-  speed: 3
+  speed: 6.3
   player: {fileID: 0}
   enemySprite: {fileID: 3554740225931958341}
   damageSoundClip: {fileID: 8300000, guid: 2364d9d9fea0ad94baec58292c719c3f, type: 3}
