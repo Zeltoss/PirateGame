@@ -575,7 +575,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 827944970682031105, guid: aab77af189c90734fb54f36af6c2a3a0, type: 2}
   m_audioClip: {fileID: 8300000, guid: d6ebb07886f753048a9ee2951d968326, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2988,17 +2988,15 @@ MonoBehaviour:
 
     Michelle Kelm
 
-    Benjamin Akpinar
-
 
 
 
     Brom WIttenmeier
 
-    Esther
-    Hentzler
+    Esther Hentzler
 
-    Prof. Linda Kruse'
+    Prof.
+    Linda Kruse'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 613f2392d667a404a9dc156c6dcc8f55, type: 2}
   m_sharedMaterial: {fileID: -8762733212211156633, guid: 613f2392d667a404a9dc156c6dcc8f55, type: 2}
@@ -4623,7 +4621,6 @@ MonoBehaviour:
 
 
     Playtester
-
 
 
 
