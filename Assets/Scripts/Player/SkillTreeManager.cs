@@ -386,6 +386,15 @@ public class SkillTreeManager : MonoBehaviour
         }
 
         ChangeIconsInMainUI();
+
+        if (currentSkillPoints > 0)
+        {
+            skillpointMessage.SetActive(true);
+        }
+        else
+        {
+            skillpointMessage.SetActive(false);
+        }
     }
 
 
