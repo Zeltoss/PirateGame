@@ -54,6 +54,8 @@ public class SkillTreeManager : MonoBehaviour
     [SerializeField] private GameObject[] skillsUIButtons;
     [SerializeField] private GameObject[] UIButtons_icons;
 
+    [SerializeField] private GameObject skillpointMessage;
+
 
 
     void OnEnable()
@@ -80,6 +82,7 @@ public class SkillTreeManager : MonoBehaviour
         {
             button.SetActive(false);
         }
+        skillpointMessage.SetActive(false);
     }
 
 
@@ -101,6 +104,7 @@ public class SkillTreeManager : MonoBehaviour
             totalSkillPoints++;
             currentSkillPoints++;
             currentLevelXP -= neededLevelXP;
+            skillpointMessage.SetActive(true);
         }
 
         xpBar.value = 100 / neededLevelXP * currentLevelXP;
@@ -192,6 +196,11 @@ public class SkillTreeManager : MonoBehaviour
 
         DisplayCorrectWeaponStats();
         ChangeIconsInMainUI();
+
+        if (currentSkillPoints == 0)
+        {
+            skillpointMessage.SetActive(false);
+        }
     }
 
 
@@ -281,6 +290,11 @@ public class SkillTreeManager : MonoBehaviour
         skillpointsSkillMenu.GetComponent<TextMeshProUGUI>().text = currentSkillPoints.ToString();
         DisplayCorrectWeaponStats();
         ChangeIconsInMainUI();
+
+        if (currentSkillPoints > 0)
+        {
+            skillpointMessage.SetActive(true);
+        }
     }
 
 
