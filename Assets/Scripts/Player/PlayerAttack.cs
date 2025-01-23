@@ -38,7 +38,9 @@ public class PlayerAttack : MonoBehaviour
     private bool canUseSkillOne = true;
     private bool canUseSkillTwo = true;
 
-
+    //esthers code quarantine for awesome animations
+    [SerializeField] Animator strike_animator;
+    private string prevWeapon = "Rapier";
 
     void Awake()
     {
@@ -155,6 +157,7 @@ public class PlayerAttack : MonoBehaviour
 
     private IEnumerator AttackCooldown(float time, int index)
     {
+        strike_animator.SetTrigger("Attack");
         if (index == 0)
         {
             canAttackNormally = false;
@@ -187,6 +190,7 @@ public class PlayerAttack : MonoBehaviour
         {
             canUseSkillTwo = true;
         }
+        strike_animator.ResetTrigger("Attack");
     }
 
 
@@ -203,6 +207,9 @@ public class PlayerAttack : MonoBehaviour
 
     public void SwitchWeapon(string weaponName)
     {
+        strike_animator.SetTrigger(weaponName);
+        strike_animator.ResetTrigger(prevWeapon);
+        prevWeapon = weaponName;
         foreach (GameObject weapon in allWeapons)
         {
             if (weapon.name == weaponName)

@@ -2506,7 +2506,7 @@ GameObject:
   - component: {fileID: 86405855}
   - component: {fileID: 86405854}
   m_Layer: 0
-  m_Name: idlebody_0
+  m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2538,7 +2538,7 @@ Animator:
   m_GameObject: {fileID: 86405852}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d84a52575f37b1544baf488dd60afee4, type: 2}
+  m_Controller: {fileID: 9100000, guid: c3e1ae33f349f034bb0afa83fa9c87c2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2590,12 +2590,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1650555229, guid: 78cb3617da423744c8ee16e67ec77fb5, type: 3}
+  m_Sprite: {fileID: 919668091, guid: 3c5c660597603534d9a34c08a917c8e0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.8, y: 1.3}
+  m_Size: {x: 1.8, y: 1.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -8246,7 +8246,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 320583150}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -12153,7 +12153,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -50.00049, y: -174.99976}
+  m_AnchoredPosition: {x: -50.00055, y: -174.99976}
   m_SizeDelta: {x: 99.99996, y: -350.00024}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &493173942
@@ -14893,7 +14893,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -50.00049, y: 75}
+  m_AnchoredPosition: {x: -50.00055, y: 75}
   m_SizeDelta: {x: 99.99997, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &607526096
@@ -26259,7 +26259,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -50.00049, y: -424.9995}
+  m_AnchoredPosition: {x: -50.00055, y: -424.9995}
   m_SizeDelta: {x: 99.999954, y: -850.00024}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1132692452
@@ -34160,6 +34160,10 @@ PrefabInstance:
     - target: {fileID: 1461377526954694826, guid: adc5c77a5f5c84a52a3b9e9c9d1af0df, type: 3}
       propertyPath: m_Name
       value: Enemy_Rapier
+      objectReference: {fileID: 0}
+    - target: {fileID: 1461377526954694826, guid: adc5c77a5f5c84a52a3b9e9c9d1af0df, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2245037771439083095, guid: adc5c77a5f5c84a52a3b9e9c9d1af0df, type: 3}
       propertyPath: m_LocalPosition.x
@@ -43219,7 +43223,7 @@ GameObject:
   - component: {fileID: 1772433487}
   - component: {fileID: 1772433486}
   m_Layer: 0
-  m_Name: idledegen_0
+  m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43234,7 +43238,7 @@ Transform:
   m_GameObject: {fileID: 1772433484}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.05, y: 0.145, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -43250,7 +43254,7 @@ Animator:
   m_GameObject: {fileID: 1772433484}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 100901038286bea47ac6d1b1a788102f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 9736ef64e3352224ba99233f905b45ec, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -43302,12 +43306,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 256546093, guid: 81b450625fea04746ba54fa615102953, type: 3}
+  m_Sprite: {fileID: 1875620524, guid: 3c5c660597603534d9a34c08a917c8e0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.68, y: 0.89}
+  m_Size: {x: 1.8, y: 1.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -45439,7 +45443,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1851357100}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -48542,6 +48546,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCanMove: 1
   playerSprite: {fileID: 86405852}
+  move_animator: {fileID: 86405854}
 --- !u!114 &1950989913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48798,6 +48803,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4037523cddd002648b05b9fda21d9faf, type: 3}
   crossbowSoundClip: {fileID: 8300000, guid: 5d1ac7a25fe01fd4e8b7df1c301919f0, type: 3}
   allWeapons: []
+  strike_animator: {fileID: 1772433486}
 --- !u!1 &1958658422
 GameObject:
   m_ObjectHideFlags: 0
@@ -53578,6 +53584,10 @@ PrefabInstance:
     - target: {fileID: 7946212547462599265, guid: 9d11b4ee593de3c429e9b7833cddefb1, type: 3}
       propertyPath: m_Name
       value: EnemyNew
+      objectReference: {fileID: 0}
+    - target: {fileID: 7946212547462599265, guid: 9d11b4ee593de3c429e9b7833cddefb1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -36,6 +36,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject playerSprite;
     private GameObject currentWeapon;
 
+    //esthers code quarantine for awesome animations
+    [SerializeField] Animator move_animator;
 
 
     void Awake()
@@ -138,6 +140,8 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = movement * speed;
 
         lastMovement = movement;
+
+        move_animator.SetBool("Walking", true);
     }
 
     // this gives the movement a fade out
@@ -152,6 +156,8 @@ public class PlayerMovement : MonoBehaviour
             speed = 0.0f;
             lastMovement = UnityEngine.Vector3.zero;
         }
+
+        move_animator.SetBool("Walking", false);
     }
 
 
