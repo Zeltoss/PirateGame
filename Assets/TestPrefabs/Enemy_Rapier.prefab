@@ -129,8 +129,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: 1
   health: 80
-  damage: 15
-  speed: 6.3
+  damage: 16
+  speed: 5.5
   player: {fileID: 0}
   enemySprite: {fileID: 3554740225931958341}
   damageSoundClip: {fileID: 8300000, guid: 2364d9d9fea0ad94baec58292c719c3f, type: 3}
@@ -345,7 +345,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071068, z: 0.7071068, w: 0}
   m_LocalPosition: {x: 0, y: -0, z: -0.5}
-  m_LocalScale: {x: 13, y: 11, z: 2}
+  m_LocalScale: {x: 17, y: 11, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2245037771439083095}

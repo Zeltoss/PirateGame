@@ -6,7 +6,8 @@ public class ArrowScript : MonoBehaviour
 {
     // this script checks if the arrow hits anything
 
-    private float damage = 10f;
+    public float baseDamage;
+    public float bleedingDamage;
     private float shootingForce = 20f;
 
     public Vector3 shootingDirection;
@@ -48,7 +49,7 @@ public class ArrowScript : MonoBehaviour
         {
             if (shootingFireArrow && !shootingHeadshot)
             {
-                other.GetComponent<EnemyAI>().TakeBleedingDamage(damage, false);
+                other.GetComponent<EnemyAI>().TakeBleedingDamage(bleedingDamage, false);
             }
             if (shootingHeadshot && !shootingFireArrow)
             {
@@ -58,12 +59,12 @@ public class ArrowScript : MonoBehaviour
                 }
                 else
                 {
-                    other.GetComponent<EnemyAI>().TakeDamage(damage * 2);
+                    other.GetComponent<EnemyAI>().TakeDamage(baseDamage * 2);
                 }
             }
             if (!shootingFireArrow && !shootingHeadshot)
             {
-                other.GetComponent<EnemyAI>().TakeDamage(damage);
+                other.GetComponent<EnemyAI>().TakeDamage(baseDamage);
             }
 
             // checks to see if the arrow hits more than one enemy (from passive skill)

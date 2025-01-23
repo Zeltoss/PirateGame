@@ -103,7 +103,7 @@ public class PlayerAttack : MonoBehaviour
             }
             else
             {
-                StartCoroutine(AttackCooldown(2f, 0));
+                StartCoroutine(AttackCooldown(1.5f, 0));
                 CrossbowScript.shootingArrow?.Invoke(false);
                 SoundFXManager.instance.PlaySoundFXClip(crossbowSoundClip, transform, 0.3f);
             }
@@ -117,15 +117,14 @@ public class PlayerAttack : MonoBehaviour
         if (canUseSkillOne && currentWeapon.GetComponent<WeaponBase>().unlockedSkillOne)
         {
             Debug.Log("using attack one");
+            StartCoroutine(AttackCooldown(4.5f, 1));
             if (meleeWeapon)
             {
-                StartCoroutine(AttackCooldown(5, 1));
                 currentWeapon.GetComponent<BoxCollider>().enabled = true;
                 currentWeapon.GetComponent<WeaponBase>().attackIndex = 1;
             }
             else
             {
-                StartCoroutine(AttackCooldown(10, 1));
                 currentWeapon.GetComponent<CrossbowScript>().isFireArrow = true;
             }
         }
@@ -147,7 +146,7 @@ public class PlayerAttack : MonoBehaviour
             else
             {
                 CrossbowScript.shootingArrow?.Invoke(true);
-                StartCoroutine(AttackCooldown(5, 2));
+                StartCoroutine(AttackCooldown(6, 2));
             }
         }
     }
@@ -196,7 +195,7 @@ public class PlayerAttack : MonoBehaviour
         canUseSkillTwo = false;
         yield return new WaitForSeconds(1f);
         currentWeapon.GetComponent<BoxCollider>().enabled = false;
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(6f);
         canUseSkillTwo = true;
     }
 

@@ -37,6 +37,9 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField] private GameObject droppedWeapon;
 
+    private List<GameObject> currentEnemies;
+    private int enemiesAtStart;
+
 
 
     void OnEnable()
@@ -57,6 +60,11 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         spawnAreas = new List<GameObject>(GameObject.FindGameObjectsWithTag("Spawn Area"));
+        currentEnemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy"));
+        foreach (GameObject enemy in currentEnemies)
+        {
+            enemiesAtStart++;
+        }
         enemyTypes[0] = enemyPrefab;
         enemyTypes[1] = rapierEnemyPrefab;
         maxEnemySpawns[0] = meleeEnemySpawns;
@@ -78,11 +86,11 @@ public class EnemySpawner : MonoBehaviour
 
         if (chosenArea.transform.position.z < 0)
         {
-            spawnPointZ = -5f;
+            spawnPointZ = -4f;
         }
         else
         {
-            spawnPointZ = 5f;
+            spawnPointZ = 4f;
         }
 
         UnityEngine.Vector2 spawnPointX = Random.insideUnitCircle * 40;
@@ -114,19 +122,24 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator SpawningCooldown()
     {
+        if (firstSpawn)
+        {
+            yield return new WaitForSeconds(5f);
+        }
         int type = Random.Range(0, enemyTypes.Length);
         if (enemySpawns[type] >= maxEnemySpawns[type])
         {
             type = (type == 0) ? 1 : 0;
         }
         GameObject enemyInstance = Instantiate(enemyTypes[type], spawnPoint, UnityEngine.Quaternion.Euler(new UnityEngine.Vector3(90, 180, 0)));
+        currentEnemies.Add(enemyInstance);
         usedSpawnPoints.Add(enemyInstance.transform.position);
         enemyInstance.GetComponent<EnemyAI>().player = player;
         enemySpawns[type]++;
         totalSpawnCount++;
         firstSpawn = false;
 
-        float pause = Random.Range(12f, 16f);
+        float pause = Random.Range(14f, 18f);
         yield return new WaitForSeconds(pause);
 
         if (totalSpawnCount < (maxEnemySpawns[0] + maxEnemySpawns[1]))
@@ -139,7 +152,8 @@ public class EnemySpawner : MonoBehaviour
     private void CountDefeatedEnemies(GameObject lastEnemy)
     {
         killCount++;
-        if ((killCount - 1) == (maxEnemySpawns[0] + maxEnemySpawns[1]))
+        currentEnemies.Remove(lastEnemy);
+        if (killCount >= (maxEnemySpawns[0] + maxEnemySpawns[1] + enemiesAtStart) && currentEnemies.Count == 0)
         {
             droppedWeapon.transform.position = new UnityEngine.Vector3(lastEnemy.transform.position.x, droppedWeapon.transform.position.y, lastEnemy.transform.position.z);
             StartCoroutine(DropCrossbow());

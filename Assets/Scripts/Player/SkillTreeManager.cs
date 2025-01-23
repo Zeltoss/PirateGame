@@ -405,6 +405,15 @@ public class SkillTreeManager : MonoBehaviour
         {
             UIButtons_icons[2].GetComponent<Image>().sprite = currentWeapon.GetComponent<WeaponBase>().icons_milestoneThree[2];
         }
+
+        if (currentWeapon.name == "Crossbow")
+        {
+            UIButtons_icons[3].SetActive(true);
+        }
+        else
+        {
+            UIButtons_icons[3].SetActive(false);
+        }
     }
 
 

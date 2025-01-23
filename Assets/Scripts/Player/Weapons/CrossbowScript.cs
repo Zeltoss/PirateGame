@@ -43,6 +43,7 @@ public class CrossbowScript : MonoBehaviour
     {
         Vector3 spawnPoint = arrowSpawnPoint.transform.position;
         GameObject arrowInstance = Instantiate(arrowPrefab, spawnPoint, this.transform.rotation);
+        arrowInstance.GetComponent<ArrowScript>().baseDamage = _weaponBase.baseDamage;
         if (transform.localScale.x > 0)
         {
             Debug.Log("facing left");
@@ -62,6 +63,7 @@ public class CrossbowScript : MonoBehaviour
             if (Random.value < (_weaponBase.baseCritChance * _weaponBase.passiveSkill[_weaponBase.passiveSkillIndex]))
             {
                 arrowInstance.GetComponent<ArrowScript>().flyingThroughEnemy = true;
+                PlayerAttack.onPlayerAttack?.Invoke(2);
             }
         }
 
@@ -70,6 +72,7 @@ public class CrossbowScript : MonoBehaviour
             if (fireArrowCount < 4)
             {
                 arrowInstance.GetComponent<ArrowScript>().shootingFireArrow = true;
+                arrowInstance.GetComponent<ArrowScript>().bleedingDamage = _weaponBase.skillOne[_weaponBase.skillOneIndex];
                 fireArrowCount++;
             }
             else
