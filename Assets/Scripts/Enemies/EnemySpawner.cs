@@ -153,7 +153,8 @@ public class EnemySpawner : MonoBehaviour
     {
         killCount++;
         currentEnemies.Remove(lastEnemy);
-        if (killCount >= (maxEnemySpawns[0] + maxEnemySpawns[1] + enemiesAtStart) && currentEnemies.Count == 0)
+        //if (killCount >= (maxEnemySpawns[0] + maxEnemySpawns[1] + enemiesAtStart) && currentEnemies.Count == 0)
+        if (killCount >= (maxEnemySpawns[0] + maxEnemySpawns[1] + 2) && currentEnemies.Count == 0)
         {
             droppedWeapon.transform.position = new UnityEngine.Vector3(lastEnemy.transform.position.x, droppedWeapon.transform.position.y, lastEnemy.transform.position.z);
             StartCoroutine(DropCrossbow());

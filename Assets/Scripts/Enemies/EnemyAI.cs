@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -144,12 +145,10 @@ public class EnemyAI : MonoBehaviour
         //play damage sound
         SoundFXManager.instance.PlaySoundFXClip(damageSoundClip, transform, 0.2f);
 
-        if (currentHealth <= 0)
+
+        if (CheckHealth())
         {
-            canMove = false;
-            canAttack = false;
             StartCoroutine(KillAnimation());
-            SkillTreeManager.onKillingEnemy(this.gameObject);
         }
     }
 
@@ -170,15 +169,50 @@ public class EnemyAI : MonoBehaviour
         {
             fireIcon.SetActive(true);
         }
-        TakeDamage(damage);
+        if (!CheckHealth())
+        {
+            TakeDamage(damage);
+        }
+        else
+        {
+            yield break;
+        }
         yield return new WaitForSeconds(1);
-        TakeDamage(damage);
+        if (!CheckHealth())
+        {
+            TakeDamage(damage);
+        }
+        else
+        {
+            yield break;
+        }
         yield return new WaitForSeconds(1);
-        TakeDamage(damage);
+        if (!CheckHealth())
+        {
+            TakeDamage(damage);
+        }
+        else
+        {
+            yield break;
+        }
         yield return new WaitForSeconds(1);
-        TakeDamage(damage);
+        if (!CheckHealth())
+        {
+            TakeDamage(damage);
+        }
+        else
+        {
+            yield break;
+        }
         yield return new WaitForSeconds(1);
-        TakeDamage(damage);
+        if (!CheckHealth())
+        {
+            TakeDamage(damage);
+        }
+        else
+        {
+            yield break;
+        }
         yield return new WaitForSeconds(1);
         bleedingIcon.SetActive(false);
         fireIcon.SetActive(false);
@@ -188,6 +222,20 @@ public class EnemyAI : MonoBehaviour
     public void OneHitKill()
     {
         TakeDamage(currentHealth);
+    }
+
+
+    // returns true if the enemy has been killed
+    private bool CheckHealth()
+    {
+        if (currentHealth <= 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
 
@@ -219,8 +267,9 @@ public class EnemyAI : MonoBehaviour
 
     private IEnumerator KillAnimation()
     {
-        Debug.Log("enemy killed");
-        //gameObject.GetComponent<Material>().color = Color.white;
+        canMove = false;
+        canAttack = false;
+        SkillTreeManager.onKillingEnemy(this.gameObject);
         yield return new WaitForSeconds(1);
         Destroy(this.gameObject);
     }
