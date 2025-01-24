@@ -8357,6 +8357,7 @@ MonoBehaviour:
   - 7
   - 8
   - 10
+  - 12
   skillTwo:
   - 0.2
   - 0.22
@@ -8365,6 +8366,7 @@ MonoBehaviour:
   - 0.32
   - 0.34
   - 0.4
+  - 0.42
   passiveSkill:
   - 1.2
   - 1.4
@@ -8373,6 +8375,7 @@ MonoBehaviour:
   - 2.2
   - 2.4
   - 3
+  - 3.4
   icons_milestoneOne:
   - {fileID: 21300000, guid: e3be96a3b314af34a82cca25870f4fa4, type: 3}
   - {fileID: 21300000, guid: 4f66026db4d8c7d42956c0c96b3c72bf, type: 3}
@@ -35367,8 +35370,8 @@ MonoBehaviour:
   player: {fileID: 1950989910}
   enemyPrefab: {fileID: 7946212547462599265, guid: 9d11b4ee593de3c429e9b7833cddefb1, type: 3}
   rapierEnemyPrefab: {fileID: 1461377526954694826, guid: adc5c77a5f5c84a52a3b9e9c9d1af0df, type: 3}
-  meleeEnemySpawns: 5
-  rapierEnemySpawns: 3
+  meleeEnemySpawns: 8
+  rapierEnemySpawns: 6
   droppedWeapon: {fileID: 531989427}
 --- !u!4 &1498296085
 Transform:
@@ -45758,6 +45761,7 @@ MonoBehaviour:
   - 7
   - 8
   - 10
+  - 12
   skillTwo:
   - 13
   - 15
@@ -45766,6 +45770,7 @@ MonoBehaviour:
   - 22
   - 24
   - 30
+  - 32
   passiveSkill:
   - 1.2
   - 1.4
@@ -45774,6 +45779,7 @@ MonoBehaviour:
   - 2.2
   - 2.4
   - 3
+  - 3.2
   icons_milestoneOne:
   - {fileID: 21300000, guid: 381ccb51ffa8db34990b2f1bd63f6d1b, type: 3}
   - {fileID: 21300000, guid: 3656bfe1d9cf9964baef1b03297994ae, type: 3}
@@ -49082,8 +49088,8 @@ MonoBehaviour:
   skillpointsMainDisplay: {fileID: 1577100421}
   skillpointsSkillMenu: {fileID: 2073751149}
   neededLevelXP: 100
-  meleeEnemyXP: 60
-  rapierEnemyXP: 80
+  meleeEnemyXP: 90
+  rapierEnemyXP: 100
   currentWeapon: {fileID: 1851357100}
   skillPointsOne: {fileID: 811599083}
   skillPointsTwo: {fileID: 1774395341}

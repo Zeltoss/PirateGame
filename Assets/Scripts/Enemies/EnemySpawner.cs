@@ -102,7 +102,7 @@ public class EnemySpawner : MonoBehaviour
             foreach (UnityEngine.Vector3 point in usedSpawnPoints)
             {
                 float distance = UnityEngine.Vector3.Distance(point, spawnPoint);
-                if (distance < 10)
+                if (distance < 5)
                 {
                     spawnTooClose = true;
                 }
