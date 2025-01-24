@@ -129,7 +129,7 @@ public class SkillTreeManager : MonoBehaviour
                 currentWeapon.GetComponent<WeaponBase>().skillOneIndex++;
             }
             currentSkillPoints--;
-            skillPointsOne.GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<WeaponBase>().skillOneIndex.ToString();
+            skillPointsOne.GetComponent<TextMeshProUGUI>().text = (currentWeapon.GetComponent<WeaponBase>().skillOneIndex + 1).ToString();
             skillBarSliders[skill].value = currentWeapon.GetComponent<WeaponBase>().skillOneIndex;
             if (currentWeapon.GetComponent<WeaponBase>().skillOneIndex == 4)
             {
@@ -154,7 +154,7 @@ public class SkillTreeManager : MonoBehaviour
                 currentWeapon.GetComponent<WeaponBase>().skillTwoIndex++;
             }
             currentSkillPoints--;
-            skillPointsTwo.GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<WeaponBase>().skillTwoIndex.ToString();
+            skillPointsTwo.GetComponent<TextMeshProUGUI>().text = (currentWeapon.GetComponent<WeaponBase>().skillTwoIndex + 1).ToString();
             skillBarSliders[skill].value = currentWeapon.GetComponent<WeaponBase>().skillTwoIndex;
             if (currentWeapon.GetComponent<WeaponBase>().skillTwoIndex == 4)
             {
@@ -179,7 +179,7 @@ public class SkillTreeManager : MonoBehaviour
                 currentWeapon.GetComponent<WeaponBase>().passiveSkillIndex++;
             }
             currentSkillPoints--;
-            skillPointsThree.GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<WeaponBase>().passiveSkillIndex.ToString();
+            skillPointsThree.GetComponent<TextMeshProUGUI>().text = (currentWeapon.GetComponent<WeaponBase>().passiveSkillIndex + 1).ToString();
             skillBarSliders[skill].value = currentWeapon.GetComponent<WeaponBase>().passiveSkillIndex;
             if (currentWeapon.GetComponent<WeaponBase>().passiveSkillIndex == 4)
             {
@@ -227,8 +227,12 @@ public class SkillTreeManager : MonoBehaviour
                 }
                 currentSkillPoints++;
                 currentWeapon.GetComponent<WeaponBase>().skillOneIndex--;
-                skillPointsOne.GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<WeaponBase>().skillOneIndex.ToString();
+                skillPointsOne.GetComponent<TextMeshProUGUI>().text = (currentWeapon.GetComponent<WeaponBase>().skillOneIndex + 1).ToString();
                 skillBarSliders[skill].value = currentWeapon.GetComponent<WeaponBase>().skillOneIndex;
+            }
+            else
+            {
+                skillPointsOne.GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<WeaponBase>().skillOneIndex.ToString();
             }
         }
 
@@ -236,7 +240,6 @@ public class SkillTreeManager : MonoBehaviour
         {
             if (currentWeapon.GetComponent<WeaponBase>().skillTwoIndex == 0 && currentWeapon.GetComponent<WeaponBase>().unlockedSkillTwo)
             {
-                Debug.Log("locked skill again");
                 currentWeapon.GetComponent<WeaponBase>().UnlockSkill(skill);
                 skillsUIButtons[skill].SetActive(false);
                 milestoneOne_inactive[skill].SetActive(true);
@@ -252,11 +255,14 @@ public class SkillTreeManager : MonoBehaviour
                 {
                     milestoneThree_inactive[skill].SetActive(true);
                 }
-                Debug.Log("subtract skill point");
                 currentSkillPoints++;
                 currentWeapon.GetComponent<WeaponBase>().skillTwoIndex--;
-                skillPointsTwo.GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<WeaponBase>().skillTwoIndex.ToString();
+                skillPointsTwo.GetComponent<TextMeshProUGUI>().text = (currentWeapon.GetComponent<WeaponBase>().skillTwoIndex + 1).ToString();
                 skillBarSliders[skill].value = currentWeapon.GetComponent<WeaponBase>().skillTwoIndex;
+            }
+            else
+            {
+                skillPointsTwo.GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<WeaponBase>().skillTwoIndex.ToString();
             }
         }
 
@@ -281,8 +287,12 @@ public class SkillTreeManager : MonoBehaviour
                 }
                 currentSkillPoints++;
                 currentWeapon.GetComponent<WeaponBase>().passiveSkillIndex--;
-                skillPointsThree.GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<WeaponBase>().passiveSkillIndex.ToString();
+                skillPointsThree.GetComponent<TextMeshProUGUI>().text = (currentWeapon.GetComponent<WeaponBase>().passiveSkillIndex + 1).ToString();
                 skillBarSliders[skill].value = currentWeapon.GetComponent<WeaponBase>().passiveSkillIndex;
+            }
+            else
+            {
+                skillPointsThree.GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<WeaponBase>().passiveSkillIndex.ToString();
             }
         }
 
@@ -304,9 +314,30 @@ public class SkillTreeManager : MonoBehaviour
         currentWeapon = weapon;
 
         // skill bars 
-        skillPointsOne.GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<WeaponBase>().skillOneIndex.ToString();
-        skillPointsTwo.GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<WeaponBase>().skillTwoIndex.ToString();
-        skillPointsThree.GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<WeaponBase>().passiveSkillIndex.ToString();
+        if (currentWeapon.GetComponent<WeaponBase>().skillOneIndex > 0)
+        {
+            skillPointsOne.GetComponent<TextMeshProUGUI>().text = (currentWeapon.GetComponent<WeaponBase>().skillOneIndex + 1).ToString();
+        }
+        else
+        {
+            skillPointsOne.GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<WeaponBase>().skillOneIndex.ToString();
+        }
+        if (currentWeapon.GetComponent<WeaponBase>().skillTwoIndex > 0)
+        {
+            skillPointsTwo.GetComponent<TextMeshProUGUI>().text = (currentWeapon.GetComponent<WeaponBase>().skillTwoIndex + 1).ToString();
+        }
+        else
+        {
+            skillPointsTwo.GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<WeaponBase>().skillTwoIndex.ToString();
+        }
+        if (currentWeapon.GetComponent<WeaponBase>().passiveSkillIndex > 0)
+        {
+            skillPointsThree.GetComponent<TextMeshProUGUI>().text = (currentWeapon.GetComponent<WeaponBase>().passiveSkillIndex + 1).ToString();
+        }
+        else
+        {
+            skillPointsThree.GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<WeaponBase>().passiveSkillIndex.ToString();
+        }
 
         skillBarSliders[0].value = currentWeapon.GetComponent<WeaponBase>().skillOneIndex;
         skillBarSliders[1].value = currentWeapon.GetComponent<WeaponBase>().skillTwoIndex;
