@@ -8350,6 +8350,7 @@ MonoBehaviour:
   - Your arrows have a chance to pierce enemies and hit the one behind them as well.
   currentDamage: 10
   skillOne:
+  - 0
   - 2
   - 3
   - 4
@@ -8357,8 +8358,8 @@ MonoBehaviour:
   - 7
   - 8
   - 10
-  - 12
   skillTwo:
+  - 0
   - 0.2
   - 0.22
   - 0.24
@@ -8366,8 +8367,8 @@ MonoBehaviour:
   - 0.32
   - 0.34
   - 0.4
-  - 0.42
   passiveSkill:
+  - 0
   - 1.2
   - 1.4
   - 1.6
@@ -8375,7 +8376,6 @@ MonoBehaviour:
   - 2.2
   - 2.4
   - 3
-  - 3.4
   icons_milestoneOne:
   - {fileID: 21300000, guid: e3be96a3b314af34a82cca25870f4fa4, type: 3}
   - {fileID: 21300000, guid: 4f66026db4d8c7d42956c0c96b3c72bf, type: 3}
@@ -45754,6 +45754,7 @@ MonoBehaviour:
   - Increases the chance of critical hits.
   currentDamage: 10
   skillOne:
+  - 0
   - 2
   - 3
   - 4
@@ -45761,8 +45762,8 @@ MonoBehaviour:
   - 7
   - 8
   - 10
-  - 12
   skillTwo:
+  - 0
   - 13
   - 15
   - 17
@@ -45770,8 +45771,8 @@ MonoBehaviour:
   - 22
   - 24
   - 30
-  - 32
   passiveSkill:
+  - 0
   - 1.2
   - 1.4
   - 1.6
@@ -45779,7 +45780,6 @@ MonoBehaviour:
   - 2.2
   - 2.4
   - 3
-  - 3.2
   icons_milestoneOne:
   - {fileID: 21300000, guid: 381ccb51ffa8db34990b2f1bd63f6d1b, type: 3}
   - {fileID: 21300000, guid: 3656bfe1d9cf9964baef1b03297994ae, type: 3}

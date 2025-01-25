@@ -116,78 +116,72 @@ public class SkillTreeManager : MonoBehaviour
 
     public void AddSkillPoint(int skill)
     {
-        if (skill == 0 && currentSkillPoints > 0)
+        if (currentSkillPoints > 0)
         {
-            if (currentWeapon.GetComponent<WeaponBase>().skillOneIndex == 0 && !currentWeapon.GetComponent<WeaponBase>().unlockedSkillOne)
+            if (skill == 0 && currentWeapon.GetComponent<WeaponBase>().skillOneIndex < (currentWeapon.GetComponent<WeaponBase>().skillOne.Length - 1))
             {
-                currentWeapon.GetComponent<WeaponBase>().UnlockSkill(skill);
-                skillsUIButtons[skill].SetActive(true);
-                milestoneOne_inactive[skill].SetActive(false);
-            }
-            else
-            {
+                if (currentWeapon.GetComponent<WeaponBase>().skillOneIndex == 0)
+                {
+                    currentWeapon.GetComponent<WeaponBase>().UnlockSkill(skill);
+                    skillsUIButtons[skill].SetActive(true);
+                    milestoneOne_inactive[skill].SetActive(false);
+                }
                 currentWeapon.GetComponent<WeaponBase>().skillOneIndex++;
+                currentSkillPoints--;
+                skillPointsOne.GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<WeaponBase>().skillOneIndex.ToString();
+                skillBarSliders[skill].value = currentWeapon.GetComponent<WeaponBase>().skillOneIndex;
+                if (currentWeapon.GetComponent<WeaponBase>().skillOneIndex == 4)
+                {
+                    milestoneTwo_inactive[skill].SetActive(false);
+                }
+                if (currentWeapon.GetComponent<WeaponBase>().skillOneIndex == 7)
+                {
+                    milestoneThree_inactive[skill].SetActive(false);
+                }
             }
-            currentSkillPoints--;
-            skillPointsOne.GetComponent<TextMeshProUGUI>().text = (currentWeapon.GetComponent<WeaponBase>().skillOneIndex + 1).ToString();
-            skillBarSliders[skill].value = currentWeapon.GetComponent<WeaponBase>().skillOneIndex;
-            if (currentWeapon.GetComponent<WeaponBase>().skillOneIndex == 4)
-            {
-                milestoneTwo_inactive[skill].SetActive(false);
-            }
-            if (currentWeapon.GetComponent<WeaponBase>().skillOneIndex == 7)
-            {
-                milestoneThree_inactive[skill].SetActive(false);
-            }
-        }
 
-        if (skill == 1 && currentSkillPoints > 0)
-        {
-            if (currentWeapon.GetComponent<WeaponBase>().skillTwoIndex == 0 && !currentWeapon.GetComponent<WeaponBase>().unlockedSkillTwo)
+            if (skill == 1 && currentWeapon.GetComponent<WeaponBase>().skillTwoIndex < (currentWeapon.GetComponent<WeaponBase>().skillTwo.Length - 1))
             {
-                currentWeapon.GetComponent<WeaponBase>().UnlockSkill(skill);
-                skillsUIButtons[skill].SetActive(true);
-                milestoneOne_inactive[skill].SetActive(false);
-            }
-            else
-            {
+                if (currentWeapon.GetComponent<WeaponBase>().skillTwoIndex == 0)
+                {
+                    currentWeapon.GetComponent<WeaponBase>().UnlockSkill(skill);
+                    skillsUIButtons[skill].SetActive(true);
+                    milestoneOne_inactive[skill].SetActive(false);
+                }
                 currentWeapon.GetComponent<WeaponBase>().skillTwoIndex++;
+                currentSkillPoints--;
+                skillPointsTwo.GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<WeaponBase>().skillTwoIndex.ToString();
+                skillBarSliders[skill].value = currentWeapon.GetComponent<WeaponBase>().skillTwoIndex;
+                if (currentWeapon.GetComponent<WeaponBase>().skillTwoIndex == 4)
+                {
+                    milestoneTwo_inactive[skill].SetActive(false);
+                }
+                if (currentWeapon.GetComponent<WeaponBase>().skillTwoIndex == 7)
+                {
+                    milestoneThree_inactive[skill].SetActive(false);
+                }
             }
-            currentSkillPoints--;
-            skillPointsTwo.GetComponent<TextMeshProUGUI>().text = (currentWeapon.GetComponent<WeaponBase>().skillTwoIndex + 1).ToString();
-            skillBarSliders[skill].value = currentWeapon.GetComponent<WeaponBase>().skillTwoIndex;
-            if (currentWeapon.GetComponent<WeaponBase>().skillTwoIndex == 4)
-            {
-                milestoneTwo_inactive[skill].SetActive(false);
-            }
-            if (currentWeapon.GetComponent<WeaponBase>().skillTwoIndex == 7)
-            {
-                milestoneThree_inactive[skill].SetActive(false);
-            }
-        }
 
-        if (skill == 2 && currentSkillPoints > 0)
-        {
-            if (currentWeapon.GetComponent<WeaponBase>().passiveSkillIndex == 0 && !currentWeapon.GetComponent<WeaponBase>().unlockedPassiveSkill)
+            if (skill == 2 && currentWeapon.GetComponent<WeaponBase>().passiveSkillIndex < (currentWeapon.GetComponent<WeaponBase>().passiveSkill.Length - 1))
             {
-                currentWeapon.GetComponent<WeaponBase>().UnlockSkill(skill);
-                skillsUIButtons[skill].SetActive(true);
-                milestoneOne_inactive[skill].SetActive(false);
-            }
-            else
-            {
+                if (currentWeapon.GetComponent<WeaponBase>().passiveSkillIndex == 0)
+                {
+                    currentWeapon.GetComponent<WeaponBase>().UnlockSkill(skill);
+                    skillsUIButtons[skill].SetActive(true);
+                    milestoneOne_inactive[skill].SetActive(false);
+                }
                 currentWeapon.GetComponent<WeaponBase>().passiveSkillIndex++;
-            }
-            currentSkillPoints--;
-            skillPointsThree.GetComponent<TextMeshProUGUI>().text = (currentWeapon.GetComponent<WeaponBase>().passiveSkillIndex + 1).ToString();
-            skillBarSliders[skill].value = currentWeapon.GetComponent<WeaponBase>().passiveSkillIndex;
-            if (currentWeapon.GetComponent<WeaponBase>().passiveSkillIndex == 4)
-            {
-                milestoneTwo_inactive[skill].SetActive(false);
-            }
-            if (currentWeapon.GetComponent<WeaponBase>().passiveSkillIndex == 7)
-            {
-                milestoneThree_inactive[skill].SetActive(false);
+                currentSkillPoints--;
+                skillPointsThree.GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<WeaponBase>().passiveSkillIndex.ToString();
+                skillBarSliders[skill].value = currentWeapon.GetComponent<WeaponBase>().passiveSkillIndex;
+                if (currentWeapon.GetComponent<WeaponBase>().passiveSkillIndex == 4)
+                {
+                    milestoneTwo_inactive[skill].SetActive(false);
+                }
+                if (currentWeapon.GetComponent<WeaponBase>().passiveSkillIndex == 7)
+                {
+                    milestoneThree_inactive[skill].SetActive(false);
+                }
             }
         }
 
@@ -201,6 +195,10 @@ public class SkillTreeManager : MonoBehaviour
         {
             skillpointMessage.SetActive(false);
         }
+        else
+        {
+            skillpointMessage.SetActive(true);
+        }
     }
 
 
@@ -208,13 +206,6 @@ public class SkillTreeManager : MonoBehaviour
     {
         if (skill == 0)
         {
-            if (currentWeapon.GetComponent<WeaponBase>().skillOneIndex == 0 && currentWeapon.GetComponent<WeaponBase>().unlockedSkillOne)
-            {
-                currentWeapon.GetComponent<WeaponBase>().UnlockSkill(skill);
-                skillsUIButtons[skill].SetActive(false);
-                milestoneOne_inactive[skill].SetActive(true);
-                currentSkillPoints++;
-            }
             if (currentWeapon.GetComponent<WeaponBase>().skillOneIndex > 0)
             {
                 if (currentWeapon.GetComponent<WeaponBase>().skillOneIndex == 4)
@@ -227,24 +218,19 @@ public class SkillTreeManager : MonoBehaviour
                 }
                 currentSkillPoints++;
                 currentWeapon.GetComponent<WeaponBase>().skillOneIndex--;
-                skillPointsOne.GetComponent<TextMeshProUGUI>().text = (currentWeapon.GetComponent<WeaponBase>().skillOneIndex + 1).ToString();
-                skillBarSliders[skill].value = currentWeapon.GetComponent<WeaponBase>().skillOneIndex;
-            }
-            else
-            {
                 skillPointsOne.GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<WeaponBase>().skillOneIndex.ToString();
+                skillBarSliders[skill].value = currentWeapon.GetComponent<WeaponBase>().skillOneIndex;
+                if (currentWeapon.GetComponent<WeaponBase>().skillOneIndex == 0)
+                {
+                    currentWeapon.GetComponent<WeaponBase>().UnlockSkill(skill);
+                    skillsUIButtons[skill].SetActive(false);
+                    milestoneOne_inactive[skill].SetActive(true);
+                }
             }
         }
 
         if (skill == 1)
         {
-            if (currentWeapon.GetComponent<WeaponBase>().skillTwoIndex == 0 && currentWeapon.GetComponent<WeaponBase>().unlockedSkillTwo)
-            {
-                currentWeapon.GetComponent<WeaponBase>().UnlockSkill(skill);
-                skillsUIButtons[skill].SetActive(false);
-                milestoneOne_inactive[skill].SetActive(true);
-                currentSkillPoints++;
-            }
             if (currentWeapon.GetComponent<WeaponBase>().skillTwoIndex > 0)
             {
                 if (currentWeapon.GetComponent<WeaponBase>().skillTwoIndex == 4)
@@ -257,24 +243,19 @@ public class SkillTreeManager : MonoBehaviour
                 }
                 currentSkillPoints++;
                 currentWeapon.GetComponent<WeaponBase>().skillTwoIndex--;
-                skillPointsTwo.GetComponent<TextMeshProUGUI>().text = (currentWeapon.GetComponent<WeaponBase>().skillTwoIndex + 1).ToString();
-                skillBarSliders[skill].value = currentWeapon.GetComponent<WeaponBase>().skillTwoIndex;
-            }
-            else
-            {
                 skillPointsTwo.GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<WeaponBase>().skillTwoIndex.ToString();
+                skillBarSliders[skill].value = currentWeapon.GetComponent<WeaponBase>().skillTwoIndex;
+                if (currentWeapon.GetComponent<WeaponBase>().skillTwoIndex == 0)
+                {
+                    currentWeapon.GetComponent<WeaponBase>().UnlockSkill(skill);
+                    skillsUIButtons[skill].SetActive(false);
+                    milestoneOne_inactive[skill].SetActive(true);
+                }
             }
         }
 
         if (skill == 2)
         {
-            if (currentWeapon.GetComponent<WeaponBase>().passiveSkillIndex == 0 && currentWeapon.GetComponent<WeaponBase>().unlockedPassiveSkill)
-            {
-                currentWeapon.GetComponent<WeaponBase>().UnlockSkill(skill);
-                skillsUIButtons[skill].SetActive(false);
-                milestoneOne_inactive[skill].SetActive(true);
-                currentSkillPoints++;
-            }
             if (currentWeapon.GetComponent<WeaponBase>().passiveSkillIndex > 0)
             {
                 if (currentWeapon.GetComponent<WeaponBase>().passiveSkillIndex == 4)
@@ -287,23 +268,30 @@ public class SkillTreeManager : MonoBehaviour
                 }
                 currentSkillPoints++;
                 currentWeapon.GetComponent<WeaponBase>().passiveSkillIndex--;
-                skillPointsThree.GetComponent<TextMeshProUGUI>().text = (currentWeapon.GetComponent<WeaponBase>().passiveSkillIndex + 1).ToString();
-                skillBarSliders[skill].value = currentWeapon.GetComponent<WeaponBase>().passiveSkillIndex;
-            }
-            else
-            {
                 skillPointsThree.GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<WeaponBase>().passiveSkillIndex.ToString();
+                skillBarSliders[skill].value = currentWeapon.GetComponent<WeaponBase>().passiveSkillIndex;
+                if (currentWeapon.GetComponent<WeaponBase>().passiveSkillIndex == 0)
+                {
+                    currentWeapon.GetComponent<WeaponBase>().UnlockSkill(skill);
+                    skillsUIButtons[skill].SetActive(false);
+                    milestoneOne_inactive[skill].SetActive(true);
+                }
             }
         }
 
         skillpointsMainDisplay.GetComponent<TextMeshProUGUI>().text = currentSkillPoints.ToString();
         skillpointsSkillMenu.GetComponent<TextMeshProUGUI>().text = currentSkillPoints.ToString();
+
         DisplayCorrectWeaponStats();
         ChangeIconsInMainUI();
 
         if (currentSkillPoints > 0)
         {
             skillpointMessage.SetActive(true);
+        }
+        else
+        {
+            skillpointMessage.SetActive(false);
         }
     }
 
@@ -314,30 +302,9 @@ public class SkillTreeManager : MonoBehaviour
         currentWeapon = weapon;
 
         // skill bars 
-        if (currentWeapon.GetComponent<WeaponBase>().skillOneIndex > 0)
-        {
-            skillPointsOne.GetComponent<TextMeshProUGUI>().text = (currentWeapon.GetComponent<WeaponBase>().skillOneIndex + 1).ToString();
-        }
-        else
-        {
-            skillPointsOne.GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<WeaponBase>().skillOneIndex.ToString();
-        }
-        if (currentWeapon.GetComponent<WeaponBase>().skillTwoIndex > 0)
-        {
-            skillPointsTwo.GetComponent<TextMeshProUGUI>().text = (currentWeapon.GetComponent<WeaponBase>().skillTwoIndex + 1).ToString();
-        }
-        else
-        {
-            skillPointsTwo.GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<WeaponBase>().skillTwoIndex.ToString();
-        }
-        if (currentWeapon.GetComponent<WeaponBase>().passiveSkillIndex > 0)
-        {
-            skillPointsThree.GetComponent<TextMeshProUGUI>().text = (currentWeapon.GetComponent<WeaponBase>().passiveSkillIndex + 1).ToString();
-        }
-        else
-        {
-            skillPointsThree.GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<WeaponBase>().passiveSkillIndex.ToString();
-        }
+        skillPointsOne.GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<WeaponBase>().skillOneIndex.ToString();
+        skillPointsTwo.GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<WeaponBase>().skillTwoIndex.ToString();
+        skillPointsThree.GetComponent<TextMeshProUGUI>().text = currentWeapon.GetComponent<WeaponBase>().passiveSkillIndex.ToString();
 
         skillBarSliders[0].value = currentWeapon.GetComponent<WeaponBase>().skillOneIndex;
         skillBarSliders[1].value = currentWeapon.GetComponent<WeaponBase>().skillTwoIndex;
@@ -348,45 +315,24 @@ public class SkillTreeManager : MonoBehaviour
             if (skillBarSliders[i].value == 0)
             {
                 milestoneOne_inactive[i].SetActive(true);
-                if (i == 0 && currentWeapon.GetComponent<WeaponBase>().unlockedSkillOne)
-                {
-                    milestoneOne_inactive[i].SetActive(false);
-                }
-                if (i == 1 && currentWeapon.GetComponent<WeaponBase>().unlockedSkillTwo)
-                {
-                    milestoneOne_inactive[i].SetActive(false);
-                }
-                if (i == 2 && currentWeapon.GetComponent<WeaponBase>().unlockedPassiveSkill)
-                {
-                    milestoneOne_inactive[i].SetActive(false);
-                }
                 milestoneTwo_inactive[i].SetActive(true);
                 milestoneThree_inactive[i].SetActive(true);
                 skillsUIButtons[i].SetActive(false);
             }
             else
             {
+                milestoneOne_inactive[i].SetActive(false);
                 skillsUIButtons[i].SetActive(true);
             }
-            if (skillBarSliders[i].value > 0)
-            {
-                milestoneOne_inactive[i].SetActive(false);
-                milestoneTwo_inactive[i].SetActive(true);
-                milestoneThree_inactive[i].SetActive(true);
-            }
-            else if (skillBarSliders[i].value >= 4)
+            if (skillBarSliders[i].value >= 4)
             {
                 milestoneTwo_inactive[i].SetActive(false);
-                milestoneThree_inactive[i].SetActive(true);
             }
-            else if (skillBarSliders[i].value == 7)
+            if (skillBarSliders[i].value == 7)
             {
                 milestoneThree_inactive[i].SetActive(false);
             }
         }
-
-        // weapon stats
-        DisplayCorrectWeaponStats();
 
         // skill points
         CountRemainingPoints();
@@ -416,6 +362,7 @@ public class SkillTreeManager : MonoBehaviour
             milestoneThree[i].GetComponent<Image>().sprite = currentWeapon.GetComponent<WeaponBase>().icons_milestoneThree[i];
         }
 
+        DisplayCorrectWeaponStats();
         ChangeIconsInMainUI();
 
         if (currentSkillPoints > 0)
@@ -441,6 +388,7 @@ public class SkillTreeManager : MonoBehaviour
         {
             UIButtons_icons[0].GetComponent<Image>().sprite = currentWeapon.GetComponent<WeaponBase>().icons_milestoneThree[0];
         }
+
         UIButtons_icons[1].GetComponent<Image>().sprite = currentWeapon.GetComponent<WeaponBase>().icons_milestoneOne[1];
         if (currentWeapon.GetComponent<WeaponBase>().skillTwoIndex >= 4)
         {
@@ -450,6 +398,7 @@ public class SkillTreeManager : MonoBehaviour
         {
             UIButtons_icons[1].GetComponent<Image>().sprite = currentWeapon.GetComponent<WeaponBase>().icons_milestoneThree[1];
         }
+
         UIButtons_icons[2].GetComponent<Image>().sprite = currentWeapon.GetComponent<WeaponBase>().icons_milestoneOne[2];
         if (currentWeapon.GetComponent<WeaponBase>().passiveSkillIndex >= 4)
         {
