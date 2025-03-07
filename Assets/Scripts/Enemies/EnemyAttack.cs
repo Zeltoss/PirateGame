@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
+    // this script checks if the enemy is close enough to hit the player
 
     public bool inRangeForMelee;
 

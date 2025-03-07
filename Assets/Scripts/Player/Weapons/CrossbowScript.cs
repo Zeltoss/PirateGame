@@ -45,12 +45,10 @@ public class CrossbowScript : MonoBehaviour
         arrowInstance.GetComponent<ArrowScript>().baseDamage = _weaponBase.baseDamage;
         if (transform.localScale.x > 0)
         {
-            Debug.Log("facing left");
             arrowInstance.GetComponent<ArrowScript>().shootingRight = false;
         }
         else
         {
-            Debug.Log("facing right");
             Vector3 spawnScale = arrowInstance.transform.localScale;
             spawnScale.x *= -1;
             arrowInstance.transform.localScale = spawnScale;

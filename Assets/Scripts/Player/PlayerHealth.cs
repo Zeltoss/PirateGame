@@ -31,7 +31,7 @@ public class PlayerHealth : MonoBehaviour
         onTakingDamage -= TakeDamage;
     }
 
-    // function with OnTriggerEnter instead?
+
 
     private void TakeDamage(int damage)
     {
@@ -41,7 +41,6 @@ public class PlayerHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Debug.Log("You're dead :(");
             GameManager.onGameOver?.Invoke();
         }
     }

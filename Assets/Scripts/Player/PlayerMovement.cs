@@ -7,11 +7,9 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     // this script manages the movement of the player 
-    // add a ground check and remove comment slashes to include jumping
 
     private PlayerControls _playerControls;
     private InputAction moveAction;
-    // private InputAction jumpAction;
 
     private Rigidbody rb;
 
@@ -27,14 +25,13 @@ public class PlayerMovement : MonoBehaviour
     private UnityEngine.Vector3 lastMovement;
     private float movementX;
     private float movementY;
-    // private float jumpingForce = 20f;
 
     public bool playerCanMove = true;
-    // private bool isGrounded = true;
 
     private bool facingLeft = true;
     [SerializeField] private GameObject playerSprite;
     private GameObject currentWeapon;
+
 
     //esthers code quarantine for awesome animations
     [SerializeField] Animator move_animator;
@@ -51,12 +48,6 @@ public class PlayerMovement : MonoBehaviour
         moveAction = _playerControls.Player.Move;
         moveAction.Enable();
 
-        /*
-        jumpAction = _playerControls.Player.Jump;
-        jumpAction.Enable();
-        jumpAction.performed += Jump;
-        */
-
         PlayerAttack.onChangingWeapon += GetNewWeapon;
         RapierScript.onUsingWhirlwind += DashForward;
     }
@@ -64,7 +55,6 @@ public class PlayerMovement : MonoBehaviour
     private void OnDisable()
     {
         moveAction.Disable();
-        // jumpAction.Disable();
 
         PlayerAttack.onChangingWeapon -= GetNewWeapon;
         RapierScript.onUsingWhirlwind -= DashForward;
@@ -164,8 +154,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void DashForward()
     {
-        Debug.Log("dashing");
-
         StartCoroutine(Dashing());
     }
 
@@ -198,18 +186,6 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    /*
-    private void Jump(InputAction.CallbackContext context)
-    {
-        if (isGrounded)
-        {
-            rb.AddForce(Vector3.up * jumpingForce, ForceMode.Impulse);
-            isGrounded = false;
-        }
-    }
-    */
-
-
 
     private void GetNewWeapon(GameObject weapon)
     {
@@ -239,4 +215,5 @@ public class PlayerMovement : MonoBehaviour
             currentWeapon.transform.localRotation = currentRotation;
         }
     }
+
 }

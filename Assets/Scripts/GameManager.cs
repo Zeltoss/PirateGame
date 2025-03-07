@@ -109,6 +109,7 @@ public class GameManager : MonoBehaviour
     }
 
 
+
     private IEnumerator WaitForEndOfGame()
     {
         yield return new WaitForSeconds(1);

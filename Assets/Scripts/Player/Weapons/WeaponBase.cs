@@ -5,23 +5,17 @@ using UnityEngine;
 
 public class WeaponBase : MonoBehaviour
 {
+    // this script is a base for all weapons which holds all the attack specific values, names and descriptions
 
     public bool isMeleeWeapon;
 
     public float baseDamage;
     public float critDamage = 10;
     public float baseCritChance = 0.1f;
-    public float currentCritChance;
-    public bool canCrit = true;
-
+    public float currentDamage = 10;
 
     public string[] skillNames;
     public string[] skillDescriptions;
-
-
-    [Header("Values for scripts (just ignore)")]
-
-    public float currentDamage = 10;
 
     public float[] skillOne;
     public float[] skillTwo;
@@ -43,47 +37,6 @@ public class WeaponBase : MonoBehaviour
 
 
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Enemy" && isMeleeWeapon)
-        {
-            Debug.Log("STRIKE");
-            if (attackIndex == 0)
-            {
-                if (unlockedPassiveSkill)
-                {
-                    currentCritChance = baseCritChance * passiveSkill[passiveSkillIndex];
-                }
-                else
-                {
-                    currentCritChance = baseCritChance;
-                }
-                if (Random.value < currentCritChance && canCrit)
-                {
-                    Debug.Log("critical attack");
-                    other.GetComponent<EnemyAI>().TakeDamage(currentDamage + critDamage);
-                    PlayerAttack.onPlayerAttack?.Invoke(2);
-                    StartCoroutine(CritCooldown());
-                }
-                else
-                {
-                    Debug.Log("normal attack");
-                    other.GetComponent<EnemyAI>().TakeDamage(currentDamage);
-                }
-            }
-            if (attackIndex == 1)
-            {
-                PlayerAttack.onUsingAttackOne?.Invoke(other.gameObject);
-            }
-            if (attackIndex == 2)
-            {
-                PlayerAttack.onUsingAttackTwo?.Invoke(other.gameObject);
-            }
-        }
-    }
-
-
-
     public void UnlockSkill(int index)
     {
         if (index == 0)
@@ -98,15 +51,6 @@ public class WeaponBase : MonoBehaviour
         {
             unlockedPassiveSkill = !unlockedPassiveSkill;
         }
-    }
-
-
-
-    public IEnumerator CritCooldown()
-    {
-        canCrit = false;
-        yield return new WaitForSeconds(5);
-        canCrit = true;
     }
 
 }

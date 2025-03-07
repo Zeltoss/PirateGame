@@ -8337,8 +8337,6 @@ MonoBehaviour:
   baseDamage: 15
   critDamage: 0
   baseCritChance: 0.1
-  currentCritChance: 0
-  canCrit: 1
   skillNames:
   - Feu Feu
   - Can Be Deadly
@@ -45742,8 +45740,6 @@ MonoBehaviour:
   baseDamage: 10
   critDamage: 0
   baseCritChance: 0.1
-  currentCritChance: 0
-  canCrit: 1
   skillNames:
   - Bloody Strike
   - Whirling Blade

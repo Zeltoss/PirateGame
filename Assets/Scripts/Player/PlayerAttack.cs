@@ -38,9 +38,12 @@ public class PlayerAttack : MonoBehaviour
     private bool canUseSkillOne = true;
     private bool canUseSkillTwo = true;
 
+
     //esthers code quarantine for awesome animations
     [SerializeField] Animator strike_animator;
     private string prevWeapon = "Rapier";
+
+
 
     void Awake()
     {

@@ -76,6 +76,7 @@ public class SkillTreeManager : MonoBehaviour
     }
 
 
+
     void Start()
     {
         foreach (GameObject button in skillsUIButtons)
@@ -84,6 +85,7 @@ public class SkillTreeManager : MonoBehaviour
         }
         skillpointMessage.SetActive(false);
     }
+
 
 
     private void GainXP(GameObject enemy)
@@ -443,6 +445,7 @@ public class SkillTreeManager : MonoBehaviour
             skillStatsAdded[2].GetComponent<TextMeshProUGUI>().text = "";
         }
     }
+
 
 
     private void CountRemainingPoints()
